@@ -11,5 +11,18 @@
 require 'rails_helper'
 
 RSpec.describe Unit, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "Validations" do
+    it "is invalid without a landlord" do
+      expect(build(:unit, landlord: nil)).to be_invalid
+    end
+
+    it "is invalid without an address" do
+      expect(build(:unit, address: nil)).to be_invalid
+    end
+
+    it "is invalid with a duplicate address" do
+      existing = create(:unit)
+      expect(build(:unit, address: existing.address)).to be_invalid
+    end
+  end
 end

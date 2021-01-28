@@ -14,5 +14,9 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "Validations" do
+    it "is invalid without an email" do
+      expect(build(:user, email: nil)).to be_invalid
+    end
+  end
 end

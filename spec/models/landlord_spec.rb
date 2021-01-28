@@ -10,5 +10,14 @@
 require 'rails_helper'
 
 RSpec.describe Landlord, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "Validations" do
+    it "is invalid without a name" do
+      expect(build(:landlord, name: nil)).to be_invalid
+    end
+
+    it "is invalid with a duplicate name" do
+      existing = create(:landlord)
+      expect(build(:landlord, name: existing.name)).to be_invalid
+    end
+  end 
 end

@@ -8,4 +8,8 @@
 #  updated_at :datetime         not null
 #
 class Landlord < ApplicationRecord
+  has_many :units, inverse_of: :landlord
+  has_many :ratings, through: :units
+
+  validates :name, presence: true, uniqueness: true
 end

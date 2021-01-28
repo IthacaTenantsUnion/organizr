@@ -16,4 +16,6 @@ class Rating < ApplicationRecord
   belongs_to :unit
 
   delegate :landlord, to: :unit
+
+  validates :overall, presence: true
 end

@@ -10,4 +10,6 @@
 #
 class Unit < ApplicationRecord
   belongs_to :landlord
+
+  validates :address, presence: true, uniqueness: true
 end
