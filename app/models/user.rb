@@ -17,6 +17,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :ratings
-  has_many :units, through: :ratings
+  has_many :tenancies
+  has_many :units, through: :tenancies, inverse_of: :tenant
+  has_many :landlords, through: :tenancies, inverse_of: :tenant
+  has_many :ratings, through: :tenancies, inverse_of: :user
 end

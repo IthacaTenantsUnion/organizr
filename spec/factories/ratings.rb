@@ -4,7 +4,6 @@
 #
 #  id         :bigint           not null, primary key
 #  user_id    :bigint           not null
-#  unit_id    :bigint           not null
 #  overall    :integer
 #  repairs    :integer
 #  review     :string
@@ -14,7 +13,6 @@
 FactoryBot.define do
   factory :rating do
     user
-    unit
     overall { [-1,0,1].sample }
     repairs { [-1,0,1].sample }
     review { Faker::Lorem.paragraph_by_chars(number: (Random.random_number * 900).to_i + 100, supplemental: true) }

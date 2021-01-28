@@ -4,7 +4,6 @@
 #
 #  id         :bigint           not null, primary key
 #  user_id    :bigint           not null
-#  unit_id    :bigint           not null
 #  overall    :integer
 #  repairs    :integer
 #  review     :string
@@ -12,10 +11,11 @@
 #  updated_at :datetime         not null
 #
 class Rating < ApplicationRecord
+  has_one :tenancy
   belongs_to :user
-  belongs_to :unit
-
-  delegate :landlord, to: :unit
+  
+  delegate :landlord, to: :tenancy
+  delegate :unit, to: :tenancy
 
   validates :overall, presence: true
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_28_044553) do
+ActiveRecord::Schema.define(version: 2021_01_28_062355) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,22 +23,32 @@ ActiveRecord::Schema.define(version: 2021_01_28_044553) do
 
   create_table "ratings", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "unit_id", null: false
     t.integer "overall"
     t.integer "repairs"
     t.string "review"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["unit_id"], name: "index_ratings_on_unit_id"
     t.index ["user_id"], name: "index_ratings_on_user_id"
+  end
+
+  create_table "tenancies", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "unit_id", null: false
+    t.bigint "landlord_id", null: false
+    t.integer "rent"
+    t.date "start_date"
+    t.date "end_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["landlord_id"], name: "index_tenancies_on_landlord_id"
+    t.index ["unit_id"], name: "index_tenancies_on_unit_id"
+    t.index ["user_id"], name: "index_tenancies_on_user_id"
   end
 
   create_table "units", force: :cascade do |t|
     t.string "address"
-    t.bigint "landlord_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["landlord_id"], name: "index_units_on_landlord_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -53,7 +63,8 @@ ActiveRecord::Schema.define(version: 2021_01_28_044553) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "ratings", "units"
   add_foreign_key "ratings", "users"
-  add_foreign_key "units", "landlords"
+  add_foreign_key "tenancies", "landlords"
+  add_foreign_key "tenancies", "units"
+  add_foreign_key "tenancies", "users"
 end

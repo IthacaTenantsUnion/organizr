@@ -4,7 +4,6 @@
 #
 #  id         :bigint           not null, primary key
 #  user_id    :bigint           not null
-#  unit_id    :bigint           not null
 #  overall    :integer
 #  repairs    :integer
 #  review     :string

@@ -2,20 +2,15 @@
 #
 # Table name: units
 #
-#  id          :bigint           not null, primary key
-#  address     :string
-#  landlord_id :bigint           not null
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
+#  id         :bigint           not null, primary key
+#  address    :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
 #
 require 'rails_helper'
 
 RSpec.describe Unit, type: :model do
   describe "Validations" do
-    it "is invalid without a landlord" do
-      expect(build(:unit, landlord: nil)).to be_invalid
-    end
-
     it "is invalid without an address" do
       expect(build(:unit, address: nil)).to be_invalid
     end
