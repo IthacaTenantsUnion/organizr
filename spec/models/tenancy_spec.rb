@@ -24,6 +24,10 @@ RSpec.describe Tenancy, type: :model do
       expect(build(:tenancy, start_date: nil)).to be_invalid
     end
 
+    it "is valid with an empty end date" do
+      expect(build(:tenancy)).to be_valid
+    end
+
     it "is invalid with an end date that precedes the start date" do
       expect(build(:tenancy, start_date: Date.today, end_date: Date.yesterday)).to be_invalid
     end

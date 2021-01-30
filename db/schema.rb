@@ -35,12 +35,14 @@ ActiveRecord::Schema.define(version: 2021_01_28_062355) do
     t.bigint "user_id", null: false
     t.bigint "unit_id", null: false
     t.bigint "landlord_id", null: false
+    t.bigint "rating_id"
     t.integer "rent"
     t.date "start_date"
     t.date "end_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["landlord_id"], name: "index_tenancies_on_landlord_id"
+    t.index ["rating_id"], name: "index_tenancies_on_rating_id"
     t.index ["unit_id"], name: "index_tenancies_on_unit_id"
     t.index ["user_id"], name: "index_tenancies_on_user_id"
   end
@@ -65,6 +67,7 @@ ActiveRecord::Schema.define(version: 2021_01_28_062355) do
 
   add_foreign_key "ratings", "users"
   add_foreign_key "tenancies", "landlords"
+  add_foreign_key "tenancies", "ratings"
   add_foreign_key "tenancies", "units"
   add_foreign_key "tenancies", "users"
 end

@@ -10,13 +10,28 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  */
-@import 'uswds/uswds';
  /*
- * require 'uswds'
  *= require_tree .
  *= require_self
  */
 
-/* @import 'uswds_rails_overrides/core/defaults'; */
+@import "semantic-ui";
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
-/* @import 'uswds_rails_overrides/all'; */
+ /* @import "semantic-ui/collections/menu"; */
+
+
+ .sr-only {
+  border: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px) !important; /* 1 */
+  -webkit-clip-path: inset(50%) !important;
+    clip-path: inset(50%) !important;  /* 2 */
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+  white-space: nowrap !important;            /* 3 */
+}

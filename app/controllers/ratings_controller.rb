@@ -1,5 +1,7 @@
 class RatingsController < ApplicationController
   before_action :set_rating, only: %i[ show edit update destroy ]
+  before_action :setup_form_data, only: %i[new edit]
+  before_action :authenticate_user!, only: %i[new edit update destroy]
 
   # GET /ratings or /ratings.json
   def index
@@ -21,7 +23,7 @@ class RatingsController < ApplicationController
 
   # POST /ratings or /ratings.json
   def create
-    @rating = Rating.new(rating_params)
+    @rating = current_user.ratings.build(rating_params)
 
     respond_to do |format|
       if @rating.save
@@ -60,6 +62,10 @@ class RatingsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_rating
       @rating = Rating.find(params[:id])
+    end
+
+    def setup_form_data
+      @landlords = Landlord.all
     end
 
     # Only allow a list of trusted parameters through.

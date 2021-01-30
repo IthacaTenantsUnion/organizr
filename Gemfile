@@ -30,6 +30,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'date_validator'
 gem 'devise'
+gem 'font-awesome-sass'
+gem 'semantic-ui-sass'
 
 
 group :development, :test do

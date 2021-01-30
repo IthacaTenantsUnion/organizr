@@ -1,5 +1,7 @@
 class LandlordsController < ApplicationController
+  semantic_breadcrumb :index, :landlords_path
   before_action :set_landlord, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, only: %i[ new edit update destroy ]
 
   # GET /landlords or /landlords.json
   def index
@@ -8,6 +10,7 @@ class LandlordsController < ApplicationController
 
   # GET /landlords/1 or /landlords/1.json
   def show
+    semantic_breadcrumb @landlord.name, landlord_path(@landlord)
   end
 
   # GET /landlords/new

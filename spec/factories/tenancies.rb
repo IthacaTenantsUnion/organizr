@@ -20,5 +20,9 @@ FactoryBot.define do
     rent { (Random.random_number * 1500).to_i + 500 }
     start_date { Faker::Date.between(from: 3.years.ago, to: 1.year.ago) }
     end_date { nil }
+
+    trait :with_rating do
+      rating
+    end
   end
 end

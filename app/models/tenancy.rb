@@ -20,6 +20,7 @@ class Tenancy < ApplicationRecord
   belongs_to :rating, optional: true
 
   validates :rent, numericality: { greater_than: 0 }
-  validates :start_date, presence: true, date: { after:  :start_date}
+  validates :start_date, presence: true
+  validates :end_date, date: { after:  :start_date }, if: lambda{ |t| t.end_date.present? }
 
 end

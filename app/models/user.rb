@@ -17,8 +17,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :tenancies
+  has_many :tenancies, dependent: :destroy
   has_many :units, through: :tenancies, inverse_of: :tenant
   has_many :landlords, through: :tenancies, inverse_of: :tenant
-  has_many :ratings, through: :tenancies, inverse_of: :user
+  has_many :ratings, through: :tenancies, inverse_of: :user, dependent: :destroy
+
+  def to_s
+    @name ||= Faker::Name.name
+  end
 end

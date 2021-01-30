@@ -10,7 +10,7 @@
 class Unit < ApplicationRecord
   has_many :tenancies
   has_many :landlords, through: :tenancies
-  has_many :ratings, through: :tenancies
+  has_many :ratings, through: :tenancies, dependent: :destroy
   has_many :tenants, through: :tenancies, source: :user
 
   validates :address, presence: true, uniqueness: true

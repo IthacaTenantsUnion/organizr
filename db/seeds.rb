@@ -12,5 +12,9 @@ include FactoryBot::Syntax::Methods
 
 User.destroy_all
 Rating.destroy_all
+Landlord.destroy_all
+Tenancy.destroy_all
+Unit.destroy_all
 
-25.times { create(:rating) }
+
+25.times { print "."; create(:tenancy, :with_rating) }

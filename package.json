@@ -6,9 +6,10 @@
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "4.3.0",
-    "svg4everybody": "^2.1.9",
-    "turbolinks": "^5.2.0",
-    "uswds": "^2.10.0"
+    "jquery": "^3.5.1",
+    "popper.js": "^1.16.1",
+    "semantic-ui-sass": "^2.4.2",
+    "turbolinks": "^5.2.0"
   },
   "version": "0.1.0",
   "devDependencies": {

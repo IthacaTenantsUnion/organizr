@@ -1,4 +1,4 @@
-<%= form_with(model: rating, local: true) do |form| %>
+<%= form_with(model: rating, local: true, class: 'ui form') do |form| %>
   <% if rating.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(rating.errors.count, "error") %> prohibited this rating from being saved:</h2>
@@ -12,31 +12,30 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
+    <%= form.label :landlord_id, "Landlord" %>
+    <%= form.collection_select :landlord_id, @landlords, :id, :name, prompt: true %>
   </div>
 
   <div class="field">
-    <%= form.label :landlord_id %>
-    <%= form.text_field :landlord_id %>
+    <%= form.label :overall, "Overall Rating", for: 'overall' %>
+    <div class="rating">
+      <%= form.collection_radio_buttons :overall, [['-1', icon('fas', "frown", 'Poor')] ,['0', icon('fas', "meh", 'OK',)], ['1', icon('fas', "smile", "Good")]], :first, :last %>
+    </div>
   </div>
 
   <div class="field">
-    <%= form.label :overall %>
-    <%= form.number_field :overall %>
-  </div>
-
-  <div class="field">
-    <%= form.label :repairs %>
-    <%= form.number_field :repairs %>
+    <%= form.label :repairs, "Repairs (if applicable)", for: 'repairs' %>
+    <div class="rating">
+      <%= form.collection_radio_buttons :repairs, [['-1', icon('fas', "frown", 'Poor')] ,['0', icon('fas', "meh", 'OK',)], ['1', icon('fas', "smile", "Good")], ['', icon('fas', 'comment-slash', 'N/A')]], :first, :last %>
+    </div>
   </div>
 
   <div class="field">
     <%= form.label :review %>
-    <%= form.text_field :review %>
+    <%= form.text_area :review %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: 'ui button' %>
   </div>
 <% end %>

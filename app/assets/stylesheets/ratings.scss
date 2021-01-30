@@ -1,3 +1,45 @@
 // Place all the styles related to the ratings controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.fa-frown {
+  color: red;
+}
+.fa-meh {
+  color: orange;
+}
+.fa-smile {
+  color: green;
+}
+
+.field .rating {
+    display: flex;
+    justify-content: space-between;
+    align-content: left;
+    width: 275px;
+
+    input[type="radio"] {
+      display:none;
+    }
+
+    label {
+      border: 1px solid #DDD;
+      border-radius:5px;
+      padding:10px;
+      margin-top:10px;
+      display:block;
+    }
+
+    label:hover {
+      cursor:pointer;
+      background-color:#EEE;
+    }
+
+    input[type="radio"]:checked + label {
+      background-color:#DFD;
+    }
+}
+
+#ratings.index table td i {
+  font-size: 2rem;
+}

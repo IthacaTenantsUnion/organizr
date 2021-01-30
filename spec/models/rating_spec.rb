@@ -15,6 +15,7 @@ require 'rails_helper'
 RSpec.describe Rating, type: :model do
   describe "Validations" do
     it "is invalid without an overall rating" do
+      expect(build(:rating, overall: nil)).to be_invalid
     end
   end
 end
