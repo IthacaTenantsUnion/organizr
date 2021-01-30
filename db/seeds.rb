@@ -9,4 +9,8 @@
 require 'factory_bot_rails'
 include FactoryBot::Syntax::Methods
 
+
+User.destroy_all
+Rating.destroy_all
+
 25.times { create(:rating) }

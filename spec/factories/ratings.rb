@@ -12,6 +12,7 @@
 #
 FactoryBot.define do
   factory :rating do
+    tenancy
     user
     overall { [-1,0,1].sample }
     repairs { [-1,0,1].sample }

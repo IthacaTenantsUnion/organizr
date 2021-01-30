@@ -6,7 +6,9 @@
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "4.3.0",
-    "turbolinks": "^5.2.0"
+    "svg4everybody": "^2.1.9",
+    "turbolinks": "^5.2.0",
+    "uswds": "^2.10.0"
   },
   "version": "0.1.0",
   "devDependencies": {
