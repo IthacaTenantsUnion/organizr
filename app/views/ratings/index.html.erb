@@ -5,7 +5,6 @@
 <table>
   <thead>
     <tr>
-      <th>User</th>
       <th>Landlord</th>
       <th>Overall</th>
       <th>Repairs</th>
@@ -16,15 +15,14 @@
 
   <tbody>
     <% @ratings.each do |rating| %>
-      <tr>
-        <td><%= rating.user %></td>
+      <tr class="<%= 'mine' if current_user && rating.user == current_user %>">
         <td><%= rating.landlord.name %></td>
         <td><%= rating_icon(rating.overall) %></td>
         <td><%= rating_icon(rating.repairs) %></td>
         <td><%= rating.review %></td>
         <td><%= link_to 'Show', rating %></td>
-        <td><%= link_to 'Edit', edit_rating_path(rating) %></td>
-        <td><%= link_to 'Destroy', rating, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= edit_link(edit_tenancy_rating_path(params.fetch(:tenancy_id),rating)) if can?(:edit, rating) %></td>
+        <td><%= destroy_link(rating) if can?(:destroy, rating) %></td>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Rating', new_rating_path %>
+<%= link_to 'New Rating', new_tenancy_rating_path(params[:tenancy_id]) if params[:tenancy_id] && current_user.present? %>

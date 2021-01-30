@@ -1,11 +1,13 @@
 class RatingsController < ApplicationController
-  before_action :set_rating, only: %i[ show edit update destroy ]
+  load_and_authorize_resource :tenancy
+  load_and_authorize_resource :rating, through: :tenancy, singleton: true
+  #before_action :set_rating, only: %i[ show edit update destroy ]
   before_action :setup_form_data, only: %i[new edit]
   before_action :authenticate_user!, only: %i[new edit update destroy]
 
   # GET /ratings or /ratings.json
   def index
-    @ratings = Rating.all
+    @ratings = Rating.includes(:tenancy, tenancy: [:landlord, :user, :unit]).all
   end
 
   # GET /ratings/1 or /ratings/1.json
@@ -14,7 +16,7 @@ class RatingsController < ApplicationController
 
   # GET /ratings/new
   def new
-    @rating = Rating.new
+    @rating = @tenancy.rating.build
   end
 
   # GET /ratings/1/edit
@@ -30,7 +32,7 @@ class RatingsController < ApplicationController
         format.html { redirect_to @rating, notice: "Rating was successfully created." }
         format.json { render :show, status: :created, location: @rating }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { setup_form_data; render :new, status: :unprocessable_entity }
         format.json { render json: @rating.errors, status: :unprocessable_entity }
       end
     end
@@ -60,16 +62,16 @@ class RatingsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_rating
-      @rating = Rating.find(params[:id])
-    end
+    #def set_rating
+    #  @rating = Rating.find(params[:id])
+    #end
 
     def setup_form_data
-      @landlords = Landlord.all
+      @tenancy = Tenancy.find(params[:tenancy_id])
     end
 
     # Only allow a list of trusted parameters through.
     def rating_params
-      params.require(:rating).permit(:user_id, :landlord_id, :overall, :repairs, :review)
+      params.require(:rating).permit(:overall, :repairs, :review)
     end
 end

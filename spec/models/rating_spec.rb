@@ -3,7 +3,7 @@
 # Table name: ratings
 #
 #  id         :bigint           not null, primary key
-#  user_id    :bigint           not null
+#  tenancy_id :bigint           not null
 #  overall    :integer
 #  repairs    :integer
 #  review     :string

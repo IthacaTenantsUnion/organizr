@@ -10,6 +10,7 @@
 #  remember_created_at    :datetime
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  role                   :string           default("guest"), not null
 #
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
@@ -20,7 +21,9 @@ class User < ApplicationRecord
   has_many :tenancies, dependent: :destroy
   has_many :units, through: :tenancies, inverse_of: :tenant
   has_many :landlords, through: :tenancies, inverse_of: :tenant
-  has_many :ratings, through: :tenancies, inverse_of: :user, dependent: :destroy
+  has_many :ratings, through: :tenancies, dependent: :destroy
+
+  enum role: { guest: "guest", ˇtenant: "tenant", admin: "admin" }
 
   def to_s
     @name ||= Faker::Name.name

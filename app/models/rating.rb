@@ -3,7 +3,7 @@
 # Table name: ratings
 #
 #  id         :bigint           not null, primary key
-#  user_id    :bigint           not null
+#  tenancy_id :bigint           not null
 #  overall    :integer
 #  repairs    :integer
 #  review     :string
@@ -11,11 +11,12 @@
 #  updated_at :datetime         not null
 #
 class Rating < ApplicationRecord
-  has_one :tenancy
-  belongs_to :user
+  belongs_to :tenancy, inverse_of: :rating
   
   delegate :landlord, to: :tenancy
   delegate :unit, to: :tenancy
-
+  delegate :user, to: :tenancy
+  delegate :user_id, to: :tenancy
+  
   validates :overall, presence: true
 end

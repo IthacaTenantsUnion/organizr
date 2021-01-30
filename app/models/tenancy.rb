@@ -17,7 +17,7 @@ class Tenancy < ApplicationRecord
   belongs_to :user
   belongs_to :unit
   belongs_to :landlord
-  belongs_to :rating, optional: true
+  has_one :rating, inverse_of: :tenancy
 
   validates :rent, numericality: { greater_than: 0 }
   validates :start_date, presence: true
