@@ -1,6 +1,6 @@
 class RatingsController < ApplicationController
   load_and_authorize_resource :tenancy
-  load_and_authorize_resource :rating, through: :tenancy, singleton: true
+  load_and_authorize_resource :rating, through: :tenancy, singleton: true, except: :index
   #before_action :set_rating, only: %i[ show edit update destroy ]
   before_action :setup_form_data, only: %i[new edit]
   before_action :authenticate_user!, only: %i[new edit update destroy]

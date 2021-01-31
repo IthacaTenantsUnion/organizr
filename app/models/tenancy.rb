@@ -19,7 +19,7 @@ class Tenancy < ApplicationRecord
   belongs_to :landlord
   has_one :rating, inverse_of: :tenancy
 
-  validates :rent, numericality: { greater_than: 0 }
+  validates :rent, numericality: { greater_than: 0 } # length limit
   validates :start_date, presence: true
   validates :end_date, date: { after:  :start_date }, if: lambda{ |t| t.end_date.present? }
 

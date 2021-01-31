@@ -45,6 +45,22 @@
           <a class="item" href="#">Link Item</a>
         </div>
       </div>
+
+      <% unless current_user %>
+        <%= link_to "Join ITU", new_user_registration_path, class: 'item' %>
+      <% end %>
+
+      <div class="ui simple dropdown item">
+        Account <i class="dropdown icon"></i>
+        <div class="menu">
+          <% if current_user %>
+            <div class="header">Signed in as <%= current_user.email %></div>
+            <%= link_to('Sign out',  destroy_user_session_path, :method => 'delete', class: 'item') %>
+          <% else %>
+            <%= link_to "Sign in", new_user_session_path, class: 'item' %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 

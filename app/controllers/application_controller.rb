@@ -4,9 +4,13 @@ class ApplicationController < ActionController::Base
 
   def home
     if current_user.present?
-      redirect_to tenancies_path
-    else
-      redirect_to ratings_path
+      redirect_to tenancies_path and return
+    end
+
+    @ratings = Rating.all
+    
+    respond_to do |format|
+      format.html
     end
   end
 

@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Ratings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Landlord</th>
+      <th>Overall</th>
+      <th>Repairs</th>
+      <th>Review</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ratings.each do |rating| %>
+      <tr>
+        <td><%= rating.landlord.name %></td>
+        <td><%= rating_icon(rating.overall) %></td>
+        <td><%= rating_icon(rating.repairs) %></td>
+        <td><%= rating.review %></td>
+        <td><%= link_to 'Show', rating %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
