@@ -14,7 +14,7 @@
 #
 FactoryBot.define do
   factory :tenancy do
-    user
+    tenant factory: :user
     unit
     landlord
     rent { (Random.random_number * 1500).to_i + 500 }

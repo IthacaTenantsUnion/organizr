@@ -26,11 +26,11 @@ RSpec.describe Landlord, type: :model do
 
     describe "overall_average" do
       it "averages the total ratings" do
-        create(:rating, :for_landlord, landlord: landlord, overall: 1)
-        create(:rating, :for_landlord, landlord: landlord, overall: -1)
-        create(:rating, :for_landlord, landlord: landlord, overall: 1)
-        create(:rating, :for_landlord, landlord: landlord, overall: -1)
-        create(:rating, :for_landlord, landlord: landlord, overall: 1)
+        create(:rating, landlord: landlord, overall: 1)
+        create(:rating, landlord: landlord, overall: -1)
+        create(:rating, landlord: landlord, overall: 1)
+        create(:rating, landlord: landlord, overall: -1)
+        create(:rating, landlord: landlord, overall: 1)
 
         expect(landlord.ratings.overall_average).to eq((3-2)/5.0)
       end
@@ -38,21 +38,21 @@ RSpec.describe Landlord, type: :model do
 
     describe "repairs_average" do
       it "averages the total ratings" do
-        create(:rating, :for_landlord, landlord: landlord, repairs: -1)
-        create(:rating, :for_landlord, landlord: landlord, repairs: -1)
-        create(:rating, :for_landlord, landlord: landlord, repairs: 1)
-        create(:rating, :for_landlord, landlord: landlord, repairs: -1)
-        create(:rating, :for_landlord, landlord: landlord, repairs: 1)
+        create(:rating, landlord: landlord, repairs: -1)
+        create(:rating, landlord: landlord, repairs: -1)
+        create(:rating, landlord: landlord, repairs: 1)
+        create(:rating, landlord: landlord, repairs: -1)
+        create(:rating, landlord: landlord, repairs: 1)
 
         expect(landlord.ratings.repairs_average).to eq((2-3)/5.0)
       end
 
       it "calculates correctly even with missing ratings" do
-        create(:rating, :for_landlord, landlord: landlord, repairs: nil)
-        create(:rating, :for_landlord, landlord: landlord, repairs: nil)
-        create(:rating, :for_landlord, landlord: landlord, repairs: 1)
-        create(:rating, :for_landlord, landlord: landlord, repairs: -1)
-        create(:rating, :for_landlord, landlord: landlord, repairs: 1)
+        create(:rating, landlord: landlord, repairs: nil)
+        create(:rating, landlord: landlord, repairs: nil)
+        create(:rating, landlord: landlord, repairs: 1)
+        create(:rating, landlord: landlord, repairs: -1)
+        create(:rating, landlord: landlord, repairs: 1)
 
         expect(landlord.ratings.repairs_average).to eq((2-1)/3.0)
       end

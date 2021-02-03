@@ -17,4 +17,7 @@ class Rating < ApplicationRecord
   has_one :user, through: :tenancy
   
   validates :overall, presence: true
+
+  scope :by_unit, ->(unit) { joins(:tenancy).where(tenancies: { unit: unit })}
+  scope :by_landlord, ->(landlord) { joins(:tenancy).where(tenancies: { landlord: landlord })}
 end
