@@ -1,8 +1,8 @@
-<% if tenancy_rating.rating.present? %>
-<%= link_to edit_union_tenancy_rating_path(tenancy_rating, tenancy_rating.rating) do
-  rating_icon(tenancy_rating.rating.overall) + 
-  rating_icon(tenancy_rating.rating.repairs)
+<% if tenancy_rating.present? %>
+<%= link_to edit_union_tenancy_path(tenancy_rating, tenancy_rating) do
+  rating_icon(tenancy_rating.overall) + 
+  rating_icon(tenancy_rating.repairs)
   end %>
 <% else %>
-  <%= link_to 'Rate This!', new_union_tenancy_rating_path(tenancy_rating) %>
+  <%= link_to 'Rate This!', new_union_tenancy_path(tenancy_rating) %>
 <% end %>

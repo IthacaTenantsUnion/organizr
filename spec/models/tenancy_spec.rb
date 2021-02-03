@@ -9,6 +9,9 @@
 #  rent        :integer
 #  start_date  :date
 #  end_date    :date
+#  overall     :integer
+#  repairs     :integer
+#  review      :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
@@ -30,6 +33,15 @@ RSpec.describe Tenancy, type: :model do
 
     it "is invalid with an end date that precedes the start date" do
       expect(build(:tenancy, start_date: Date.today, end_date: Date.yesterday)).to be_invalid
+    end
+  end
+
+  describe "Scopes" do
+    describe "by_unit" do
+      it "constrains set to the unit provided" do
+        create_list(:tenancy, 2)
+        expect(Tenancy.by_unit(Unit.last).size).to eq(1)
+      end
     end
   end
 end

@@ -9,6 +9,9 @@
 #  rent        :integer
 #  start_date  :date
 #  end_date    :date
+#  overall     :integer
+#  repairs     :integer
+#  review      :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
@@ -17,10 +20,14 @@ class Tenancy < ApplicationRecord
   belongs_to :tenant, class_name: 'User', foreign_key: :user_id
   belongs_to :unit
   belongs_to :landlord
-  has_one :rating, inverse_of: :tenancy, dependent: :destroy
 
   validates :rent, numericality: { greater_than: 0 } # length limit
   validates :start_date, presence: true
   validates :end_date, date: { after:  :start_date }, if: lambda{ |t| t.end_date.present? }
+  validates :overall, inclusion: { in: [-1, 0, 1] }, if: lambda{ |t| t.overall.present? }
 
+  scope :with_ratings, -> { where.not(overall: nil) }
+  scope :by_unit, ->(unit) { where(unit: unit) }
+  scope :by_tenant, ->(user) { where(users: { id: user.id }) }
+  scope :by_landlord, ->(landlord) { where(landlord: landlord )}
 end

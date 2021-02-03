@@ -21,16 +21,6 @@ ActiveRecord::Schema.define(version: 2021_01_30_212614) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "ratings", force: :cascade do |t|
-    t.bigint "tenancy_id", null: false
-    t.integer "overall"
-    t.integer "repairs"
-    t.string "review"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["tenancy_id"], name: "index_ratings_on_tenancy_id"
-  end
-
   create_table "tenancies", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "unit_id", null: false
@@ -38,6 +28,9 @@ ActiveRecord::Schema.define(version: 2021_01_30_212614) do
     t.integer "rent"
     t.date "start_date"
     t.date "end_date"
+    t.integer "overall"
+    t.integer "repairs"
+    t.string "review"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["landlord_id"], name: "index_tenancies_on_landlord_id"
@@ -65,7 +58,6 @@ ActiveRecord::Schema.define(version: 2021_01_30_212614) do
     t.index ["role"], name: "index_users_on_role"
   end
 
-  add_foreign_key "ratings", "tenancies"
   add_foreign_key "tenancies", "landlords"
   add_foreign_key "tenancies", "units"
   add_foreign_key "tenancies", "users"

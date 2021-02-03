@@ -22,14 +22,25 @@
 <% content_for(:content) do %>
 <div class="ui fixed inverted menu">
     <div class="ui container">
-      <a href="#" class="header item">
-        <img class="logo" src="#">
-        Project Name
-      </a>
-      <a href="#" class="item">Home</a>
+<%= link_to 'ITU Thingy', root_path, class: "header item" %>
       <div class="ui simple dropdown item">
-        Dropdown <i class="dropdown icon"></i>
+        Public <i class="dropdown icon"></i>
         <div class="menu">
+          <%= link_to "Landlords", landlords_path, class: "item" %>
+          <%= link_to "Units", units_path, class: "item" %>
+          <%= link_to "Ratings", ratings_path, class: "item" %>
+        </div>
+      </div>
+
+      <% if current_user %>
+      <div class="ui simple dropdown item">
+        Union <i class="dropdown icon"></i>
+        <div class="menu">
+          <%= link_to "Landlords", union_landlords_path, class: "item" %>
+          <%= link_to "Units", union_units_path, class: "item" %>
+          <%= link_to "Tenancies", union_tenancies_path, class: "item" %>
+
+<!--
           <a class="item" href="#">Link Item</a>
           <a class="item" href="#">Link Item</a>
           <div class="divider"></div>
@@ -43,8 +54,10 @@
             </div>
           </div>
           <a class="item" href="#">Link Item</a>
+        -->
         </div>
       </div>
+      <% end %>
 
       <% unless current_user %>
         <%= link_to "Join ITU", new_user_registration_path, class: 'item' %>
@@ -61,6 +74,7 @@
           <% end %>
         </div>
       </div>
+      <%= link_to "Ithaca TU", 'https://ithacatu.org', class: 'item' %>
     </div>
   </div>
 

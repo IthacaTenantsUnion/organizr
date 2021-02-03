@@ -16,14 +16,19 @@
 <dt>Period</dt>
 <dd><%= @tenancy.start_date %> - <%= @tenancy.end_date %></dd>
 
-  <% if @tenancy.rating.present? %>
+  <% if @tenancy.present? %>
 <dt>Rating</dt>
 <dd>
 
-  <%= rating_icon(@tenancy.rating.overall) %> / <%= rating_icon(@tenancy.rating.repairs) %>
+  <%= rating_icon(@tenancy.overall) %> / <%= rating_icon(@tenancy.repairs) %>
     
   </dd>
   <% end %>
+
+<dt>Review</dt>
+<dd>
+  <%= @tenancy.review %>
+</dd>
 </dl>
 
 <% if can? :edit, @tenancy %>

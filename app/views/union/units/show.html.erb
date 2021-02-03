@@ -7,8 +7,33 @@
 
 <p>
   <strong>Landlord:</strong>
-  <%= @unit.landlord_id %>
+  <%= @unit.landlords.map(&:name).join(', ') %>
 </p>
 
-<%= link_to 'Edit', edit_unit_path(@unit) %> |
-<%= link_to 'Back', units_path %>
+<h2>Past Tenancies</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Landlord</th>
+      <th>Rent</th>
+      <th>Rating</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tenancies.each do |tenancy| %>
+    <tr>
+      <td><%= tenancy.start_date %></td>
+      <td><%= tenancy.end_date %></td>
+      <td><%= link_to tenancy.landlord.name, [:union, tenancy.landlord] %></td>
+      <td><%= tenancy.rent %></td>
+      <td><% if tenancy.overall.present? %><%= rating_icon(tenancy.overall) %> / <%= rating_icon(tenancy.repairs) %><% end %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Edit', edit_union_unit_path(@unit) if can? :edit, @unit %> |
+<%= link_to 'Back', union_units_path %>

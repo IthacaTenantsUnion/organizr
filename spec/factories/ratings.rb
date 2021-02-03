@@ -17,9 +17,10 @@ FactoryBot.define do
       landlord { create(:landlord) }
     end
 
+    tenant factory: :user
     overall { [-1,0,1].sample }
     repairs { [-1,0,1].sample }
     review { Faker::Lorem.paragraph_by_chars(number: (Random.random_number * 900).to_i + 100, supplemental: true) }
-    tenancy { create(:tenancy, unit: unit, landlord: landlord)}
+    tenancy { create(:tenancy, tenant: tenant, unit: unit, landlord: landlord)}
   end
 end

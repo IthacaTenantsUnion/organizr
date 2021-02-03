@@ -9,6 +9,7 @@ class Union::UnitsController < Union::BaseController
 
   # GET /units/1 or /units/1.json
   def show
+    @tenancies = Tenancy.by_unit(@unit)
   end
 
   # GET /units/new
@@ -26,10 +27,10 @@ class Union::UnitsController < Union::BaseController
 
     respond_to do |format|
       if @unit.save
-        format.html { redirect_to @unit, notice: "Unit was successfully created." }
-        format.json { render :show, status: :created, location: @unit }
+        format.html { redirect_to [:union,@unit], notice: "Unit was successfully created." }
+        format.json { render [:union,:show], status: :created, location: @unit }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { render [:union,:new], status: :unprocessable_entity }
         format.json { render json: @unit.errors, status: :unprocessable_entity }
       end
     end
@@ -39,10 +40,10 @@ class Union::UnitsController < Union::BaseController
   def update
     respond_to do |format|
       if @unit.update(unit_params)
-        format.html { redirect_to @unit, notice: "Unit was successfully updated." }
-        format.json { render :show, status: :ok, location: @unit }
+        format.html { redirect_to [:union,@unit], notice: "Unit was successfully updated." }
+        format.json { render [:union,:show], status: :ok, location: @unit }
       else
-        format.html { render :edit, status: :unprocessable_entity }
+        format.html { render [:union,:edit], status: :unprocessable_entity }
         format.json { render json: @unit.errors, status: :unprocessable_entity }
       end
     end
@@ -65,6 +66,6 @@ class Union::UnitsController < Union::BaseController
 
     # Only allow a list of trusted parameters through.
     def unit_params
-      params.require(:unit).permit(:address, :landlord_id)
+      params.require(:unit).permit(:address)
     end
 end

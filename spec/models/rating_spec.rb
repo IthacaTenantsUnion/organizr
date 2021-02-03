@@ -44,5 +44,19 @@ RSpec.describe Rating, type: :model do
         expect(Rating.by_landlord(landlord).size).to eq(1)
       end
     end
+
+    describe "by_tenant" do
+      let(:user) { create(:user) }
+
+      before do
+        create(:rating)
+        create(:rating, tenant: user)
+      end
+
+      it "constrains ratings to just the provided user" do
+        expect(Rating.by_tenant(user).size).to eq(1)
+      end
+    end
+
   end
 end

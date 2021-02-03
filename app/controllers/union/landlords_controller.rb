@@ -26,10 +26,10 @@ class Union::LandlordsController < Union::BaseController
 
     respond_to do |format|
       if @landlord.save
-        format.html { redirect_to @landlord, notice: "Landlord was successfully created." }
-        format.json { render :show, status: :created, location: @landlord }
+        format.html { redirect_to [:union,@landlord], notice: "Landlord was successfully created." }
+        format.json { render [:union,:show], status: :created, location: @landlord }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { render [:union,:new], status: :unprocessable_entity }
         format.json { render json: @landlord.errors, status: :unprocessable_entity }
       end
     end
@@ -39,10 +39,10 @@ class Union::LandlordsController < Union::BaseController
   def update
     respond_to do |format|
       if @landlord.update(landlord_params)
-        format.html { redirect_to @landlord, notice: "Landlord was successfully updated." }
-        format.json { render :show, status: :ok, location: @landlord }
+        format.html { redirect_to [:union,@landlord], notice: "Landlord was successfully updated." }
+        format.json { render [:union,:show], status: :ok, location: @landlord }
       else
-        format.html { render :edit, status: :unprocessable_entity }
+        format.html { render [:union,:edit], status: :unprocessable_entity }
         format.json { render json: @landlord.errors, status: :unprocessable_entity }
       end
     end

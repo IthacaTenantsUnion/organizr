@@ -1,4 +1,4 @@
-<%= form_with(model: unit, local: true) do |form| %>
+<%= form_with(model: [:union,unit], local: true) do |form| %>
   <% if unit.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(unit.errors.count, "error") %> prohibited this unit from being saved:</h2>
@@ -14,11 +14,6 @@
   <div class="field">
     <%= form.label :address %>
     <%= form.text_field :address %>
-  </div>
-
-  <div class="field">
-    <%= form.label :landlord_id %>
-    <%= form.text_field :landlord_id %>
   </div>
 
   <div class="actions">

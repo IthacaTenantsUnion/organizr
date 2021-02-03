@@ -9,6 +9,9 @@
 #  rent        :integer
 #  start_date  :date
 #  end_date    :date
+#  overall     :integer
+#  repairs     :integer
+#  review      :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
@@ -22,7 +25,9 @@ FactoryBot.define do
     end_date { nil }
 
     trait :with_rating do
-      rating
+      overall { [-1,0,1].sample }
+      repairs { [-1,0,1].sample }
+      review { Faker::Lorem.paragraph_by_chars(number: (Random.random_number * 900).to_i + 100, supplemental: true) }
     end
   end
 end

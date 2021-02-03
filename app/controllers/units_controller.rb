@@ -6,6 +6,6 @@ class UnitsController < ApplicationController
 
   # GET /units/1 or /units/1.json
   def show
-    @unit = Unit.includes(:tenancies, tenancies: [:landlord, :rating, :tenant]).find(params[:id])
+    @unit = Unit.includes(:tenancies, tenancies: [:landlord, :tenant]).find(params[:id])
   end
 end

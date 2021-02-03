@@ -16,13 +16,14 @@
   <tbody>
     <% @ratings.each do |rating| %>
       <tr class="<%= 'mine' if current_user && rating.tenancy.tenant == current_user %>">
-        <td><%= link_to rating.landlord.name, [:union, rating.landlord] %></td>
+        <td><%= link_to rating.tenancy.landlord.name, 
+        [:union, rating.tenancy.landlord] %></td>
         <td><%= rating_icon(rating.overall) %></td>
         <td><%= rating_icon(rating.repairs) %></td>
         <td><%= rating.review[0..300] %></td>
         <td><%= link_to 'Show', rating %></td>
-        <td><%= edit_link(edit_union_tenancy_rating_path(params.fetch(:tenancy_id),rating)) if can?(:edit, rating) %></td>
-        <td><%= destroy_link([@tenancy, rating]) if can?(:destroy, rating) %></td>
+        <td><%= edit_link(edit_union_rating_path(rating)) if can?(:edit, rating) %></td>
+        <td><%= destroy_link(rating) if can?(:destroy, rating) %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +31,4 @@
 
 <br>
 
-<%= link_to 'New Rating', new_union_tenancy_rating_path(@tenancy) %>
+<%= link_to 'New Rating', new_union_rating_path if can? :create, Rating %>

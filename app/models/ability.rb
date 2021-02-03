@@ -5,11 +5,12 @@ class Ability
 
   def initialize(user)
     can :read, Landlord
-    can :read, Rating
+    can :read, Tenancy # RESTRICT THE FIELDS IN THIS!
     can :read, Unit
 
     if user.present?  # additional permissions for logged in users (they can read their own posts)
-      can :manage, Rating, tenancy: { user_id: user.id }
+      can :create, Unit
+      can :create, Landlord
       can :manage, Tenancy, user_id: user.id
       
       if user.admin?  # additional permissions for administrators

@@ -1,6 +1,5 @@
 class Union::RatingsController < Union::BaseController
-  load_and_authorize_resource :tenancy
-  load_and_authorize_resource :rating, through: :tenancy, singleton: true, except: :index
+  load_and_authorize_resource :rating
   #before_action :set_rating, only: %i[ show edit update destroy ]
   before_action :setup_form_data, only: %i[new edit]
   before_action :authenticate_user!, only: %i[new edit update destroy]
@@ -16,7 +15,7 @@ class Union::RatingsController < Union::BaseController
 
   # GET /ratings/new
   def new
-    @rating = Rating.new(tenancy: @tenancy)
+    @rating = Rating.new
   end
 
   # GET /ratings/1/edit
@@ -25,11 +24,11 @@ class Union::RatingsController < Union::BaseController
 
   # POST /ratings or /ratings.json
   def create
-    @rating = Rating.new(rating_params.merge(tenancy: @tenancy))
+    @rating = Rating.new(rating_params)
 
     respond_to do |format|
       if @rating.save
-        format.html { redirect_to [:union,@tenancy,@rating], notice: "Rating was successfully created." }
+        format.html { redirect_to [:union,@rating], notice: "Rating was successfully created." }
         format.json { render [:union,:show], status: :created, location: @rating }
       else
         setup_form_data
@@ -43,11 +42,11 @@ class Union::RatingsController < Union::BaseController
   def update
     respond_to do |format|
       if @rating.update(rating_params)
-        format.html { redirect_to [:union,@tenancy,@rating], notice: "Rating was successfully updated." }
+        format.html { redirect_to [:union,@rating], notice: "Rating was successfully updated." }
         format.json { render [:union,:show], status: :ok, location: @rating }
       else
         setup_form_data
-        format.html { render [:union,@tenancy,:edit], status: :unprocessable_entity }
+        format.html { render [:union,:edit], status: :unprocessable_entity }
         format.json { render json: @rating.errors, status: :unprocessable_entity }
       end
     end
@@ -69,11 +68,12 @@ class Union::RatingsController < Union::BaseController
     #end
 
     def setup_form_data
-      @tenancy = Tenancy.find(params[:tenancy_id])
+      @tenancies = Tenancy.where(tenant: current_user)
+#      @tenancies -= Tenancy.
     end
 
     # Only allow a list of trusted parameters through.
     def rating_params
-      params.require(:rating).permit(:overall, :repairs, :review)
+      params.require(:rating).permit(:overall, :repairs, :review, :tenancy_id)
     end
 end

@@ -12,7 +12,6 @@ include FactoryBot::Syntax::Methods
 
 User.destroy_all
 Tenancy.destroy_all
-Rating.destroy_all
 Landlord.destroy_all
 Unit.destroy_all
 
@@ -22,7 +21,7 @@ print "Landlords: "
 puts ''
 
 print "Ratings: "
-100.times { print "."; create(:rating, :for_landlord, landlord: @landlords.sample) }
+100.times { print "."; create(:tenancy, :with_rating, landlord: @landlords.sample) }
 puts ''
 
 admin = create(:user, role: "admin", email: "admin@example.com", password: "abc123", password_confirmation: "abc123")

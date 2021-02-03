@@ -18,10 +18,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :tenancies, dependent: :destroy
+  has_many :tenancies, -> { extending AverageRatings }, dependent: :destroy
   has_many :units, through: :tenancies, inverse_of: :tenant
   has_many :landlords, through: :tenancies, inverse_of: :tenants
-  has_many :ratings, through: :tenancies, dependent: :destroy
 
   enum role: { guest: "guest", ˇtenant: "tenant", admin: "admin" }
 

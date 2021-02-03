@@ -7,8 +7,6 @@ class ApplicationController < ActionController::Base
       redirect_to union_tenancies_path and return
     end
 
-    @landlords = Landlord.includes(:units, :tenants, :ratings).all
-
     respond_to do |format|
       format.html
     end

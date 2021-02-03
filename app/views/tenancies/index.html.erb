@@ -18,7 +18,7 @@
         <td><%= link_to rating.landlord.name, rating.landlord %></td>
         <td><%= rating_icon(rating.overall) %></td>
         <td><%= rating_icon(rating.repairs) %></td>
-        <td><%= rating.review[0..200] %> (<%= link_to 'Read Full...', rating %>)</td>
+        <td><%= rating.review[0..200] %> (<%= link_to 'Read Full...', rating_path(rating) %>)</td>
       </tr>
     <% end %>
   </tbody>

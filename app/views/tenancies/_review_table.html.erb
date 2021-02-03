@@ -11,9 +11,9 @@
   <% review_table.each do |tenancy| %>
     <tr>
       <td><%= tenancy.start_date.strftime('%Y') %><%= tenancy.end_date&.strftime(' - %Y') %></td>
-      <td><%= rating_icon(tenancy.rating.overall) %></td>
-      <td><%= rating_icon(tenancy.rating.repairs) %></td>
-      <td><%= tenancy.rating.review[0..300] %> (<%= link_to 'Read Full', rating_path(tenancy.rating) %>)</td>
+      <td><%= rating_icon(tenancy.overall) %></td>
+      <td><%= rating_icon(tenancy.repairs) %></td>
+      <td><%= tenancy.review[0..300] %> (<%= link_to 'Read Full', rating_path(tenancy) %>)</td>
     </tr>
   <% end %>
   </tbody>

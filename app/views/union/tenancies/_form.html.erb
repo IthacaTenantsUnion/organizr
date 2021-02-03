@@ -36,6 +36,25 @@
     <%= form.date_field :end_date, include_blank: true %>
   </div>
 
+  <div class="field">
+    <%= form.label :overall, "Overall Rating", for: 'overall' %>
+    <div class="rating">
+      <%= form.collection_radio_buttons :overall, [['-1', icon('fas', "frown", 'Poor')] ,['0', icon('fas', "meh", 'OK',)], ['1', icon('fas', "smile", "Good")]], :first, :last %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.label :repairs, "Repairs (if applicable)", for: 'repairs' %>
+    <div class="rating">
+      <%= form.collection_radio_buttons :repairs, [['-1', icon('fas', "frown", 'Poor')] ,['0', icon('fas', "meh", 'OK',)], ['1', icon('fas', "smile", "Good")], ['', icon('fas', 'comment-slash', 'N/A')]], :first, :last %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.label :review %>
+    <%= form.text_area :review %>
+  </div>
+
   <div class="actions">
     <%= form.submit class: 'ui button' %>
   </div>
