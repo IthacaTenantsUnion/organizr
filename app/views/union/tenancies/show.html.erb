@@ -1,0 +1,31 @@
+<h1>Tenancy</h1>
+
+<dl>
+</dt>Tenant</dt>
+<dd><%= @tenancy.tenant == current_user ? "Me" : @tenancy.tenant.to_s %></dd>
+
+<dt>Unit</dt>
+<dd><%= link_to @tenancy.unit.address, [:union, @tenancy.unit] %></dd>
+
+<dt>Rent</dt>
+<dd><%= @tenancy.rent %></dd>
+
+<dt>Landlord</dt>
+<dd><%= link_to @tenancy.landlord.name, [:union, @tenancy.landlord] %></dd>
+
+<dt>Period</dt>
+<dd><%= @tenancy.start_date %> - <%= @tenancy.end_date %></dd>
+
+  <% if @tenancy.rating.present? %>
+<dt>Rating</dt>
+<dd>
+
+  <%= rating_icon(@tenancy.rating.overall) %> / <%= rating_icon(@tenancy.rating.repairs) %>
+    
+  </dd>
+  <% end %>
+</dl>
+
+<% if can? :edit, @tenancy %>
+  <%= link_to "Edit", [:edit, :union, @tenancy] %> | <%= link_to "View All", union_tenancies_path %>
+  <% end %>

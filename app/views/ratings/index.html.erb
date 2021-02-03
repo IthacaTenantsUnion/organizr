@@ -14,7 +14,7 @@
 
   <tbody>
     <% @ratings.each do |rating| %>
-      <tr class="<%= 'mine' if current_user && rating.user == current_user %>">
+      <tr>
         <td><%= link_to rating.landlord.name, rating.landlord %></td>
         <td><%= rating_icon(rating.overall) %></td>
         <td><%= rating_icon(rating.repairs) %></td>

@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @landlord.name %></h1>
+
+<h2>Known Units</h2>
+<ul>
+<% @units.each do |unit| %>
+  <li><%= unit.address %> (<%= link_to 'View', unit %> | Average Rating: <%= rating_icon(clamp_rating(landlord.ratings.overall_average)) %> )</li>
+<% end %>
+</ul>
+
+<% if current_user.present? %>
+<%= link_to 'Edit', edit_tenancy_landlord_path(@tenancy, @landlord) %> |
+<% end %>
+<%= link_to 'Back', landlords_path %>

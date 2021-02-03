@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   namespace :union do
+    resources :landlords
+    resources :units
+
     resources :tenancies do
-      resources :units
       resources :ratings
-      resources :landlords
     end
   end
   
