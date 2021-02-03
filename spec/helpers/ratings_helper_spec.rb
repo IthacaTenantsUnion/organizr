@@ -11,5 +11,29 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe RatingsHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  include RatingsHelper
+
+  describe "clamp_rating" do
+    subject { clamp_rating(rating) }
+
+    context "when the value is under -0.3" do
+      let(:rating) { -0.301 }
+      it { is_expected.to eq(-1) }
+    end
+
+    context "when the value is -0.3" do
+      let(:rating) { -0.3 }
+      it { is_expected.to eq(0) }
+    end
+
+    context "when the value is under 0.3" do
+      let(:rating) { 0.2999999 }
+      it { is_expected.to eq(0) }
+    end
+
+    context "when the value is 0.3 and up" do
+      let(:rating) { 0.3 }
+      it { is_expected.to eq(1) }
+    end
+  end
 end

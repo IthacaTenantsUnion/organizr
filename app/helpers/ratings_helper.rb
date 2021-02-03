@@ -12,4 +12,15 @@ module RatingsHelper
     end
     icon('fas', icon_name, text)
   end
+
+  def clamp_rating(value)
+    case value.to_f
+    when -1...-0.3
+      -1
+    when -0.3...0.3
+      0
+    when 0.3..1
+      1
+    end
+  end
 end
