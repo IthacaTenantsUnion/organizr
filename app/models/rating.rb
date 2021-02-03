@@ -12,7 +12,7 @@
 #
 class Rating < ApplicationRecord
   belongs_to :tenancy, inverse_of: :rating
-  has_one :landlord, through: :tenancy, inverse_of: :rating
+  has_one :landlord, through: :tenancy, inverse_of: :ratings
   has_one :unit, through: :tenancy
   has_one :user, through: :tenancy
   

@@ -9,18 +9,9 @@
 #
 class Landlord < ApplicationRecord
   has_many :tenancies
-  has_many :units, through: :tenancies, inverse_of: :landlord
-  has_many :tenants, through: :tenancies, source: :user, inverse_of: :landlord
-  has_many :ratings, through: :tenancies, inverse_of: :landlord do
-    def overall_average
-      sum(:overall) / size.to_f
-    end
-
-    def repairs_average
-      reviewed_total = where.not(repairs: nil).size
-      sum(:repairs) / reviewed_total.to_f
-    end
-  end
+  has_many :units, through: :tenancies, inverse_of: :landlords
+  has_many :tenants, through: :tenancies, source: :user, inverse_of: :landlords
+  has_many :ratings, -> { extending AverageRatings }, through: :tenancies, inverse_of: :landlord
 
   validates :name, presence: true, uniqueness: true
 end

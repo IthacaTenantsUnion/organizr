@@ -12,6 +12,9 @@
 #
 FactoryBot.define do
   factory :rating do
+    transient do
+      create_tenancy { true }
+    end
     tenancy
     overall { [-1,0,1].sample }
     repairs { [-1,0,1].sample }
@@ -19,11 +22,19 @@ FactoryBot.define do
 
     trait :for_landlord do
       transient do
-        landlord { nil }
+        create_tenancy { false }
+        landlord
+        tenancy { nil }
       end
 
       after(:build) do |rating, factory|
-        rating.tenancy = create(:tenancy, landlord: factory.landlord)
+        rating.tenancy = factory.tenancy || create(:tenancy, landlord: factory.landlord)
+      end
+    end
+
+    after(:build) do |rating, factory|
+      if factory.create_tenancy
+        rating.tenancy = create(:tenancy)
       end
     end
   end

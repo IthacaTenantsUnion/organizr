@@ -1,14 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Address:</strong>
-  <%= @unit.address %>
-</p>
+<h1><%= @unit.address %></h1>
 
-<p>
-  <strong>Landlord:</strong>
-  <%= @unit.landlord_id %>
-</p>
+<h2>Landlord(s)</h2>
+<ul>
+  <% @unit.landlords.each do |landlord| %>
+    <li><%= link_to landlord.name, landlord %> (Average Rating: <%= rating_icon(clamp_rating(landlord.ratings.overall_average)) %> | Reviewed <%= landlord.ratings.size %> times )</li>
+  <% end %>
+</ul>
 
-<%= link_to 'Edit', edit_unit_path(@unit) %> |
+<%= render partial: "ratings/review_table", object: @unit.ratings %>
+
+
 <%= link_to 'Back', units_path %>

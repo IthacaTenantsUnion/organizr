@@ -17,5 +17,6 @@ FactoryBot.define do
     sequence(:email) { |n| "email#{n}@example.com" }
     password { 'SomePasswordThatWorks' }
     password_confirmation { 'SomePasswordThatWorks' }
+    role { 'tenant' }
   end
 end

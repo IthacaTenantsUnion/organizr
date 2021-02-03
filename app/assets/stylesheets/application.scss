@@ -18,10 +18,12 @@
 @import "semantic-ui";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "variables";
 
  /* @import "semantic-ui/collections/menu"; */
-
-
+body {
+  background-color: #000;
+}
  .sr-only {
   border: 0 !important;
   clip: rect(1px, 1px, 1px, 1px) !important; /* 1 */

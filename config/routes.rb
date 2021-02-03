@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
-  resources :tenancies do
-    resources :units
-    resources :ratings
-    resources :landlords
+  namespace :union do
+    resources :tenancies do
+      resources :units
+      resources :ratings
+      resources :landlords
+    end
   end
-
+  
   resources :ratings, only: %i(index show)
   resources :units, only: %i(index show)
   resources :landlords, only: %i(index show)
@@ -13,5 +15,5 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root to: 'application#home'
+  root to: 'landlords#index'
 end

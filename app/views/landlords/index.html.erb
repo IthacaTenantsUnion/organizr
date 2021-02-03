@@ -15,13 +15,7 @@
       <tr>
         <td><%= landlord.name %></td>
         <td><%= link_to 'Show', landlord %></td>
-        <td><%= link_to 'Edit', edit_landlord_path(landlord) %></td>
-        <td><%= link_to 'Destroy', landlord, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Landlord', new_landlord_path %>

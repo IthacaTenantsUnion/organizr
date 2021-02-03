@@ -14,10 +14,10 @@
 #
 
 class Tenancy < ApplicationRecord
-  belongs_to :user
+  belongs_to :tenant, class_name: 'User', foreign_key: :user_id
   belongs_to :unit
   belongs_to :landlord
-  has_one :rating, inverse_of: :tenancy
+  has_one :rating, inverse_of: :tenancy, dependent: :destroy
 
   validates :rent, numericality: { greater_than: 0 } # length limit
   validates :start_date, presence: true

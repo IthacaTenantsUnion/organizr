@@ -9,25 +9,17 @@
       <th>Overall</th>
       <th>Repairs</th>
       <th>Review</th>
-      <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @ratings.each do |rating| %>
       <tr class="<%= 'mine' if current_user && rating.user == current_user %>">
-        <td><%= rating.landlord.name %></td>
+        <td><%= link_to rating.landlord.name, rating.landlord %></td>
         <td><%= rating_icon(rating.overall) %></td>
         <td><%= rating_icon(rating.repairs) %></td>
-        <td><%= rating.review %></td>
-        <td><%= link_to 'Show', rating %></td>
-        <td><%= edit_link(edit_tenancy_rating_path(params.fetch(:tenancy_id),rating)) if can?(:edit, rating) %></td>
-        <td><%= destroy_link(rating) if can?(:destroy, rating) %></td>
+        <td><%= rating.review[0..200] %> (<%= link_to 'Read Full...', rating %>)</td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Rating', new_tenancy_rating_path(params[:tenancy_id]) if params[:tenancy_id] && current_user.present? %>

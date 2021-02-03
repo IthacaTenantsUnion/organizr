@@ -14,16 +14,9 @@
   <tbody>
     <% @units.each do |unit| %>
       <tr>
-        <td><%= unit.address %></td>
-        <td><%= unit.landlord_id %></td>
-        <td><%= link_to 'Show', unit %></td>
-        <td><%= link_to 'Edit', edit_unit_path(unit) %></td>
-        <td><%= link_to 'Destroy', unit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to unit.address, unit %></td>
+        <td><%= unit.landlords.to_a.map(&:name).join(', ') %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Unit', new_unit_path %>

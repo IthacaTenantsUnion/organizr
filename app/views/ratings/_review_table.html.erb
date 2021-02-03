@@ -1,0 +1,20 @@
+<h2>Reviews</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Date Range</th>
+      <th>Overall</th>
+      <th>Repairs</th>
+      <th>Brief</th>
+  </thead>
+  <tbody>
+  <% review_table.each do |review| %>
+    <tr>
+      <td><%= review.tenancy.start_date.strftime('%Y') %><%= review.tenancy.end_date&.strftime(' - %Y') %></td>
+      <td><%= rating_icon(review.overall) %></td>
+      <td><%= rating_icon(review.repairs) %></td>
+      <td><%= review.review[0..300] %> (<%= link_to 'Read Full', rating_path(review) %>)</td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

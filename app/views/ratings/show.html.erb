@@ -1,23 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>User:</strong>
-  <%= @rating.user_id %>
-</p>
+<h1>Review for <%= @rating.unit.address %></h1>
+<p><em><%= @rating.tenancy.start_date.strftime('%Y') %><%= @rating.tenancy.end_date&.strftime(' - %Y') %></em></p>
 
 <p>
   <strong>Landlord:</strong>
-  <%= @rating.landlord_id %>
+  <%= link_to @rating.landlord.name, @rating.landlord %>
 </p>
 
 <p>
   <strong>Overall:</strong>
-  <%= @rating.overall %>
+  <%= rating_icon @rating.overall %>
 </p>
 
 <p>
   <strong>Repairs:</strong>
-  <%= @rating.repairs %>
+  <%= rating_icon @rating.repairs %>
 </p>
 
 <p>
@@ -25,5 +23,4 @@
   <%= @rating.review %>
 </p>
 
-<%= link_to 'Edit', edit_rating_path(@rating) %> |
 <%= link_to 'Back', ratings_path %>

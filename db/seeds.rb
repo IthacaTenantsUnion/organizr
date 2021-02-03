@@ -11,10 +11,18 @@ include FactoryBot::Syntax::Methods
 
 
 User.destroy_all
+Tenancy.destroy_all
 Rating.destroy_all
 Landlord.destroy_all
-Tenancy.destroy_all
 Unit.destroy_all
 
+print "Landlords: "
+25.times { print '.'; create(:landlord) }
+@landlords = Landlord.all
+puts ''
 
-25.times { print "."; create(:tenancy, :with_rating) }
+print "Ratings: "
+100.times { print "."; create(:rating, :for_landlord, landlord: @landlords.sample) }
+puts ''
+
+admin = create(:user, role: "admin", email: "admin@example.com", password: "abc123", password_confirmation: "abc123")

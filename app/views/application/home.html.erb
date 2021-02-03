@@ -1,26 +1,26 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Ratings</h1>
+<h1>Landlords</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Landlord</th>
+      <th>Name</th>
       <th>Overall</th>
       <th>Repairs</th>
-      <th>Review</th>
+      <th>Reviews</th>
       <th></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @ratings.each do |rating| %>
+    <% @landlords.each do |landlord| %>
       <tr>
-        <td><%= rating.landlord.name %></td>
-        <td><%= rating_icon(rating.overall) %></td>
-        <td><%= rating_icon(rating.repairs) %></td>
-        <td><%= rating.review %></td>
-        <td><%= link_to 'Show', rating %></td>
+        <td><%= landlord.name %></td>
+        <td><%= rating_icon(clamp_rating(landlord.ratings.overall_average)) %></td>
+        <td><%= rating_icon(clamp_rating(landlord.ratings.repairs_average)) %></td>
+        <td><%= landlord.ratings.size %></td>
+        <td><%= link_to 'Show', landlord %></td>
       </tr>
     <% end %>
   </tbody>
