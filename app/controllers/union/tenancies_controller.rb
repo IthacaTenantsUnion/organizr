@@ -6,7 +6,8 @@ class Union::TenanciesController < Union::BaseController
 
   # GET /tenancies or /tenancies.json
   def index
-    @tenancies = current_user.tenancies.all
+    @my_tenancies = current_user.tenancies.all
+    @other_tenancies = Tenancy.where.not(tenant: current_user)
   end
 
   # GET /tenancies/1 or /tenancies/1.json
