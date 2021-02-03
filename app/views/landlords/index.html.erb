@@ -6,7 +6,10 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th colspan="3"></th>
+      <th>Overall</th>
+      <th>Repairs</th>
+      <th>Reviews</th>
+      <th></th>
     </tr>
   </thead>
 
@@ -14,6 +17,9 @@
     <% @landlords.each do |landlord| %>
       <tr>
         <td><%= landlord.name %></td>
+        <td><%= rating_icon(clamp_rating(landlord.ratings.overall_average)) %></td>
+        <td><%= rating_icon(clamp_rating(landlord.ratings.repairs_average)) %></td>
+        <td><%= landlord.ratings.size %></td>
         <td><%= link_to 'Show', landlord %></td>
       </tr>
     <% end %>

@@ -3,12 +3,12 @@ class LandlordsController < ApplicationController
 
   # GET /landlords or /landlords.json
   def index
-    @landlords = Landlord.all
+    @landlords = Landlord.includes(:tenancies, tenancies: [:unit, :tenant, :rating]).all
   end
 
   # GET /landlords/1 or /landlords/1.json
   def show
-    @landlord = Landlord.find(params[:id])
+    @landlord = Landlord.includes(:tenancies, tenancies: [:unit, :tenant, :rating]).find(params[:id])
     semantic_breadcrumb @landlord.name, landlord_path(@landlord)
     @units = @landlord.units
   end

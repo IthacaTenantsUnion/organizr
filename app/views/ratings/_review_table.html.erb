@@ -8,12 +8,12 @@
       <th>Brief</th>
   </thead>
   <tbody>
-  <% review_table.each do |review| %>
+  <% review_table.each do |tenancy| %>
     <tr>
-      <td><%= review.tenancy.start_date.strftime('%Y') %><%= review.tenancy.end_date&.strftime(' - %Y') %></td>
-      <td><%= rating_icon(review.overall) %></td>
-      <td><%= rating_icon(review.repairs) %></td>
-      <td><%= review.review[0..300] %> (<%= link_to 'Read Full', rating_path(review) %>)</td>
+      <td><%= tenancy.start_date.strftime('%Y') %><%= tenancy.end_date&.strftime(' - %Y') %></td>
+      <td><%= rating_icon(tenancy.rating.overall) %></td>
+      <td><%= rating_icon(tenancy.rating.repairs) %></td>
+      <td><%= tenancy.rating.review[0..300] %> (<%= link_to 'Read Full', rating_path(tenancy.rating) %>)</td>
     </tr>
   <% end %>
   </tbody>

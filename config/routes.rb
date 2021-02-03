@@ -8,8 +8,13 @@ Rails.application.routes.draw do
   end
   
   resources :ratings, only: %i(index show)
-  resources :units, only: %i(index show)
-  resources :landlords, only: %i(index show)
+  
+  resources :units, only: %i(index show) do
+    resources :ratings, only: %i(index show)
+  end
+  resources :landlords, only: %i(index show) do
+    resources :ratings, only: %i(index show)
+  end
   
   devise_for :users, controllers: {
     sessions: 'users/sessions'

@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   def home
     if current_user.present?
-      redirect_to tenancies_path and return
+      redirect_to union_tenancies_path and return
     end
 
     @landlords = Landlord.includes(:units, :tenants, :ratings).all
