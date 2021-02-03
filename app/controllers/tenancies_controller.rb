@@ -1,7 +1,7 @@
 class TenanciesController < ApplicationController
   before_action :set_additional_params
 
-  # GET /ratings or /ratings.json
+  # GET /ratings
   def index
     @ratings = Tenancy.includes(:landlord, :unit).all
     if params[:unit_id]
@@ -11,7 +11,7 @@ class TenanciesController < ApplicationController
     end
   end
 
-  # GET /ratings/1 or /ratings/1.json
+  # GET /ratings/1
   def show
     @rating = Tenancy.includes(:landlord, :unit).find(params[:id])
     if params[:unit_id]
