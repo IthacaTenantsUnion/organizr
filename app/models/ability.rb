@@ -11,6 +11,7 @@ class Ability
     if user.present?  # additional permissions for logged in users (they can read their own posts)
       can :create, Unit
       can :create, Landlord
+      
       can :manage, Tenancy, user_id: user.id
       
       if user.admin?  # additional permissions for administrators

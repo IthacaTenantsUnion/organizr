@@ -2,18 +2,19 @@
 #
 # Table name: tenancies
 #
-#  id          :bigint           not null, primary key
-#  user_id     :bigint           not null
-#  unit_id     :bigint           not null
-#  landlord_id :bigint           not null
-#  rent        :integer
-#  start_date  :date
-#  end_date    :date
-#  overall     :integer
-#  repairs     :integer
-#  review      :string
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
+#  id             :bigint           not null, primary key
+#  user_id        :bigint           not null
+#  unit_id        :bigint           not null
+#  landlord_id    :bigint           not null
+#  rent           :integer
+#  start_date     :date
+#  end_date       :date
+#  overall        :integer
+#  repairs        :integer
+#  private_review :string
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  public_review  :string
 #
 
 class Tenancy < ApplicationRecord

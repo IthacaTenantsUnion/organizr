@@ -1,6 +1,6 @@
 class Union::UnitsController < Union::BaseController
   before_action :set_unit, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!, only: %i[ new edit update destroy ]
+  load_and_authorize_resource
 
   # GET /units or /units.json
   def index
@@ -30,7 +30,7 @@ class Union::UnitsController < Union::BaseController
         format.html { redirect_to [:union,@unit], notice: "Unit was successfully created." }
         format.json { render [:union,:show], status: :created, location: @unit }
       else
-        format.html { render [:union,:new], status: :unprocessable_entity }
+        format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @unit.errors, status: :unprocessable_entity }
       end
     end
@@ -43,7 +43,7 @@ class Union::UnitsController < Union::BaseController
         format.html { redirect_to [:union,@unit], notice: "Unit was successfully updated." }
         format.json { render [:union,:show], status: :ok, location: @unit }
       else
-        format.html { render [:union,:edit], status: :unprocessable_entity }
+        format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @unit.errors, status: :unprocessable_entity }
       end
     end
@@ -53,7 +53,7 @@ class Union::UnitsController < Union::BaseController
   def destroy
     @unit.destroy
     respond_to do |format|
-      format.html { redirect_to units_url, notice: "Unit was successfully destroyed." }
+      format.html { redirect_to union_units_url, notice: "Unit was successfully destroyed." }
       format.json { head :no_content }
     end
   end

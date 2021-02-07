@@ -2,18 +2,19 @@
 #
 # Table name: tenancies
 #
-#  id          :bigint           not null, primary key
-#  user_id     :bigint           not null
-#  unit_id     :bigint           not null
-#  landlord_id :bigint           not null
-#  rent        :integer
-#  start_date  :date
-#  end_date    :date
-#  overall     :integer
-#  repairs     :integer
-#  review      :string
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
+#  id             :bigint           not null, primary key
+#  user_id        :bigint           not null
+#  unit_id        :bigint           not null
+#  landlord_id    :bigint           not null
+#  rent           :integer
+#  start_date     :date
+#  end_date       :date
+#  overall        :integer
+#  repairs        :integer
+#  private_review :string
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  public_review  :string
 #
 FactoryBot.define do
   factory :tenancy do
@@ -27,7 +28,8 @@ FactoryBot.define do
     trait :with_rating do
       overall { [-1,0,1].sample }
       repairs { [-1,0,1].sample }
-      review { Faker::Lorem.paragraph_by_chars(number: (Random.random_number * 900).to_i + 100, supplemental: true) }
+      public_review { Faker::Lorem.paragraph_by_chars(number: (Random.random_number * 400).to_i + 100, supplemental: true) }
+      private_review { Faker::Lorem.paragraph_by_chars(number: (Random.random_number * 900).to_i + 100, supplemental: true) }
     end
   end
 end

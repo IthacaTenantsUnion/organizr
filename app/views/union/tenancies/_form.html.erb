@@ -51,8 +51,14 @@
   </div>
 
   <div class="field">
-    <%= form.label :review %>
-    <%= form.text_area :review %>
+    <%= form.label :public_review, "This text will be visible to everyone, including users who are not signed-in" %>
+    <%= form.text_area :public_review %>
+  </div>
+
+  <div class="field">
+    <label></label>
+    <%= form.label :private_review, "This Text Will Only Be Visible by Union Members, who are signed-in" %>
+    <%= form.text_area :private_review %>
   </div>
 
   <div class="actions">

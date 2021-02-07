@@ -43,7 +43,12 @@ RSpec.configure do |config|
     driven_by :selenium_chrome_headless
   end
 
+  config.before(:each, type: :view) do
+    skip "Disabled For Now"
+  end
+
   config.include Devise::Test::IntegrationHelpers, type: :system
+  config.include Devise::Test::IntegrationHelpers, type: :request
   config.include Warden::Test::Helpers
 
   config.include FactoryBot::Syntax::Methods

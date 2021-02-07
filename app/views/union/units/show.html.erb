@@ -10,7 +10,7 @@
   <%= @unit.landlords.map(&:name).join(', ') %>
 </p>
 
-<h2>Past Tenancies</h2>
+<h2>Past Records</h2>
 
 <table>
   <thead>
@@ -34,6 +34,16 @@
     <% end %>
   </tbody>
 </table>
+
+<h2>Reviews of this Place</h2>
+<% @tenancies.each do |tenancy| %>
+  <article class="review">
+    <h3>Public</h3>
+    <%= tenancy.public_review %>
+    <h3>Private</h3>
+    <%= tenancy.private_review %>
+  </article>
+<% end %>
 
 <%= link_to 'Edit', edit_union_unit_path(@unit) if can? :edit, @unit %> |
 <%= link_to 'Back', union_units_path %>

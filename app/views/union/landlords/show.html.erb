@@ -9,5 +9,15 @@
 <% end %>
 </ul>
 
+<h2>Reviews of this Landlord</h2>
+<% @tenancies.each do |tenancy| %>
+  <article class="review">
+    <h3>Public</h3>
+    <%= tenancy.public_review %>
+    <h3>Private</h3>
+    <%= tenancy.private_review %>
+  </article>
+<% end %>
+
 <%= link_to 'Edit', edit_union_landlord_path(@landlord) if can? :edit, @landlord %> |
 <%= link_to 'Back', union_landlords_path %>

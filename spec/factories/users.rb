@@ -18,5 +18,13 @@ FactoryBot.define do
     password { 'SomePasswordThatWorks' }
     password_confirmation { 'SomePasswordThatWorks' }
     role { 'tenant' }
+
+    trait :tenant do
+      role { 'tenant' }
+    end
+
+    trait :admin do
+      role { 'admin' }
+    end
   end
 end
