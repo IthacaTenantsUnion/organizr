@@ -2,7 +2,6 @@
 <table>
   <thead>
     <tr>
-      <th>Date Range</th>
       <th>Overall</th>
       <th>Repairs</th>
       <th>Brief</th>
@@ -10,7 +9,6 @@
   <tbody>
   <% review_table.each do |tenancy| %>
     <tr>
-      <td><%= tenancy.start_date.strftime('%Y') %><%= tenancy.end_date&.strftime(' - %Y') %></td>
       <td><%= rating_icon(tenancy.overall) %></td>
       <td><%= rating_icon(tenancy.repairs) %></td>
       <td><%= tenancy.public_review[0..300] %> (<%= link_to 'Read Full', rating_path(tenancy) %>)</td>

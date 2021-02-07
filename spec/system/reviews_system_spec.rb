@@ -20,6 +20,14 @@ RSpec.describe "Reviews", :type => :system do
       expect(page).to have_text public_review
       expect(page).to have_no_text private_review
     end
+
+    it "does not display the date in the reviews" do
+      visit rating_path(tenancy)
+      expect(page).to have_no_text tenancy.start_date.strftime('%Y')
+
+      visit ratings_path
+      expect(page).to have_no_text tenancy.start_date.strftime('%Y')
+    end
   end
 
   context "When signed in" do

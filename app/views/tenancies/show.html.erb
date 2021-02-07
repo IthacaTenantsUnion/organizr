@@ -1,8 +1,6 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Review for <%= @rating.unit.address %></h1>
-<p><em><%= @rating.start_date.strftime('%Y') %><%= @rating.end_date&.strftime(' - %Y') %></em></p>
-
 <p>
   <strong>Landlord:</strong>
   <%= link_to @rating.landlord.name, @rating.landlord %>
