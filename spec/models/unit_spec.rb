@@ -20,4 +20,9 @@ RSpec.describe Unit, type: :model do
       expect(build(:unit, address: existing.address)).to be_invalid
     end
   end
+
+  describe "Ratings calculations" do
+    subject { create(:unit) }
+    include_examples "average_ratings", :unit
+  end
 end
