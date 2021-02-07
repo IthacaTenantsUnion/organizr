@@ -26,8 +26,8 @@ FactoryBot.define do
     end_date { nil }
 
     trait :with_rating do
-      overall { [-1,0,1].sample }
-      repairs { [-1,0,1].sample }
+      overall { (0..3).to_a.sample }
+      repairs { (0..3).to_a.sample }
       public_review { Faker::Lorem.paragraph_by_chars(number: (Random.random_number * 400).to_i + 100, supplemental: true) }
       private_review { Faker::Lorem.paragraph_by_chars(number: (Random.random_number * 900).to_i + 100, supplemental: true) }
     end

@@ -21,41 +21,8 @@ RSpec.describe Landlord, type: :model do
     end
   end 
 
-  describe "Ratings" do
-    let(:landlord) { create(:landlord) }
-
-    describe "overall_average" do
-      it "averages the total ratings" do
-        create(:tenancy, :with_rating, landlord: landlord, overall: 1)
-        create(:tenancy, :with_rating, landlord: landlord, overall: -1)
-        create(:tenancy, :with_rating, landlord: landlord, overall: 1)
-        create(:tenancy, :with_rating, landlord: landlord, overall: -1)
-        create(:tenancy, :with_rating, landlord: landlord, overall: 1)
-
-        expect(landlord.ratings.overall_average).to eq((3-2)/5.0)
-      end
-    end
-
-    describe "repairs_average" do
-      it "averages the total ratings" do
-        create(:tenancy, :with_rating, landlord: landlord, repairs: -1)
-        create(:tenancy, :with_rating, landlord: landlord, repairs: -1)
-        create(:tenancy, :with_rating, landlord: landlord, repairs: 1)
-        create(:tenancy, :with_rating, landlord: landlord, repairs: -1)
-        create(:tenancy, :with_rating, landlord: landlord, repairs: 1)
-
-        expect(landlord.ratings.repairs_average).to eq((2-3)/5.0)
-      end
-
-      it "calculates correctly even with missing ratings" do
-        create(:tenancy, :with_rating, landlord: landlord, repairs: nil)
-        create(:tenancy, :with_rating, landlord: landlord, repairs: nil)
-        create(:tenancy, :with_rating, landlord: landlord, repairs: 1)
-        create(:tenancy, :with_rating, landlord: landlord, repairs: -1)
-        create(:tenancy, :with_rating, landlord: landlord, repairs: 1)
-
-        expect(landlord.ratings.repairs_average.round(3)).to eq(((2-1)/3.0).round(3))
-      end
-    end
+  describe "Ratings calculations" do
+    subject { create(:landlord) }
+    include_examples "average_ratings", :landlord
   end
 end

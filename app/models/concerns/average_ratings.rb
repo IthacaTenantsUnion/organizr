@@ -4,6 +4,6 @@ module AverageRatings
   end
 
   def repairs_average
-    average(:repairs)
+    average(:repairs).to_f
   end
 end

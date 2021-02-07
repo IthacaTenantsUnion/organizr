@@ -9,6 +9,7 @@
 #
 class Unit < ApplicationRecord
   has_many :tenancies, -> { extending AverageRatings }
+  alias :ratings :tenancies
   has_many :landlords, through: :tenancies, inverse_of: :units
   has_many :tenants, through: :tenancies, source: :user
 
