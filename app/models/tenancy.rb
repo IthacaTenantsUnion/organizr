@@ -25,7 +25,7 @@ class Tenancy < ApplicationRecord
   validates :rent, numericality: { greater_than: 0 } # length limit
   validates :start_date, presence: true
   validates :end_date, date: { after:  :start_date }, if: lambda{ |t| t.end_date.present? }
-  validates :overall, inclusion: { in: [-1, 0, 1] }, if: lambda{ |t| t.overall.present? }
+  validates :overall, inclusion: { in: 0..3 }, if: lambda{ |t| t.overall.present? }
 
   scope :with_ratings, -> { where.not(overall: nil) }
   scope :by_unit, ->(unit) { where(unit: unit) }

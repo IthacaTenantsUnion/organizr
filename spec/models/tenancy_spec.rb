@@ -35,6 +35,11 @@ RSpec.describe Tenancy, type: :model do
     it "is invalid with an end date that precedes the start date" do
       expect(build(:tenancy, start_date: Date.today, end_date: Date.yesterday)).to be_invalid
     end
+
+    it "is invalid with a negative rating or a rating above 3" do
+      expect(build(:tenancy, overall: -1)).to be_invalid
+      expect(build(:tenancy, overall: 4)).to be_invalid
+    end
   end
 
   describe "Scopes" do
