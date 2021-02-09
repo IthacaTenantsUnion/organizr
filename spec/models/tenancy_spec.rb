@@ -6,7 +6,7 @@
 #  user_id        :bigint           not null
 #  unit_id        :bigint           not null
 #  landlord_id    :bigint           not null
-#  rent           :integer
+#  rent_total     :integer
 #  start_date     :date
 #  end_date       :date
 #  overall        :integer
@@ -15,13 +15,15 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  public_review  :string
+#  rent_portion   :integer
 #
 require 'rails_helper'
 
 RSpec.describe Tenancy, type: :model do
   describe "Validations" do
     it "is invalid with a negative rent" do
-      expect(build(:tenancy, rent: -1)).to be_invalid
+      expect(build(:tenancy, rent_total: -1)).to be_invalid
+      expect(build(:tenancy, rent_portion: -1)).to be_invalid
     end
 
     it "is invalid without a start date" do

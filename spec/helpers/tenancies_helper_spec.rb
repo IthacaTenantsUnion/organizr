@@ -11,5 +11,28 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe TenanciesHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  include TenanciesHelper
+
+  describe "composite_renting" do
+    subject { composite_rent(tenancy) }
+    context "when there's only a rent total" do
+      let(:tenancy) { build(:tenancy, rent_total: 1000, rent_portion: nil) }
+      it { is_expected.to eq('$1000')}
+    end
+
+    context "when there's only a rent portion" do
+      let(:tenancy) { build(:tenancy, rent_total: nil, rent_portion: 1000) }
+      it { is_expected.to eq('$1000 (portion)')}
+    end
+
+    context "when there is both" do
+      let(:tenancy) { build(:tenancy, rent_total: 1000, rent_portion: 500) }
+      it { is_expected.to eq('$500 (of $1000)')}
+    end
+
+    context "when there's neither" do
+      let(:tenancy) { build(:tenancy, rent_total: nil, rent_portion: nil) }
+      it { is_expected.to eq('Unknown')}
+    end
+  end
 end

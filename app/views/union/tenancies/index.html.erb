@@ -21,7 +21,7 @@
       <tr>
         <td><%= link_to tenancy.landlord.name, [:union, tenancy.landlord] %></td>
         <td><%= link_to tenancy.unit.address, [:union, tenancy.unit] %></td>
-        <td><%= tenancy.rent %></td>
+        <td><%= composite_rent(tenancy) %></td>
         <td><%= tenancy.start_date.strftime('%Y') %><%= tenancy.end_date&.strftime(' - %Y') %></td>
         <td><%= render partial: "tenancy_rating", object: tenancy %></td>
         <td><%= link_to 'Show', [:union, tenancy] %></td>
@@ -52,7 +52,7 @@
         <td><%= tenancy.tenant %></td>
         <td><%= link_to tenancy.landlord.name, [:union, tenancy.landlord] %></td>
         <td><%= link_to tenancy.unit.address, [:union, tenancy.unit] %></td>
-        <td><%= tenancy.rent %></td>
+        <td><%= composite_rent(tenancy) %></td>
         <td><%= tenancy.start_date.strftime('%Y') %><%= tenancy.end_date&.strftime(' - %Y') %></td>
         <td><%= render partial: "tenancy_rating", object: tenancy %></td>
         <td><%= link_to 'Show', [:union, tenancy] %></td>
