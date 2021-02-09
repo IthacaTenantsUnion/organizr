@@ -4,7 +4,7 @@ class Union::LandlordsController < Union::BaseController
   
   # GET /landlords or /landlords.json
   def index
-    @landlords = @landlords.includes(:tenancies, tenancies: [:units, :landlords]).all
+    @landlords = @landlords.includes(:tenancies, tenancies: [:unit, :landlord]).all
   end
 
   # GET /landlords/1 or /landlords/1.json

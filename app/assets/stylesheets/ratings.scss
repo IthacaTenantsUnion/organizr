@@ -2,13 +2,39 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.fa-frown {
+.grade {
+  font-weight: bold;
+
+  &.A {
+    color: #3498DB;
+  }
+  &.B {
+    color: #27AE60;
+  }
+  &.C {
+    color: #F1C40F;
+  }
+  &.D {
+    color: #E59866;
+  }
+  &.F {
+    color: #D35400;
+  }
+}
+
+.fa-angry {
   font-size: 1.4rem;
   color: red;
 }
-.fa-meh {
+
+.fa-frown {
   font-size: 1.4rem;
   color: orange;
+}
+.fa-meh {
+  font-size: 1.4rem;
+  color: yellow;
+  text-shadow: 2px 2px blak;
 }
 .fa-smile {
   font-size: 1.4rem;

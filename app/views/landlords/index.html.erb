@@ -17,8 +17,8 @@
     <% @landlords.each do |landlord| %>
       <tr>
         <td><%= landlord.name %></td>
-        <td><%= rating_icon(clamp_rating(landlord.tenancies.overall_average)) %></td>
-        <td><%= rating_icon(clamp_rating(landlord.tenancies.repairs_average)) %></td>
+        <%= rating_grade(landlord.ratings.overall_average, :td) %>
+        <%= rating_grade(landlord.ratings.repairs_average, :td) %>
         <td><%= landlord.tenancies.with_ratings.size %></td>
         <td><%= link_to 'Show', landlord %></td>
       </tr>
