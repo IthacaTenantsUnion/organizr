@@ -2,10 +2,18 @@
 
 <h1><%= @unit.address %></h1>
 
+<dl>
+  <dt>Overall Rating Average</dt>
+  <%= rating_grade(@unit.ratings.overall_average, :dd) %>
+  
+  <dt>Repairs Rating Average</dt>
+  <%= rating_grade(@unit.ratings.repairs_average, :dd) %>
+</dl>
+
 <h2>Landlord(s)</h2>
 <ul>
   <% @unit.landlords.each do |landlord| %>
-    <li><%= link_to landlord.name, landlord %> (Average Rating: <%= rating_icon(clamp_rating(landlord.ratings.overall_average)) %> | Reviewed <%= landlord.ratings.size %> times )</li>
+    <li><%= link_to landlord.name, landlord %> (Average Rating: <%= rating_grade(landlord.ratings.overall_average) %> | Reviewed <%= landlord.ratings.size %> times )</li>
   <% end %>
 </ul>
 

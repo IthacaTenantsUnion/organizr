@@ -5,7 +5,7 @@
 <h2>Known Units</h2>
 <ul>
 <% @units.each do |unit| %>
-  <li><%= link_to unit.address, [:union, unit] %> (Average Rating: <%= rating_icon(clamp_rating(@landlord.ratings.overall_average)) %> )</li>
+  <li><%= link_to unit.address, [:union, unit] %> (Average Rating: <%= rating_grade(@landlord.ratings.overall_average) %> )</li>
 <% end %>
 </ul>
 

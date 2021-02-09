@@ -16,24 +16,13 @@ RSpec.describe RatingsHelper, type: :helper do
   describe "clamp_rating" do
     subject { clamp_rating(rating) }
 
-    context "when the value is under -0.3" do
-      let(:rating) { -0.301 }
-      it { is_expected.to eq(-1) }
-    end
-
-    context "when the value is -0.3" do
-      let(:rating) { -0.3 }
-      it { is_expected.to eq(0) }
-    end
-
-    context "when the value is under 0.3" do
-      let(:rating) { 0.2999999 }
-      it { is_expected.to eq(0) }
-    end
-
-    context "when the value is 0.3 and up" do
-      let(:rating) { 0.3 }
-      it { is_expected.to eq(1) }
+    { 'F' => [0.1, 0.9], 'D' => [1, 1.49], 'C' => [1.5, 1.9], 'B' => [2, 2.49], 'A' => [2.5, 3]}.each do |grade, scores|
+      scores.each do |score|
+        context "with a score of #{score}" do
+          let(:rating) { score }
+          it { is_expected.to eq(grade) }
+        end
+      end
     end
   end
 end
