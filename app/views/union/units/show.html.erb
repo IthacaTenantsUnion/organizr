@@ -28,7 +28,7 @@
       <td><%= tenancy.start_date %></td>
       <td><%= tenancy.end_date %></td>
       <td><%= link_to tenancy.landlord.name, [:union, tenancy.landlord] %></td>
-      <td><%= tenancy.rent %></td>
+      <td><%= composite_rent(tenancy) %></td>
       <td><% if tenancy.overall.present? %><%= rating_icon(tenancy.overall) %> / <%= rating_icon(tenancy.repairs) %><% end %></td>
     </tr>
     <% end %>

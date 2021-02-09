@@ -6,7 +6,7 @@
 #  user_id        :bigint           not null
 #  unit_id        :bigint           not null
 #  landlord_id    :bigint           not null
-#  rent           :integer
+#  rent_total     :integer
 #  start_date     :date
 #  end_date       :date
 #  overall        :integer
@@ -15,13 +15,15 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  public_review  :string
+#  rent_portion   :integer
 #
 FactoryBot.define do
   factory :tenancy do
     tenant factory: :user
     unit
     landlord
-    rent { (Random.random_number * 1500).to_i + 500 }
+    rent_total { (Random.random_number * 1500).to_i + 500 }
+    rent_portion { rent_total / (1..3).to_a.sample }
     start_date { Faker::Date.between(from: 3.years.ago, to: 1.year.ago) }
     end_date { nil }
 

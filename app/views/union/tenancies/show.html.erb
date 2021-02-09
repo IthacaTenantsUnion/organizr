@@ -8,7 +8,7 @@
 <dd><%= link_to @tenancy.unit.address, [:union, @tenancy.unit] %></dd>
 
 <dt>Rent</dt>
-<dd><%= @tenancy.rent %></dd>
+<dd><%= composite_rent(@tenancy) %></dd>
 
 <dt>Landlord</dt>
 <dd><%= link_to @tenancy.landlord.name, [:union, @tenancy.landlord] %></dd>

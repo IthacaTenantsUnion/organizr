@@ -75,6 +75,6 @@ class Union::TenanciesController < Union::BaseController
 
     # Only allow a list of trusted parameters through.
     def tenancy_params
-      params.require(:tenancy).permit(:landlord_id, :unit_id, :rent, :start_date, :end_date, :overall, :repairs, :public_review, :private_review)
+      params.require(:tenancy).permit(:landlord_id, :unit_id, :rent_total, :rent_portion, :start_date, :end_date, :overall, :repairs, :public_review, :private_review)
     end
 end
