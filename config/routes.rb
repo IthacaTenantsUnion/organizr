@@ -18,6 +18,10 @@ Rails.application.routes.draw do
     resources :ratings, only: %i(index show)
   end
   
+  put 'profile', to: 'users#update'
+  get 'profile', to: 'users#show'
+  get 'profile/edit', to: 'users#edit'
+  
   devise_for :users, controllers: {
     sessions: 'users/sessions'
   }

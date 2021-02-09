@@ -11,6 +11,8 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  role                   :string           default("guest"), not null
+#  race                   :string
+#  gender                 :string
 #
 FactoryBot.define do
   factory :user do
@@ -18,6 +20,8 @@ FactoryBot.define do
     password { 'SomePasswordThatWorks' }
     password_confirmation { 'SomePasswordThatWorks' }
     role { 'tenant' }
+    race { %w(black white asian latino).sample }
+    gender { %w(male female non-binary) }
 
     trait :tenant do
       role { 'tenant' }

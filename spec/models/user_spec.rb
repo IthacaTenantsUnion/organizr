@@ -11,6 +11,8 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  role                   :string           default("guest"), not null
+#  race                   :string
+#  gender                 :string
 #
 require 'rails_helper'
 
