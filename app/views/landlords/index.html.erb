@@ -1,26 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Landlords</h1>
-
-<table>
+<table class="w-full whitespace-no-wrap">
   <thead>
-    <tr>
-      <th>Name</th>
-      <th>Overall</th>
-      <th>Repairs</th>
-      <th>Reviews</th>
-      <th></th>
+    <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+      <th class="px-4 py-3">Name</th>
+      <th class="py-3">Overall</th>
+      <th class="py-3">Repairs</th>
+      <th class="py-3">Reviews</th>
     </tr>
   </thead>
 
-  <tbody>
+  <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
     <% @landlords.each do |landlord| %>
-      <tr>
-        <td><%= landlord.name %></td>
+      <tr class="text-gray-700 dark:text-gray-400">
+        <td class="px-4 py-3"><%= link_to landlord.name, landlord %></td>
         <%= rating_grade(landlord.ratings.overall_average, :td) %>
         <%= rating_grade(landlord.ratings.repairs_average, :td) %>
-        <td><%= landlord.tenancies.with_ratings.size %></td>
-        <td><%= link_to 'Show', landlord %></td>
+        <td class="px-4 py-3"><%= landlord.tenancies.with_ratings.size %></td>
       </tr>
     <% end %>
   </tbody>

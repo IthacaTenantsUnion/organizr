@@ -1,0 +1,9 @@
+<% icon ||= ['fas', '']
+   current = current_page?(target) ? "underline" : ""
+   union = target.include?("union") ? "text-red-600 dark:text-red-500" : ""
+%>
+
+<%= link_to target, class: "inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-red-500 dark:hover:text-red-300" do %>
+  <%= icon(*icon, class: union) %>
+  <span class="ml-4 <%= current %>"><%= text %></span>
+<% end %>

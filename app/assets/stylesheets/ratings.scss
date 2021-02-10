@@ -22,6 +22,33 @@
   }
 }
 
+.grade {
+  &-A .circle {
+    color: darken(#3498DB, 10);
+    background-color: lighten(#3498DB, 25);
+  }
+  &-B .circle {
+    color: darken(#27AE60, 10);
+    background-color: lighten(#27AE60, 25);
+  }
+  &-C .circle {
+    color: darken(#F1C40F, 10);
+    background-color: lighten(#F1C40F, 25);
+  }
+  &-D .circle {
+    color: darken(#E59866, 10);
+    background-color: lighten(#E59866, 25);
+  }
+  &-F .circle {
+    color: darken(#D35400, 10);
+    background-color: lighten(#D35400, 25);
+  }
+   .circle {
+    color: darken(#AAA, 10);
+    background-color: lighten(#AAA, 25);
+  }
+}
+
 .fa-angry {
   font-size: 1.4rem;
   color: red;
@@ -57,6 +84,7 @@
       padding:10px;
       margin-top:10px;
       display:block;
+      background-color: #DDD;
     }
 
     label:hover {
@@ -65,7 +93,7 @@
     }
 
     input[type="radio"]:checked + label {
-      background-color:#DFD;
+      background-color:#66A;
     }
 }
 

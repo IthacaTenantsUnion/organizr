@@ -1,26 +1,26 @@
-<p id="notice"><%= notice %></p>
+<%= render("shared/new_button", target: new_union_landlord_path) if can? :create, Landlord %>
 
-<h1>Landlords</h1>
-
-<table>
+<table class="w-full whitespace-no-wrap">
   <thead>
-    <tr>
-      <th>Name</th>
+    <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+      <th class="px-4 py-3">Name</th>
+      <th class="py-3">Overall Rating</th>
+      <th class="py-3">Repairs Rating</th>
+      <th class="py-3">Number of Reviews</th>
       <th colspan="2"></th>
     </tr>
   </thead>
 
-  <tbody>
+  <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
     <% @landlords.each do |landlord| %>
-      <tr>
-        <td><%= link_to landlord.name, [:union, landlord] %></td>
-        <td><%= link_to 'Edit', edit_union_landlord_path(landlord) if can? :edit, landlord %></td>
-        <td><%= link_to 'Destroy', [:union,landlord], method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, landlord %></td>
+      <tr class="text-gray-700 dark:text-gray-400">
+        <td class="px-4 py-3"><%= link_to landlord.name, [:union, landlord] %></td>
+        <td class="py-3"><%= rating_grade(landlord.ratings.overall_average) %></td>
+        <td class="py-3"><%= rating_grade(landlord.ratings.repairs_average) %></td>
+        <td class="py-3"><%= landlord.ratings.size %></td>
+        <td class="py-3"><%= link_to 'Edit', edit_union_landlord_path(landlord) if can? :edit, landlord %></td>
+        <td class="py-3"><%= link_to 'Destroy', [:union,landlord], method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, landlord %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Landlord', new_union_landlord_path if can? :create, Landlord %>

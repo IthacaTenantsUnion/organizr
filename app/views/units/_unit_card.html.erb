@@ -1,0 +1,13 @@
+<div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+  <div>
+    <p class="mb-2 text-lg font-medium text-gray-600 dark:text-gray-400">
+      <%= link_to unit_card.address, unit_card %>
+    </p>
+    <p class="text-md font-semibold text-gray-700 dark:text-gray-200">
+      Average Rating <%= rating_grade(@landlord.ratings.overall_average) %>
+    </p>
+    <p class="text-md font-semibold text-gray-700 dark:text-gray-200">
+      Reviewed <%= @landlord.ratings.size %> times
+    </p>
+  </div>
+</div>

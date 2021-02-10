@@ -11,22 +11,35 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :address %>
-    <%= form.text_field :address %>
+
+  <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
+    <%= form.label :address, class: "block text-sm" do %>
+      <span class="text-gray-700 dark:text-gray-400">Address</span>
+      <%= form.text_field :address, class: "block w-full mt-1 p-2 text-md dark:border-gray-600 dark:bg-gray-700 focus:border-red-400 focus:outline-none focus:shadow-outline-red dark:text-gray-300 dark:focus:shadow-outline-gray form-input" %>
+    <% end %>  
   </div>
 
-  <div class="field">
-    <%= form.label :number_of_occupants %>
-    <%= form.text_field :number_of_occupants %>
+
+  <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
+    <%= form.label :number_of_occupants, class: "block text-sm" do %>
+      <span class="text-gray-700 dark:text-gray-400">Number of Occupants</span>
+      <%= form.text_field :number_of_occupants, class: "block w-full mt-1 p-2 text-md dark:border-gray-600 dark:bg-gray-700 focus:border-red-400 focus:outline-none focus:shadow-outline-red dark:text-gray-300 dark:focus:shadow-outline-gray form-input" %>
+    <% end %>  
   </div>
 
-  <div class="field">
-    <%= form.label :building_type %>
-    <%= form.collection_select :building_type, Unit.building_types, :first, :last %>
+  <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
+    <%= form.label :building_type, class: "block mt-4 text-sm" do %>
+      <span class="text-gray-700 dark:text-gray-400">
+        Requested Limit
+      </span>
+      <%= form.collection_select :building_type, Unit.building_types, :first, :last, {}, { class: "block w-full p-2 mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-red-400 focus:outline-none focus:shadow-outline-red dark:focus:shadow-outline-gray" } %>
+    <% end %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="py-4 actions">
+    <%= form.submit class: "px-5 py-3 font-medium leading-5 text-white transition-colors duration-150 bg-red-600 border border-transparent rounded-lg active:bg-red-600 hover:bg-red-700 focus:outline-none focus:shadow-outline-red" %>
   </div>
 <% end %>
+
+
+

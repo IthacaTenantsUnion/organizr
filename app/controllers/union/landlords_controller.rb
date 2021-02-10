@@ -4,6 +4,7 @@ class Union::LandlordsController < Union::BaseController
   
   # GET /landlords or /landlords.json
   def index
+    @title = "Landlords"
     @landlords = @landlords.includes(:tenancies, tenancies: [:unit, :landlord]).all
   end
 
@@ -11,15 +12,18 @@ class Union::LandlordsController < Union::BaseController
   def show
     @units = @landlord.units
     @tenancies = @landlord.tenancies
+    @title = @landlord.name
   end
 
   # GET /landlords/new
   def new
+    @title = "Add a New Landlord"
     @landlord = Landlord.new
   end
 
   # GET /landlords/1/edit
   def edit
+    @title = "Editing"
   end
 
   # POST /landlords or /landlords.json

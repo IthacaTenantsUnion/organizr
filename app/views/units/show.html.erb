@@ -1,23 +1,14 @@
-<p id="notice"><%= notice %></p>
+<div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-2">
+  <%= render partial: "tenancies/rating_card", object: @unit.ratings, locals: { score: :overall_average } %>
+  <%= render partial: "tenancies/rating_card", object: @unit.ratings, locals: { score: :repairs_average } %>
+</div>
 
-<h1><%= @unit.address %></h1>
-
-<dl>
-  <dt>Overall Rating Average</dt>
-  <%= rating_grade(@unit.ratings.overall_average, :dd) %>
-  
-  <dt>Repairs Rating Average</dt>
-  <%= rating_grade(@unit.ratings.repairs_average, :dd) %>
-</dl>
-
-<h2>Landlord(s)</h2>
-<ul>
-  <% @unit.landlords.each do |landlord| %>
-    <li><%= link_to landlord.name, landlord %> (Average Rating: <%= rating_grade(landlord.ratings.overall_average) %> | Reviewed <%= landlord.ratings.size %> times )</li>
-  <% end %>
-</ul>
+<h3 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">Known Landlord(s)</h3>
+<div class="grid gap-6 mb-8 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+  <%= render partial: "landlords/landlord_card", collection: @unit.landlords %>
+</div>
 
 <%= render partial: "tenancies/review_table", object: @unit.tenancies %>
 
 
-<%= link_to 'Back', units_path %>
+<%= render partial: "shared/back_button" %>

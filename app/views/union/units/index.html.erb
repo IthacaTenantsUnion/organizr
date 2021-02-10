@@ -1,30 +1,25 @@
-<p id="notice"><%= notice %></p>
+<%= render "shared/new_button", target: new_union_unit_path %>
 
-<h1>Units</h1>
-
-<table>
+<table class="w-full whitespace-no-wrap">
   <thead>
-    <tr>
-      <th>Address</th>
-      <th>Landlord</th>
-      <th>Building Type</th>
-      <th colspan="3"></th>
+    <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+      <th class="px-4 py-3">Address</th>
+      <th class="py-3">Landlord</th>
+      <th class="py-3">Building Type</th>
+      <th class="py-3" colspan="2"></th>
     </tr>
   </thead>
 
-  <tbody>
+  <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
     <% @units.each do |unit| %>
-      <tr>
-        <td><%= link_to unit.address, [:union, unit] %></td>
-        <td><%= unit.landlords.map(&:name).join(', ') %></td>
-        <td><%= Unit.building_types[unit.building_type] %></td>
-        <td><%= edit_link(edit_union_unit_path(unit)) if can? :edit, unit %></td>
-        <td><%= destroy_link unit if can? :destroy, unit %></td>
+      <tr class="text-gray-700 dark:text-gray-400">
+        <td class="px-4 py-3"><%= link_to unit.address, [:union, unit] %></td>
+        <td class="py-3"><%= unit.landlords.map(&:name).join(', ') %></td>
+        <td class="py-3"><%= Unit.building_types[unit.building_type] || "Unknown" %></td>
+        <td class="py-3"><%= edit_link(edit_union_unit_path(unit)) if can? :edit, unit %></td>
+        <td class="py-3"><%= destroy_link unit if can? :destroy, unit %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Unit', new_union_unit_path %>

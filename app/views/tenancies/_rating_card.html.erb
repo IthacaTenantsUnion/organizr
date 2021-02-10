@@ -1,0 +1,15 @@
+<% grade = rating_grade(rating_card.send(score), nil) %>
+
+<div class="flex items-center p-4 bg-white rounded-lg shadow-xs  <%= "grade-#{grade}" %> dark:bg-gray-800">
+  <div class="p-3 mr-4 rounded-full">
+    <div class="rounded-full h-24 w-24 flex items-center justify-center circle text-6xl"><%= rating_grade(rating_card.send(score), nil) %></div>
+  </div>
+  <div>
+    <p class="mb-2 text-lg font-medium text-gray-600 dark:text-gray-400">
+      <%= score.to_s.gsub('_', ' ').capitalize %>
+    </p>
+    <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
+      <%= rating_card.send(score).round(2) %> / 3.0  <span class="text-gray-400 dark:text-gray-600">(<%= rating_card.size %> reviews)</span>
+    </p>
+  </div>
+</div>
