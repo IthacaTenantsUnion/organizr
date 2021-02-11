@@ -1,9 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Address:</strong>
-  <%= @unit.address %>
-</p>
+<dl>
+  <dt>Address:</dt>
+  <dd><%= @unit.address %></dd>
+
+  <dt>Number of Occupants:</dt>
+  <dd><%= @unit.number_of_occupants %></dd>
 
 <p>
   <strong>Landlord:</strong>
