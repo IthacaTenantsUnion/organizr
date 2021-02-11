@@ -66,6 +66,6 @@ class Union::UnitsController < Union::BaseController
 
     # Only allow a list of trusted parameters through.
     def unit_params
-      params.require(:unit).permit(:address)
+      params.require(:unit).permit(:address, :number_of_occupants)
     end
 end
