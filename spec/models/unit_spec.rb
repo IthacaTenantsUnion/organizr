@@ -19,6 +19,11 @@ RSpec.describe Unit, type: :model do
       existing = create(:unit)
       expect(build(:unit, address: existing.address)).to be_invalid
     end
+
+    it "is invalid with a zero or negative number of occupants" do
+      expect(build(:unit, number_of_occupants: 0)).to be_invalid
+      expect(build(:unit, number_of_occupants: -1)).to be_invalid
+    end
   end
 
   describe "Ratings calculations" do
