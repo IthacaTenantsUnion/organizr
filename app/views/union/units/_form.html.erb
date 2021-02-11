@@ -21,6 +21,11 @@
     <%= form.text_field :number_of_occupants %>
   </div>
 
+  <div class="field">
+    <%= form.label :building_type %>
+    <%= form.collection_select :building_type, Unit.building_types, :first, :last %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

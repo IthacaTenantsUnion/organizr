@@ -24,7 +24,7 @@ class User < ApplicationRecord
   has_many :units, through: :tenancies, inverse_of: :tenant
   has_many :landlords, through: :tenancies, inverse_of: :tenants
 
-  enum role: { guest: "guest", ˇtenant: "tenant", admin: "admin" }
+  enum role: { guest: "guest", tenant: "tenant", admin: "admin" }
 
   def to_s
     @name ||= Faker::Name.name

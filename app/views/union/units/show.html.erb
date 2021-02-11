@@ -7,45 +7,49 @@
   <dt>Number of Occupants:</dt>
   <dd><%= @unit.number_of_occupants %></dd>
 
-<p>
-  <strong>Landlord:</strong>
-  <%= @unit.landlords.map(&:name).join(', ') %>
-</p>
+  <dt>Building Type</dt>
+  <dd><%= Unit.building_types[@unit.building_type] %></dd>
 
-<h2>Past Records</h2>
+  <% if @unit.landlords.present? %>
+    <dt>Landlord(s)</dt>
+    <dd><%= @unit.landlords.map(&:name).join(', ') %></dd>
+  <% end %>
+</dl>
 
-<table>
-  <thead>
-    <tr>
-      <th>Start Date</th>
-      <th>End Date</th>
-      <th>Landlord</th>
-      <th>Rent</th>
-      <th>Rating</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @tenancies.each do |tenancy| %>
-    <tr>
-      <td><%= tenancy.start_date %></td>
-      <td><%= tenancy.end_date %></td>
-      <td><%= link_to tenancy.landlord.name, [:union, tenancy.landlord] %></td>
-      <td><%= composite_rent(tenancy) %></td>
-      <td><% if tenancy.overall.present? %><%= rating_icon(tenancy.overall) %> / <%= rating_icon(tenancy.repairs) %><% end %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+<%if @tenancies.present? %>
+  <h2>Past Records</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Landlord</th>
+        <th>Rent</th>
+        <th>Rating</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @tenancies.each do |tenancy| %>
+      <tr>
+        <td><%= tenancy.start_date %></td>
+        <td><%= tenancy.end_date %></td>
+        <td><%= link_to tenancy.landlord.name, [:union, tenancy.landlord] %></td>
+        <td><%= composite_rent(tenancy) %></td>
+        <td><% if tenancy.overall.present? %><%= rating_icon(tenancy.overall) %> / <%= rating_icon(tenancy.repairs) %><% end %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<h2>Reviews of this Place</h2>
-<% @tenancies.each do |tenancy| %>
-  <article class="review">
-    <h3>Public</h3>
-    <%= tenancy.public_review %>
-    <h3>Private</h3>
-    <%= tenancy.private_review %>
-  </article>
+  <h2>Reviews of this Place</h2>
+  <% @tenancies.each do |tenancy| %>
+    <article class="review">
+      <h3>Public</h3>
+      <%= tenancy.public_review %>
+      <h3>Private</h3>
+      <%= tenancy.private_review %>
+    </article>
+  <% end %>
 <% end %>
-
 <%= link_to 'Edit', edit_union_unit_path(@unit) if can? :edit, @unit %> |
 <%= link_to 'Back', union_units_path %>
