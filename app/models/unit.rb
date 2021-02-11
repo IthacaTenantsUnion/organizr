@@ -14,4 +14,5 @@ class Unit < ApplicationRecord
   has_many :tenants, through: :tenancies, source: :user
 
   validates :address, presence: true, uniqueness: true
+  validates :number_of_occupants, numericality: { greater_than: 0 }
 end
