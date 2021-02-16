@@ -37,4 +37,5 @@
 yarn-debug.log*
 .yarn-integrity
 
+# Ignore rspec persistent failures
 spec/examples.txt
