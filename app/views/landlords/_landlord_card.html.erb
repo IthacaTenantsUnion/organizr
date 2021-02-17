@@ -1,13 +1,16 @@
-<div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-  <div>
-    <p class="mb-2 text-lg font-medium text-gray-600 dark:text-gray-400">
-      <%= link_to landlord_card.name, landlord_card %>
-    </p>
-    <p class="text-md font-semibold text-gray-700 dark:text-gray-200">
+<div class="ui card">
+  <div class="content">
+    <div class="header"><%= landlord_card.name %></div>
+  </div>
+  <div class="content">
+    <p>
       Average Rating <%= rating_grade(landlord_card.ratings.overall_average) %>
     </p>
-    <p class="text-md font-semibold text-gray-700 dark:text-gray-200">
+    <p>
       Reviewed <%= landlord_card.ratings.size %> times
     </p>
+  </div>
+  <div class="extra content">
+    <%= link_to "View Landlord", landlord_card, class: "ui button" %>
   </div>
 </div>

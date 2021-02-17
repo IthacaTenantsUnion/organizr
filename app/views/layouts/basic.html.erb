@@ -31,9 +31,7 @@
 
   <div class="ui main text container">
   <!-- <main> -->
-    <% flash.each do |type, msg| %>
-      <%= render partial: "shared/alerts/#{type.to_s}", object: msg %>
-    <% end %>
+    <%= render "layouts/flash_hash" %>
 
       <h2><%= @title || "" %></h2>
       <%= yield %>

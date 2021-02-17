@@ -1,0 +1,3 @@
+<% flash.each do |type, msg| %>
+  <%= render partial: "shared/alerts/#{type.to_s}", object: msg %>
+<% end %>

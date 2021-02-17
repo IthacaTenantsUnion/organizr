@@ -1,4 +1,4 @@
-<table>
+<table class="ui table celled">
   <thead>
     <tr>
       <th>Address</th>
@@ -9,8 +9,8 @@
   <tbody>
     <% @units.each do |unit| %>
       <tr>
-        <td><%= link_to unit.address, unit %></td>
-        <td>
+        <td data-label="Address"><%= link_to unit.address, unit %></td>
+        <td data-label="Landlords Known">
           <% unit.landlords.to_a.map do |l| %>
             <%= link_to l.name, l %>
           <% end %>
