@@ -2,14 +2,11 @@ Rails.application.routes.draw do
   namespace :union do
     resources :landlords
     resources :units
-    resources :tenancies# do
-    #  resources :ratings
-    #end
+    resources :tenancies
   end
   
   get 'ratings', to: 'tenancies#index', as: :ratings
   get 'ratings/:id', to: 'tenancies#show', as: :rating
-  #resources :ratings, only: %i(index show)
   
   resources :units, only: %i(index show) do
     resources :ratings, only: %i(index show)

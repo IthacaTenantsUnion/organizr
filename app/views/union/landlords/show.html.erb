@@ -1,16 +1,12 @@
 <%= render("shared/edit_button", target: edit_union_landlord_path(@landlord)) if can? :edit, @landlord %> | 
 <%= render("shared/back_button") %>
 
-<div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-2">
 <%= render partial: "tenancies/rating_card", object: @landlord.ratings, locals: { score: :overall_average } %>
 <%= render partial: "tenancies/rating_card", object: @landlord.ratings, locals: { score: :repairs_average } %>
-</div>
 
 
-<h3 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">Known Units</h3>
-<div class="grid gap-6 mb-8 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+<h3>Known Units</h3>
   <%= render partial: "union/units/unit_card", collection: @units %>
-</div>
 
-<h3 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">Reviews of this Landlord</h3>
-<%= render partial: "union/tenancies/review_card", collection: @tenancies %>
+<h3>Reviews of this Landlord</h3>
+  <%= render partial: "union/tenancies/review_card", collection: @tenancies %>

@@ -1,19 +1,17 @@
-<div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-  <div>
-    <p class="mb-2 text-lg font-medium text-gray-600 dark:text-gray-400">
-      <%= link_to_unless_current unit_card.address, [:union,unit_card] %>
-    </p>
-    <p class="text-md font-semibold text-gray-700 dark:text-gray-200">
-      Number of Occupants: <%= unit_card.number_of_occupants %>
-    </p>
-    <p class="text-md font-semibold text-gray-700 dark:text-gray-200">
-      Building Type: <%= Unit.building_types[unit_card.building_type] || "Unknown" %>
-    </p>
+<div>
+  <p>
+    <%= link_to_unless_current unit_card.address, [:union,unit_card] %>
+  </p>
+  <p>
+    Number of Occupants: <%= unit_card.number_of_occupants %>
+  </p>
+  <p>
+    Building Type: <%= Unit.building_types[unit_card.building_type] || "Unknown" %>
+  </p>
 
-    <% if unit_card.landlords.present? %>
-    <p class="text-md font-semibold text-gray-700 dark:text-gray-200">
-      Landlord(s): <%= unit_card.landlords.map(&:name).join(', ') %>
-    </p>
-    <% end %>
-  </div>
+  <% if unit_card.landlords.present? %>
+  <p>
+    Landlord(s): <%= unit_card.landlords.map(&:name).join(', ') %>
+  </p>
+  <% end %>
 </div>

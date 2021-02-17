@@ -2,31 +2,18 @@
 <% end %>
 
 <% content_for(:content) do %>
-<div
-  class="flex h-screen bg-gray-50 dark:bg-gray-900"
-  :class="{ 'overflow-hidden': isSideMenuOpen }"
->
+  <%= render partial: "layouts/sidenav" %>
 
-    <%= render partial: "layouts/sidenav" %>
 
-    <div class="flex flex-col flex-1 w-full">
-      <%= render partial: "layouts/topnav" %>
+  <%= render partial: "layouts/topnav" %>
+  <main>
+    <% flash.each do |type, msg| %>
+      <%= render partial: "shared/alerts/#{type.to_s}", object: msg %>
+    <% end %>
 
-      <main class="h-full pb-16 overflow-y-auto">
-        
-        <% flash.each do |type, msg| %>
-          <%= render partial: "shared/alerts/#{type.to_s}", object: msg %>
-        <% end %>
+      <h2><%= @title || "" %></h2>
+      <%= yield %>
 
-        <div class="container px-6 mx-auto grid">
-          <h2
-            class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200"
-          >
-            <%= @title || "" %>
-          </h2>
-          <%= yield %>
-        </div>
-      </main>
-    </div>
+  </main>
 <% end %>
 <%= render template: "layouts/application" %>

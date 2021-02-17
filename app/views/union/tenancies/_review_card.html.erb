@@ -1,22 +1,14 @@
-  <h3 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">
-    <%= review_card.start_date %> - <%= review_card.end_date %>
-  </h3>
-  <article class="review grid gap-6 mb-8 md:grid-cols-2">
-    
-    <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-      <h4 class="mb-4 font-semibold text-gray-600 dark:text-gray-300">
-        Public Review
-      </h4>
-      <p class="text-gray-600 dark:text-gray-400">
-        <%= review_card.public_review %>
-      </p>
-    </div>
-    <div class="min-w-0 p-4 text-white bg-red-600 rounded-lg shadow-xs">
-      <h4 class="mb-4 font-semibold">
-        Private Review
-      </h4>
-      <p>
-        <%= review_card.private_review %>
-      </p>
-    </div>
-  </article>
+<h3>
+  <%= review_card.start_date %> - <%= review_card.end_date %>
+</h3>
+<article>
+  <h4>Public Review</h4>
+  <p>
+    <%= review_card.public_review %>
+  </p>
+
+  <h4>Private Review</h4>
+  <p>
+    <%= review_card.private_review %>
+  </p>
+</article>

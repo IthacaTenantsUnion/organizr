@@ -1,16 +1,16 @@
-<table class="w-full whitespace-no-wrap">
+<table>
   <thead>
-    <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
-      <th class="px-4 py-3">Address</th>
-      <th class="py-3">Landlord(s) Known</th>
+    <tr>
+      <th>Address</th>
+      <th>Landlord(s) Known</th>
     </tr>
   </thead>
 
-  <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+  <tbody>
     <% @units.each do |unit| %>
-      <tr class="text-gray-700 dark:text-gray-400">
-        <td class="px-4 py-3"><%= link_to unit.address, unit %></td>
-        <td class="py-3">
+      <tr>
+        <td><%= link_to unit.address, unit %></td>
+        <td>
           <% unit.landlords.to_a.map do |l| %>
             <%= link_to l.name, l %>
           <% end %>

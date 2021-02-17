@@ -1,10 +1,10 @@
-<div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-2">
+<div>
   <%= render partial: "tenancies/rating_card", object: @unit.ratings, locals: { score: :overall_average } %>
   <%= render partial: "tenancies/rating_card", object: @unit.ratings, locals: { score: :repairs_average } %>
 </div>
 
-<h3 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">Known Landlord(s)</h3>
-<div class="grid gap-6 mb-8 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+<h3>Known Landlord(s)</h3>
+<div>
   <%= render partial: "landlords/landlord_card", collection: @unit.landlords %>
 </div>
 

@@ -1,20 +1,19 @@
 <!DOCTYPE html>
-<html lang="en" :class="{ 'theme-dark': dark }" x-data="data()" class="theme-dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Ratemylandlord</title>
+  <title>Organizr - Ithaca Tenants' Union</title>
   <meta name="author" content="@armahillo">
-  <meta name="description" content="description here">
-  <meta name="keywords" content="keywords,here">
+  <meta name="description" content="organizing tool for ithaca tenants' union">
+  <meta name="keywords" content="tenant,union,organizing,ithaca">
 
 <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet"> <!--Totally optional :) -->
-
+    
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -24,7 +23,7 @@
   </head>
 
 
-  <body id="<%= params[:controller] %>" class="<%= params[:action] %> bg-gray-400 font-sans leading-normal tracking-normal">
+  <body id="<%= params[:controller] %>" class="<%= params[:action] %>">
 
     <%= content_for?(:content) ? yield(:content) : yield %>
   </body>

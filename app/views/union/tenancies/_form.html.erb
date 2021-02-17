@@ -11,88 +11,88 @@
     </div>
   <% end %>
 
-  <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
-    <%= form.label :unit_id, class: "block text-sm" do %>
-      <span class="text-gray-700 dark:text-gray-400">Unit</span>
-      <%= form.collection_select :unit_id, @units, :id, :address, {}, { class: "block w-full p-2 mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-red-400 focus:outline-none focus:shadow-outline-red dark:focus:shadow-outline-gray" } %>
+  <div>
+    <%= form.label :unit_id do %>
+      <span>Unit</span>
+      <%= form.collection_select :unit_id, @units, :id, :address, {}, { } %>
     <% end %>
   </div>
 
-  <div class="grid gap-6 mb-8 md:grid-cols-2">
-    <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
-        <%= form.label :rent_portion, class: "block text-sm" do %>
-          <span class="text-gray-700 dark:text-gray-400">The portion of rent you pay</span>
-          <%= form.text_field :rent_portion, class: "block w-full mt-1 p-2 text-md dark:border-gray-600 dark:bg-gray-700 focus:border-red-400 focus:outline-none focus:shadow-outline-red dark:text-gray-300 dark:focus:shadow-outline-gray form-input" %>
+  <div>
+    <div>
+        <%= form.label :rent_portion do %>
+          <span>The portion of rent you pay</span>
+          <%= form.text_field :rent_portion %>
         <% end %>
     </div>
 
-    <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
-      <%= form.label :rent_total, class: "block text-sm" do %>
-        <span class="text-gray-700 dark:text-gray-400">The total monthly rent</span>
-        <%= form.text_field :rent_total, class: "block w-full mt-1 p-2 text-md dark:border-gray-600 dark:bg-gray-700 focus:border-red-400 focus:outline-none focus:shadow-outline-red dark:text-gray-300 dark:focus:shadow-outline-gray form-input" %>
+    <div>
+      <%= form.label :rent_total do %>
+        <span>The total monthly rent</span>
+        <%= form.text_field :rent_total %>
       <% end %>
     </div>
   </div>
   
 
-  <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
-    <%= form.label :landlord_id, class: "block text-sm" do %>
-    <span class="text-gray-700 dark:text-gray-400">Landlord</span>
-      <%= form.collection_select :landlord_id, @landlords, :id, :name, {}, { class: "block w-full p-2 mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-red-400 focus:outline-none focus:shadow-outline-red dark:focus:shadow-outline-gray" } %>
+  <div>
+    <%= form.label :landlord_id do %>
+    <span>Landlord</span>
+      <%= form.collection_select :landlord_id, @landlords, :id, :name, {}, { } %>
     <% end %>
   </div>
 
-  <div class="grid gap-6 mb-8 md:grid-cols-2">
-    <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
-      <%= form.label :start_date, class: "block text-sm" do %>
-        <span class="text-gray-700 dark:text-gray-400">Start Date</span>
-        <%= form.date_field :start_date, class: "block w-full mt-1 p-2 text-md dark:border-gray-600 dark:bg-gray-700 focus:border-red-400 focus:outline-none focus:shadow-outline-red dark:text-gray-300 dark:focus:shadow-outline-gray form-input" %>
+  <div>
+    <div>
+      <%= form.label :start_date do %>
+        <span>Start Date</span>
+        <%= form.date_field :start_date %>
       <% end %>
     </div>
 
-      <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
-        <%= form.label :end_date, class: "block text-sm" do %>
-          <span class="text-gray-700 dark:text-gray-400">End Date</span>
-          <%= form.date_field :end_date, include_blank: true, class: "block w-full mt-1 p-2 text-md dark:border-gray-600 dark:bg-gray-700 focus:border-red-400 focus:outline-none focus:shadow-outline-red dark:text-gray-300 dark:focus:shadow-outline-gray form-input" %>
+      <div>
+        <%= form.label :end_date do %>
+          <span>End Date</span>
+          <%= form.date_field :end_date, include_blank: true %>
         <% end %>
       </div>
     </div>
 
-    <div class="grid gap-6 mb-8 md:grid-cols-2">
-      <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
-      <%= form.label :overall, class: "block text-sm field" do %>
-        <span class="text-gray-700 dark:text-gray-400">Overall Rating</span>
-        <div class="rating">
+    <div>
+      <div>
+      <%= form.label :overall do %>
+        <span>Overall Rating</span>
+        <div>
           <%= form.collection_radio_buttons :overall, [['0', icon('fas', "angry", 'Awful')] ,['1', icon('fas', "frown", 'Poor')], ['2', icon('fas', 'meh', 'OK')], ['3', icon('fas', "smile", "Good")]], :first, :last %>
         </div>
       <% end %>
     </div>
 
-      <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
-        <%= form.label :repairs, class: "block text-sm field" do %>
-          <span class="text-gray-700 dark:text-gray-400">Repairs Rating</span>
-          <div class="rating">
+      <div>
+        <%= form.label :repairs do %>
+          <span>Repairs Rating</span>
+          <div>
             <%= form.collection_radio_buttons :repairs, [['0', icon('fas', "angry", 'Awful')] ,['1', icon('fas', "frown", 'Poor')], ['2', icon('fas', 'meh', 'OK')], ['3', icon('fas', "smile", "Good")], ['', icon('fas', 'comment-slash', 'N/A')]], :first, :last %>
           </div>
         <% end %>
       </div>
     </div>
 
-    <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
-    <%= form.label :public_review, class: "block text-sm" do %>
-      <span class="text-gray-700 dark:text-gray-400"><strong>Public:</strong> This text will be visible to everyone, including users who are not signed-in</span>
-      <%= form.text_area :public_review, class: "block w-full mt-1 p-2 text-md dark:border-gray-600 dark:bg-gray-700 focus:border-red-400 focus:outline-none focus:shadow-outline-red dark:text-gray-300 dark:focus:shadow-outline-gray form-input" %>
+    <div>
+    <%= form.label :public_review do %>
+      <span><strong>Public:</strong> This text will be visible to everyone, including users who are not signed-in</span>
+      <%= form.text_area :public_review %>
     <% end %>
   </div>
 
-    <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
-    <%= form.label :private_review, class: "block text-sm" do %>
-      <span class="text-gray-700 dark:text-gray-400"><strong>Private</strong>: This Text Will Only Be Visible by Union Members, who are signed-in</span>
-      <%= form.text_area :private_review, class: "block w-full mt-1 p-2 text-md dark:border-gray-600 dark:bg-gray-700 focus:border-red-400 focus:outline-none focus:shadow-outline-red dark:text-gray-300 dark:focus:shadow-outline-gray form-input" %>
+    <div>
+    <%= form.label :private_review do %>
+      <span><strong>Private</strong>: This Text Will Only Be Visible by Union Members, who are signed-in</span>
+      <%= form.text_area :private_review %>
     <% end %>
   </div>
 
-  <div class="actions">
-    <%= form.submit class: "px-5 py-3 font-medium leading-5 text-white transition-colors duration-150 bg-red-600 border border-transparent rounded-lg active:bg-red-600 hover:bg-red-700 focus:outline-none focus:shadow-outline-red" %>
+  <div>
+    <%= form.submit %>
   </div>
 <% end %>

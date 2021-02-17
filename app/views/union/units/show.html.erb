@@ -1,38 +1,38 @@
 <%= render partial: "union/units/unit_card", object: @unit %>
 
-<div class="grid gap-6 my-8 md:grid-cols-2 xl:grid-cols-2">
+<div>
 <%= render partial: "tenancies/rating_card", object: @unit.ratings, locals: { score: :overall_average } %>
 <%= render partial: "tenancies/rating_card", object: @unit.ratings, locals: { score: :repairs_average } %>
 </div>
 
 <%if @tenancies.present? %>
-  <h3 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">Past Records</h3>
+  <h3>Past Records</h3>
 
-  <table class="w-full whitespace-no-wrap mb-8">
+  <table>
     <thead>
-      <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
-        <th class="px-4 py-3">Start Date</th>
-        <th class="py-3">End Date</th>
-        <th class="py-3">Landlord</th>
-        <th class="py-3">Rent</th>
-        <th class="py-3">Rating</th>
+      <tr>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Landlord</th>
+        <th>Rent</th>
+        <th>Rating</th>
       </tr>
     </thead>
-    <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+    <tbody>
       <% @tenancies.each do |tenancy| %>
-      <tr class="text-gray-700 dark:text-gray-400">
-        <td class="px-4 py-3"><%= tenancy.start_date %></td>
-        <td class="py-3"><%= tenancy.end_date %></td>
-        <td class="py-3"><%= link_to tenancy.landlord.name, [:union, tenancy.landlord] %></td>
-        <td class="py-3"><%= composite_rent(tenancy) %></td>
-        <td class="py-3"><% if tenancy.overall.present? %><%= rating_icon(tenancy.overall) %> / <%= rating_icon(tenancy.repairs) %><% end %></td>
+      <tr>
+        <td><%= tenancy.start_date %></td>
+        <td><%= tenancy.end_date %></td>
+        <td><%= link_to tenancy.landlord.name, [:union, tenancy.landlord] %></td>
+        <td><%= composite_rent(tenancy) %></td>
+        <td><% if tenancy.overall.present? %><%= rating_icon(tenancy.overall) %> / <%= rating_icon(tenancy.repairs) %><% end %></td>
       </tr>
       <% end %>
     </tbody>
   </table>
 <% end %>
 
-<h3 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">Reviews of this Unit</h3>
+<h3>Reviews of this Unit</h3>
 <%= render partial: "union/tenancies/review_card", collection: @tenancies %>
 
 <%= render("shared/edit_button", target: edit_union_unit_path(@unit)) if can? :edit, @unit %>

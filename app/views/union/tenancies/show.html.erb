@@ -1,17 +1,17 @@
-  <h3 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">
+  <h3>
     Period: <%= @tenancy.start_date %> - <%= @tenancy.end_date || "Present" %>
   </h3>
-  <article class="grid gap-6 mb-8 md:grid-cols-2">
-    <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-      <p class="text-gray-600 dark:text-gray-400">
+  <article>
+    <div>
+      <p>
         Unit: <%= link_to @tenancy.unit.address, [:union, @tenancy.unit] %></p>
-      <p class="text-gray-600 dark:text-gray-400">
+      <p>
         Landlord: <%= link_to @tenancy.landlord, [:union, @tenancy.landlord]  %></p>
-      <p class="text-gray-600 dark:text-gray-400">
+      <p>
         Period: <%= @tenancy.start_date %> - <%= @tenancy.end_date || "Present" %></p>
-      <p class="text-gray-600 dark:text-gray-400">
+      <p>
         Rent: <%= composite_rent(@tenancy) %></p>
-      <p class="text-gray-600 dark:text-gray-400">
+      <p>
         Rating: <%= rating_icon(@tenancy.overall) %> / <%= rating_icon(@tenancy.repairs) %></p>
     </div>
   </article>
