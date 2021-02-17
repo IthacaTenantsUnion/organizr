@@ -1,13 +1,24 @@
-<h1><%= current_user.email %></h1>
-<%= link_to 'Edit Profile', profile_edit_path %> | <%= link_to 'Account Settings', edit_user_registration_path %>
-<dl>
-  <dt>Race</dt>
-  <dd><%= current_user.race %>
+<%= link_to 'Edit Profile', profile_edit_path, class: "ui button blue" %> <%= link_to 'Account Settings', edit_user_registration_path, class: "ui button orange" %>
 
-  <dt>Gender</dt>
-  <dd><%= current_user.gender %></dd>
-</dl>
+<div class="ui card">
+  <div class="content">
+    <div class="header">
+      <%= current_user.email %>
+    </div>
+    <div class="meta">
+      <%= current_user.role %>
+    </div>
+    <div class="description">
+      <ul>
+        <li>Race: <%= current_user.race %></li>
+        <li>Gender: <%= current_user.gender %></li>
+      </ul>
+    </div>
+  </div>
+</div>
 
+
+<% if @tenancies.present? %>
 <h2>My Tenancies</h2>
 <table>
 <% @tenancies.each do |tenancy| %>
@@ -23,3 +34,4 @@
   </tr>
 <% end %>
 </table>
+<% end %>

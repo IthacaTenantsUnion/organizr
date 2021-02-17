@@ -1,4 +1,4 @@
-<%= form_with(model: current_user, url: profile_path, method: :put, local: true) do |form| %>
+<%= form_with(model: current_user, url: profile_path, method: :put, local: true, class: "ui form") do |form| %>
 
   <div class="field">
     <%= form.label :email %>
@@ -16,6 +16,8 @@
   </div> 
 
   <div class="actions">
-    <%= form.submit "Update" %>
+    <%= form.submit "Save", class: "ui button green" %>
   </div>
 <% end %>
+
+<%= render "shared/back_button" %>

@@ -33,14 +33,17 @@ body {
     white-space: nowrap !important;            /* 3 */
   }
 
+  .back.button {
+    margin-top: 2rem;
+  }
+
   .flash {
     padding: 1rem auto;
     display: flex;
     justify-content: space-between;
 
-    i { font-size: 2rem; color: white; }
+    i { font-size: 2rem; color: inherit; margin-right: 1rem;}
     p {
-      margin-left: 1rem;
       font-size: 1.4rem;
       vertical-align: middle;
       flex-grow: 2;
