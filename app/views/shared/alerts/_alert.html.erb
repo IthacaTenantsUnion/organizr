@@ -1,21 +1,5 @@
-<!-- Info alert -->
-<div class="flex bg-blue-200 p-4">
-  <div class="mr-4">
-    <div class="h-10 w-10 text-white bg-blue-600 rounded-full flex justify-center items-center">
-      <i class="material-icons">alert</i>
-    </div>
-  </div>
-  <div class="flex justify-between w-full">
-    <div class="text-blue-600">
-      <p class="mb-2 font-bold">
-        Info
-      </p>
-      <p class="text-xs">
-        <%= alert %>
-      </p>
-    </div>
-    <div class="text-sm text-gray-500">
-       <p>x</p>
-    </div>
-  </div>
+<div class="flash alert yellow inverted ui segment">
+    <%= icon('fas', 'exclamation-circle') %>
+    <p><%= alert %></p>
+    <a class="close" href="javascript:void(0)"><%= icon('fas', 'times') %></a>
 </div>

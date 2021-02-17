@@ -1,9 +1,0 @@
-<% icon ||= ['fas', '']
-   current = current_page?(target) ? "underline" : ""
-   union = target.include?("union") ? "red" : ""
-%>
-
-<%= link_to target, class: "current" do %>
-  <%= icon(*icon, class: union) %>
-  <%= text %>
-<% end %>

@@ -1,12 +1,36 @@
 <% content_for(:head) do %>
+  <style type="text/css">
+    body {
+      background-color: #ffffff;
+      -webkit-font-smoothing: antialiased;
+      -moz-font-smoothing: grayscale;
+    }
+
+    .ui.menu .item img.ui.mini.image {
+      margin-right: 1.5em;
+    }
+
+    .ui.main.text.container {
+      margin-top: 7em;
+    }
+
+    .ui.main.text.container .ui.image {
+      margin-top: 2em;
+    }
+
+    .ui.footer.segment {
+      margin: 5em 0em 0em;
+      padding: 5em 0em;
+    }
+  </style>
 <% end %>
 
 <% content_for(:content) do %>
-  <%= render partial: "layouts/sidenav" %>
-
-
   <%= render partial: "layouts/topnav" %>
-  <main>
+
+
+  <div class="ui main text container">
+  <!-- <main> -->
     <% flash.each do |type, msg| %>
       <%= render partial: "shared/alerts/#{type.to_s}", object: msg %>
     <% end %>
@@ -14,6 +38,7 @@
       <h2><%= @title || "" %></h2>
       <%= yield %>
 
-  </main>
+<!-- </main> -->
+  </div>
 <% end %>
 <%= render template: "layouts/application" %>

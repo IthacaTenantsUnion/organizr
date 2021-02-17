@@ -32,4 +32,19 @@ body {
     width: 1px !important;
     white-space: nowrap !important;            /* 3 */
   }
+
+  .flash {
+    padding: 1rem auto;
+    display: flex;
+    justify-content: space-between;
+
+    i { font-size: 2rem; color: white; }
+    p {
+      margin-left: 1rem;
+      font-size: 1.4rem;
+      vertical-align: middle;
+      flex-grow: 2;
+      margin-bottom: 0;
+    }
+  }
 }

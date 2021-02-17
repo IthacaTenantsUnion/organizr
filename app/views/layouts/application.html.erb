@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=2, user-scalable=no"
+    />
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Organizr - Ithaca Tenants' Union</title>
   <meta name="author" content="@armahillo">
@@ -19,12 +22,16 @@
     <%= csp_meta_tag %>
 
     <%= content_for?(:head) ? yield(:head) : '' %>
-    <%= stylesheet_pack_tag "application", "data-turbo-track": "reload" %>
+    <%=# stylesheet_pack_tag "application", "data-turbo-track": "reload" 
+    %>
   </head>
 
 
   <body id="<%= params[:controller] %>" class="<%= params[:action] %>">
 
     <%= content_for?(:content) ? yield(:content) : yield %>
+
+    <div class="ui inverted vertical footer segment">
+    </div>
   </body>
 </html>
