@@ -1,23 +1,14 @@
-<p id="notice"><%= notice %></p>
+<div class="ui cards">
+  <%= render partial: "tenancies/rating_card", object: @unit.ratings, locals: { score: :overall_average } %>
+  <%= render partial: "tenancies/rating_card", object: @unit.ratings, locals: { score: :repairs_average } %>
+</div>
 
-<h1><%= @unit.address %></h1>
-
-<dl>
-  <dt>Overall Rating Average</dt>
-  <%= rating_grade(@unit.ratings.overall_average, :dd) %>
-  
-  <dt>Repairs Rating Average</dt>
-  <%= rating_grade(@unit.ratings.repairs_average, :dd) %>
-</dl>
-
-<h2>Landlord(s)</h2>
-<ul>
-  <% @unit.landlords.each do |landlord| %>
-    <li><%= link_to landlord.name, landlord %> (Average Rating: <%= rating_grade(landlord.ratings.overall_average) %> | Reviewed <%= landlord.ratings.size %> times )</li>
-  <% end %>
-</ul>
+<h3>Known Landlord(s)</h3>
+<div>
+  <%= render partial: "landlords/landlord_card", collection: @unit.landlords %>
+</div>
 
 <%= render partial: "tenancies/review_table", object: @unit.tenancies %>
 
 
-<%= link_to 'Back', units_path %>
+<%= render partial: "shared/back_button" %>

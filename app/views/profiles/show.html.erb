@@ -1,0 +1,37 @@
+<%= link_to 'Edit Profile', profile_edit_path, class: "ui button blue" %> <%= link_to 'Account Settings', edit_user_registration_path, class: "ui button orange" %>
+
+<div class="ui card">
+  <div class="content">
+    <div class="header">
+      <%= current_user.email %>
+    </div>
+    <div class="meta">
+      <%= current_user.role %>
+    </div>
+    <div class="description">
+      <ul>
+        <li>Race: <%= current_user.race %></li>
+        <li>Gender: <%= current_user.gender %></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<% if @tenancies.present? %>
+<h2>My Tenancies</h2>
+<table>
+<% @tenancies.each do |tenancy| %>
+  <tr>
+    <td><%= link_to tenancy.landlord.name, [:union, tenancy.landlord] %></td>
+    <td><%= link_to tenancy.unit.address, [:union, tenancy.unit] %></td>
+    <td><%= composite_rent(tenancy) %></td>
+    <td><%= tenancy.start_date.strftime('%Y') %><%= tenancy.end_date&.strftime(' - %Y') %></td>
+    <td><%= render partial: "union/tenancies/tenancy_rating", object: tenancy %></td>
+    <td><%= link_to 'Show', [:union, tenancy] %></td>
+    <td><%= edit_link(edit_union_tenancy_path(tenancy)) if can?(:edit, tenancy) %></td>
+    <td><%= destroy_link(tenancy) if can?(:destroy, tenancy) %></td>
+  </tr>
+<% end %>
+</table>
+<% end %>

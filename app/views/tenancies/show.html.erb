@@ -1,24 +1,25 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Review for <%= @rating.unit.address %></h1>
 <p>
   <strong>Landlord:</strong>
   <%= link_to @rating.landlord.name, @rating.landlord %>
 </p>
 
-<p>
-  <strong>Overall:</strong>
-  <%= rating_icon @rating.overall %>
-</p>
+<div class="ui horizontal segments">
+  <div class="ui segment">
+    <p>
+      <strong>Overall:</strong> <%= rating_icon @rating.overall %>
+    </p>
+  </div>
+  <div class="ui segment">
+    <p>
+      <strong>Repairs:</strong> <%= rating_icon @rating.repairs %>
+    </p>    
+  </div>
+</div>
 
-<p>
-  <strong>Repairs:</strong>
-  <%= rating_icon @rating.repairs %>
-</p>
-
-<p>
+<p class="ui segment">
   <strong>Review:</strong>
   <%= @rating.public_review %>
 </p>
 
-<%= link_to 'Back', ratings_path %>
+<%= render "shared/back_button" %>

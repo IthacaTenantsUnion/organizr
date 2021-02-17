@@ -14,4 +14,8 @@ class Landlord < ApplicationRecord
   has_many :tenants, through: :tenancies, source: :user, inverse_of: :landlords
 
   validates :name, presence: true, uniqueness: true
+
+  def to_s
+    name
+  end
 end

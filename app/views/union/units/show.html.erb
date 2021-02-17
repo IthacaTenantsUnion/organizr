@@ -1,23 +1,13 @@
-<p id="notice"><%= notice %></p>
+<%= render partial: "union/units/unit_card", object: @unit %>
 
-<dl>
-  <dt>Address:</dt>
-  <dd><%= @unit.address %></dd>
-
-  <dt>Number of Occupants:</dt>
-  <dd><%= @unit.number_of_occupants %></dd>
-
-  <dt>Building Type</dt>
-  <dd><%= Unit.building_types[@unit.building_type] %></dd>
-
-  <% if @unit.landlords.present? %>
-    <dt>Landlord(s)</dt>
-    <dd><%= @unit.landlords.map(&:name).join(', ') %></dd>
-  <% end %>
-</dl>
+<div>
+<%= render partial: "tenancies/rating_card", object: @unit.ratings, locals: { score: :overall_average } %>
+<%= render partial: "tenancies/rating_card", object: @unit.ratings, locals: { score: :repairs_average } %>
+</div>
 
 <%if @tenancies.present? %>
-  <h2>Past Records</h2>
+  <h3>Past Records</h3>
+
   <table>
     <thead>
       <tr>
@@ -40,16 +30,10 @@
       <% end %>
     </tbody>
   </table>
-
-  <h2>Reviews of this Place</h2>
-  <% @tenancies.each do |tenancy| %>
-    <article class="review">
-      <h3>Public</h3>
-      <%= tenancy.public_review %>
-      <h3>Private</h3>
-      <%= tenancy.private_review %>
-    </article>
-  <% end %>
 <% end %>
-<%= link_to 'Edit', edit_union_unit_path(@unit) if can? :edit, @unit %> |
-<%= link_to 'Back', union_units_path %>
+
+<h3>Reviews of this Unit</h3>
+<%= render partial: "union/tenancies/review_card", collection: @tenancies %>
+
+<%= render("shared/edit_button", target: edit_union_unit_path(@unit)) if can? :edit, @unit %>
+<%= render "shared/back_button" %>

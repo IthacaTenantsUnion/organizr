@@ -1,0 +1,23 @@
+<%= form_with(model: current_user, url: profile_path, method: :put, local: true, class: "ui form") do |form| %>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :race %>
+    <%= form.text_field :race %>
+  </div>
+
+  <div class="field">
+    <%= form.label :gender %>
+    <%= form.text_field :gender %>
+  </div> 
+
+  <div class="actions">
+    <%= form.submit "Save", class: "ui button green" %>
+  </div>
+<% end %>
+
+<%= render "shared/back_button" %>

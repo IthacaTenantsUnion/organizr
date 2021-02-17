@@ -1,23 +1,12 @@
-<p id="notice"><%= notice %></p>
+<%= render("shared/edit_button", target: edit_union_landlord_path(@landlord)) if can? :edit, @landlord %> | 
+<%= render("shared/back_button") %>
 
-<h1><%= @landlord.name %></h1>
+<%= render partial: "tenancies/rating_card", object: @landlord.ratings, locals: { score: :overall_average } %>
+<%= render partial: "tenancies/rating_card", object: @landlord.ratings, locals: { score: :repairs_average } %>
 
-<h2>Known Units</h2>
-<ul>
-<% @units.each do |unit| %>
-  <li><%= link_to unit.address, [:union, unit] %> (Average Rating: <%= rating_grade(@landlord.ratings.overall_average) %> )</li>
-<% end %>
-</ul>
 
-<h2>Reviews of this Landlord</h2>
-<% @tenancies.each do |tenancy| %>
-  <article class="review">
-    <h3>Public</h3>
-    <%= tenancy.public_review %>
-    <h3>Private</h3>
-    <%= tenancy.private_review %>
-  </article>
-<% end %>
+<h3>Known Units</h3>
+  <%= render partial: "union/units/unit_card", collection: @units %>
 
-<%= link_to 'Edit', edit_union_landlord_path(@landlord) if can? :edit, @landlord %> |
-<%= link_to 'Back', union_landlords_path %>
+<h3>Reviews of this Landlord</h3>
+  <%= render partial: "union/tenancies/review_card", collection: @tenancies %>

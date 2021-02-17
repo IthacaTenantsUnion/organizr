@@ -1,7 +1,8 @@
 module RatingsHelper
   def rating_grade(average, tag_type = :strong)
     rating = clamp_rating(average)
-    content_tag(tag_type, rating, class: ['grade', rating])
+    return content_tag(tag_type, rating, class: ['grade', rating]) if tag_type.present?
+    rating
   end
 
   def rating_icon(value, show_text = false)

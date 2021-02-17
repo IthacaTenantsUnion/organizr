@@ -18,17 +18,44 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
+body {
+   .sr-only {
+    border: 0 !important;
+    clip: rect(1px, 1px, 1px, 1px) !important; /* 1 */
+    -webkit-clip-path: inset(50%) !important;
+      clip-path: inset(50%) !important;  /* 2 */
+    height: 1px !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    position: absolute !important;
+    width: 1px !important;
+    white-space: nowrap !important;            /* 3 */
+  }
 
-.sr-only {
-border: 0 !important;
-clip: rect(1px, 1px, 1px, 1px) !important; /* 1 */
--webkit-clip-path: inset(50%) !important;
-  clip-path: inset(50%) !important;  /* 2 */
-height: 1px !important;
-margin: -1px !important;
-overflow: hidden !important;
-padding: 0 !important;
-position: absolute !important;
-width: 1px !important;
-white-space: nowrap !important;            /* 3 */
+  .back.button {
+    margin-top: 2rem;
+  }
+
+  .flash {
+    padding: 1rem auto;
+    display: flex;
+    justify-content: space-between;
+
+    i { font-size: 2rem; color: inherit; margin-right: 1rem;}
+    p {
+      font-size: 1.4rem;
+      vertical-align: middle;
+      flex-grow: 2;
+      margin-bottom: 0;
+    }
+  }
+
+  form.ui {
+    margin-bottom: 2rem;
+  }
+
+  a.label.circular {
+    cursor: default !important;
+  }
 }

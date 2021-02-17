@@ -1,26 +1,20 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Landlords</h1>
-
-<table>
+<table class="ui celled table">
   <thead>
     <tr>
       <th>Name</th>
       <th>Overall</th>
       <th>Repairs</th>
       <th>Reviews</th>
-      <th></th>
     </tr>
   </thead>
 
   <tbody>
     <% @landlords.each do |landlord| %>
       <tr>
-        <td><%= landlord.name %></td>
+        <td data-label="Name"><%= link_to landlord.name, landlord %></td>
         <%= rating_grade(landlord.ratings.overall_average, :td) %>
         <%= rating_grade(landlord.ratings.repairs_average, :td) %>
-        <td><%= landlord.tenancies.with_ratings.size %></td>
-        <td><%= link_to 'Show', landlord %></td>
+        <td data-label="Reviews"><%= landlord.tenancies.with_ratings.size %></td>
       </tr>
     <% end %>
   </tbody>

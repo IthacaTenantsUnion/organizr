@@ -1,9 +1,5 @@
-<p id="notice"><%= notice %></p>
+<h3>Places I've lived</h3>
 
-<h1>Tenancies</h1>
-
-<h2>Places I've lived</h2>
-<%= link_to 'New Tenancy', new_union_tenancy_path %>
 <table>
   <thead>
     <tr>
@@ -31,12 +27,12 @@
     <% end %>
   </tbody>
 </table>
+<%= render "shared/new_button", target: new_union_tenancy_path %>
 
-<h2>Other People</h2>
+<h3>Other People</h3>
 <table>
   <thead>
     <tr>
-      <th>Tenant</th>
       <th>Landlord</th>
       <th>Unit</th>
       <th>Rent</th>
@@ -49,7 +45,6 @@
   <tbody>
     <% @other_tenancies.each do |tenancy| %>
       <tr>
-        <td><%= tenancy.tenant %></td>
         <td><%= link_to tenancy.landlord.name, [:union, tenancy.landlord] %></td>
         <td><%= link_to tenancy.unit.address, [:union, tenancy.unit] %></td>
         <td><%= composite_rent(tenancy) %></td>

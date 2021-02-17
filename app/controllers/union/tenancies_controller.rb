@@ -6,21 +6,25 @@ class Union::TenanciesController < Union::BaseController
 
   # GET /tenancies or /tenancies.json
   def index
+    @title = "All Tenancies"
     @my_tenancies = current_user.tenancies.all
     @other_tenancies = Tenancy.where.not(tenant: current_user)
   end
 
   # GET /tenancies/1 or /tenancies/1.json
   def show
+    @title = "#{@tenancy.start_date.strftime('%Y')} at #{@tenancy.unit.address}"
   end
 
   # GET /tenancies/new
   def new
+    @title = "New Tenancy"
     @tenancy = current_user.tenancies.new
   end
 
   # GET /tenancies/1/edit
   def edit
+    @title = "Editing Tenancy"
   end
 
   # POST /tenancies or /tenancies.json

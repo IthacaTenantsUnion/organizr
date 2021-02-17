@@ -1,0 +1,19 @@
+<% grade = rating_grade(rating_card.send(score), nil) 
+   colors = { "A" => "blue", "B" => "green", "C" => "yellow", "D" => "orange", "F" => "red" }
+%>
+
+
+<div class="ui card">
+  <div class="content">
+    <div class="header"><%= score.to_s.gsub('_', ' ').capitalize %></div>
+  </div>
+  <div class="content">
+    <a class="ui massive circular label <%= colors[grade] %>">
+      <%= rating_grade(rating_card.send(score), nil) %>
+    </a>
+    <p class="ui floated right">
+    <%= rating_card.send(score).round(2) %> / 3.0  (<%= rating_card.size %> reviews)
+  </p>
+  </div>
+
+</div>

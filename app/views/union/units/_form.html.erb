@@ -11,22 +11,35 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :address %>
-    <%= form.text_field :address %>
+
+  <div>
+    <%= form.label :address do %>
+      <span>Address</span>
+      <%= form.text_field :address %>
+    <% end %>  
   </div>
 
-  <div class="field">
-    <%= form.label :number_of_occupants %>
-    <%= form.text_field :number_of_occupants %>
+
+  <div>
+    <%= form.label :number_of_occupants do %>
+      <span>Number of Occupants</span>
+      <%= form.text_field :number_of_occupants %>
+    <% end %>  
   </div>
 
-  <div class="field">
-    <%= form.label :building_type %>
-    <%= form.collection_select :building_type, Unit.building_types, :first, :last %>
+  <div>
+    <%= form.label :building_type do %>
+      <span>
+        Requested Limit
+      </span>
+      <%= form.collection_select :building_type, Unit.building_types, :first, :last, {}, { } %>
+    <% end %>
   </div>
 
-  <div class="actions">
+  <div>
     <%= form.submit %>
   </div>
 <% end %>
+
+
+

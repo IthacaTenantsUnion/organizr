@@ -2,14 +2,11 @@ Rails.application.routes.draw do
   namespace :union do
     resources :landlords
     resources :units
-    resources :tenancies# do
-    #  resources :ratings
-    #end
+    resources :tenancies
   end
   
   get 'ratings', to: 'tenancies#index', as: :ratings
   get 'ratings/:id', to: 'tenancies#show', as: :rating
-  #resources :ratings, only: %i(index show)
   
   resources :units, only: %i(index show) do
     resources :ratings, only: %i(index show)
@@ -18,9 +15,9 @@ Rails.application.routes.draw do
     resources :ratings, only: %i(index show)
   end
   
-  put 'profile', to: 'users#update'
-  get 'profile', to: 'users#show'
-  get 'profile/edit', to: 'users#edit'
+  put 'profile', to: 'profiles#update'
+  get 'profile', to: 'profiles#show'
+  get 'profile/edit', to: 'profiles#edit'
   
   devise_for :users, controllers: {
     sessions: 'users/sessions'

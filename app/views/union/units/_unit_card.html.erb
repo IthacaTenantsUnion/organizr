@@ -1,0 +1,17 @@
+<div>
+  <p>
+    <%= link_to_unless_current unit_card.address, [:union,unit_card] %>
+  </p>
+  <p>
+    Number of Occupants: <%= unit_card.number_of_occupants %>
+  </p>
+  <p>
+    Building Type: <%= Unit.building_types[unit_card.building_type] || "Unknown" %>
+  </p>
+
+  <% if unit_card.landlords.present? %>
+  <p>
+    Landlord(s): <%= unit_card.landlords.map(&:name).join(', ') %>
+  </p>
+  <% end %>
+</div>

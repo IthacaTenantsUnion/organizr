@@ -1,0 +1,16 @@
+<div class="ui card">
+  <div class="content">
+    <div class="header"><%= unit_card.address %></div>
+  </div>
+  <div class="content">
+    <p>
+      Average Rating <%= rating_grade(@landlord.ratings.overall_average) %>
+    </p>
+    <p>
+      Reviewed <%= @landlord.ratings.size %> times
+    </p>
+  </div>
+  <div class="extra content">
+    <%= link_to "View Unit", unit_card, class: "ui button" %>
+  </div>
+</div>

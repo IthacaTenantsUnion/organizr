@@ -11,12 +11,17 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
+  <div>
+  <%= form.label :name do %>
+    <span>Name</span>
     <%= form.text_field :name %>
-  </div>
+  <% end %>
+  
 
-  <div class="actions">
+  <div>
     <%= form.submit %>
   </div>
+</div>
 <% end %>
+
+

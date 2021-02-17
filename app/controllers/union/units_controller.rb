@@ -4,21 +4,25 @@ class Union::UnitsController < Union::BaseController
 
   # GET /units or /units.json
   def index
+    @title = "Units"
     @units = Unit.all
   end
 
   # GET /units/1 or /units/1.json
   def show
+    @title = @unit.address
     @tenancies = Tenancy.by_unit(@unit)
   end
 
   # GET /units/new
   def new
+    @title = "New Unit"
     @unit = Unit.new
   end
 
   # GET /units/1/edit
   def edit
+    @title = "Editing Unit"
   end
 
   # POST /units or /units.json

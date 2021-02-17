@@ -11,62 +11,88 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :unit_id %>
-    <%= form.collection_select :unit_id, @units, :id, :address %>
+  <div>
+    <%= form.label :unit_id do %>
+      <span>Unit</span>
+      <%= form.collection_select :unit_id, @units, :id, :address, {}, { } %>
+    <% end %>
   </div>
 
-  <div class="field">
-    <%= form.label :rent_total, "The total monthly rent" %>
-    <%= form.text_field :rent_total %>
-  </div>
+  <div>
+    <div>
+        <%= form.label :rent_portion do %>
+          <span>The portion of rent you pay</span>
+          <%= form.text_field :rent_portion %>
+        <% end %>
+    </div>
 
-  <div class="field">
-    <%= form.label :rent_portion, "The portion of rent you pay" %>
-    <%= form.text_field :rent_portion %>
-  </div>
-
-  <div class="field">
-    <%= form.label :landlord_id %>
-    <%= form.collection_select :landlord_id, @landlords, :id, :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :start_date %>
-    <%= form.date_field :start_date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :end_date %>
-    <%= form.date_field :end_date, include_blank: true %>
-  </div>
-
-  <div class="field">
-    <%= form.label :overall, "Overall Rating", for: 'overall' %>
-    <div class="rating">
-      <%= form.collection_radio_buttons :overall, [['0', icon('fas', "angry", 'Awful')] ,['1', icon('fas', "frown", 'Poor')], ['2', icon('fas', 'meh', 'OK')], ['3', icon('fas', "smile", "Good")]], :first, :last %>
+    <div>
+      <%= form.label :rent_total do %>
+        <span>The total monthly rent</span>
+        <%= form.text_field :rent_total %>
+      <% end %>
     </div>
   </div>
+  
 
-  <div class="field">
-    <%= form.label :repairs, "Repairs (if applicable)", for: 'repairs' %>
-    <div class="rating">
-      <%= form.collection_radio_buttons :repairs, [['0', icon('fas', "angry", 'Awful')] ,['1', icon('fas', "frown", 'Poor')], ['2', icon('fas', 'meh', 'OK')], ['3', icon('fas', "smile", "Good")], ['', icon('fas', 'comment-slash', 'N/A')]], :first, :last %>
+  <div>
+    <%= form.label :landlord_id do %>
+    <span>Landlord</span>
+      <%= form.collection_select :landlord_id, @landlords, :id, :name, {}, { } %>
+    <% end %>
+  </div>
+
+  <div>
+    <div>
+      <%= form.label :start_date do %>
+        <span>Start Date</span>
+        <%= form.date_field :start_date %>
+      <% end %>
     </div>
+
+      <div>
+        <%= form.label :end_date do %>
+          <span>End Date</span>
+          <%= form.date_field :end_date, include_blank: true %>
+        <% end %>
+      </div>
+    </div>
+
+    <div>
+      <div>
+      <%= form.label :overall do %>
+        <span>Overall Rating</span>
+        <div>
+          <%= form.collection_radio_buttons :overall, [['0', icon('fas', "angry", 'Awful')] ,['1', icon('fas', "frown", 'Poor')], ['2', icon('fas', 'meh', 'OK')], ['3', icon('fas', "smile", "Good")]], :first, :last %>
+        </div>
+      <% end %>
+    </div>
+
+      <div>
+        <%= form.label :repairs do %>
+          <span>Repairs Rating</span>
+          <div>
+            <%= form.collection_radio_buttons :repairs, [['0', icon('fas', "angry", 'Awful')] ,['1', icon('fas', "frown", 'Poor')], ['2', icon('fas', 'meh', 'OK')], ['3', icon('fas', "smile", "Good")], ['', icon('fas', 'comment-slash', 'N/A')]], :first, :last %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div>
+    <%= form.label :public_review do %>
+      <span><strong>Public:</strong> This text will be visible to everyone, including users who are not signed-in</span>
+      <%= form.text_area :public_review %>
+    <% end %>
   </div>
 
-  <div class="field">
-    <%= form.label :public_review, "This text will be visible to everyone, including users who are not signed-in" %>
-    <%= form.text_area :public_review %>
+    <div>
+    <%= form.label :private_review do %>
+      <span><strong>Private</strong>: This Text Will Only Be Visible by Union Members, who are signed-in</span>
+      <%= form.text_area :private_review %>
+    <% end %>
   </div>
 
-  <div class="field">
-    <label></label>
-    <%= form.label :private_review, "This Text Will Only Be Visible by Union Members, who are signed-in" %>
-    <%= form.text_area :private_review %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit class: 'ui button' %>
+  <div>
+    <%= form.submit %>
   </div>
 <% end %>

@@ -1,0 +1,16 @@
+<div class="ui card">
+  <div class="content">
+    <div class="header"><%= landlord_card.name %></div>
+  </div>
+  <div class="content">
+    <p>
+      Average Rating <%= rating_grade(landlord_card.ratings.overall_average) %>
+    </p>
+    <p>
+      Reviewed <%= landlord_card.ratings.size %> times
+    </p>
+  </div>
+  <div class="extra content">
+    <%= link_to "View Landlord", landlord_card, class: "ui button" %>
+  </div>
+</div>
