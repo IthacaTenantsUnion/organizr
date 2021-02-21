@@ -35,10 +35,10 @@ class Tenancy < ApplicationRecord
   scope :by_landlord, ->(landlord) { where(landlord: landlord )}
 
   def landlord_name
-    landlord.name
+    landlord&.name
   end
 
   def unit_address
-    unit.address
+    unit&.address
   end
 end
