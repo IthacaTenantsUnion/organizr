@@ -10,4 +10,14 @@ class UnitsController < ApplicationController
     @unit = Unit.includes(:tenancies, tenancies: [:landlord, :tenant]).find(params[:id])
     @title = @unit&.address || "Not found"
   end
+
+  # GET /landlords/search.json
+  def search
+    q = params[:q].downcase
+    @units = Unit.where("address ILIKE ?", "%#{q}%").limit(6)
+
+    response do
+      format.json { @units.json }
+    end
+  end
 end

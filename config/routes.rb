@@ -9,10 +9,11 @@ Rails.application.routes.draw do
   get 'ratings/:id', to: 'tenancies#show', as: :rating
   
   resources :units, only: %i(index show) do
-    resources :ratings, only: %i(index show)
+    get :search, on: :collection
   end
+  
   resources :landlords, only: %i(index show) do
-    resources :ratings, only: %i(index show)
+    get :search, on: :collection
   end
   
   put 'profile', to: 'profiles#update'
