@@ -8,7 +8,10 @@ Rails.application.routes.draw do
   get 'ratings', to: 'tenancies#index', as: :ratings
   get 'ratings/:id', to: 'tenancies#show', as: :rating
   
-  resources :units, only: %i(index show)
+  resources :units, only: %i(index show) do
+    get :search, on: :collection
+  end
+  
   resources :landlords, only: %i(index show) do
     get :search, on: :collection
   end

@@ -12,10 +12,9 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :unit_id do %>
-      <span>Unit</span>
-      <%= form.collection_select :unit_id, @units, :id, :address, {}, { } %>
-    <% end %>
+    <%= form.label :unit_id, "Address" %>
+    <%= form.search_field :unit_Address, placeholder: "Street Address...", id: "unit_autocomplete", data: { behavior: "autocomplete" } %>    
+    <%= form.hidden_field :unit_id %>
   </div>
 
   <div class="field">

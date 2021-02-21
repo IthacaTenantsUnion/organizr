@@ -2,7 +2,7 @@
 
 $(document).on('turbolinks:load', function() {
 
-  var options = {
+  var landlord_options = {
     url: function(phrase) {
       return "/landlords/search.json?q=" + phrase;
     },
@@ -22,6 +22,27 @@ $(document).on('turbolinks:load', function() {
     },
   };
 
-  $('*[data-behavior="autocomplete"]').easyAutocomplete(options);
+  var unit_options = {
+    url: function(address) {
+      return "/units/search.json?q=" + address;
+    },
+    getValue: "address",
+    list: {
+      onClickEvent: function() {
+        var selectedItemValue = $('#unit_autocomplete').getSelectedItemData().unit_id;
+        $("#tenancy_unit_id").val(selectedItemValue).trigger("change");
+      },
+      onKeyEnterEvent: function() {
+        var selectedItemValue = $('#unit_autocomplete').getSelectedItemData().unit_id;
+        $("#tenancy_unit_id").val(selectedItemValue).trigger("change");
+      },
+      match: {
+        enabled: true
+      }
+    },
+  };
+
+  $('#landlord_autocomplete[data-behavior="autocomplete"]').easyAutocomplete(landlord_options);
+  $('#unit_autocomplete[data-behavior="autocomplete"]').easyAutocomplete(unit_options);
 });
 
