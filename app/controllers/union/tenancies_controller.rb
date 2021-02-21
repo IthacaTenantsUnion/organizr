@@ -67,11 +67,6 @@ class Union::TenanciesController < Union::BaseController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    #def set_Tenancy
-    #  @tenancy = Tenancy.find(params[:id])
-    #end
-
     def setup_form_data
       @units = Unit.all
       @landlords = Landlord.all
@@ -79,6 +74,8 @@ class Union::TenanciesController < Union::BaseController
 
     # Only allow a list of trusted parameters through.
     def tenancy_params
-      params.require(:tenancy).permit(:landlord_id, :unit_id, :rent_total, :rent_portion, :start_date, :end_date, :overall, :repairs, :public_review, :private_review)
+      params[:tenancy][:unit_id] = Unit.find_or_create_by(address: params[:tenancy].delete(:unit_address)).to_param
+      params[:tenancy][:landlord_id] = Landlord.find_or_create_by(name: params[:tenancy].delete(:landlord_name)).to_param
+      params.require(:tenancy).permit(:landlord_id, :landlord_name, :unit_address, :unit_id, :rent_total, :rent_portion, :start_date, :end_date, :overall, :repairs, :public_review, :private_review)
     end
 end

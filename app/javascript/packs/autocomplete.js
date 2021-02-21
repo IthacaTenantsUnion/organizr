@@ -7,15 +7,8 @@ $(document).on('turbolinks:load', function() {
       return "/landlords/search.json?q=" + phrase;
     },
     getValue: "name",
+    requestDelay: 400,
     list: {
-      onClickEvent: function() {
-        var selectedItemValue = $('#landlord_autocomplete').getSelectedItemData().landlord_id;
-        $("#tenancy_landlord_id").val(selectedItemValue).trigger("change");
-      },
-      onKeyEnterEvent: function() {
-        var selectedItemValue = $('#landlord_autocomplete').getSelectedItemData().landlord_id;
-        $("#tenancy_landlord_id").val(selectedItemValue).trigger("change");
-      },
       match: {
         enabled: true
       }
@@ -27,15 +20,8 @@ $(document).on('turbolinks:load', function() {
       return "/units/search.json?q=" + address;
     },
     getValue: "address",
+    requestDelay: 400,
     list: {
-      onClickEvent: function() {
-        var selectedItemValue = $('#unit_autocomplete').getSelectedItemData().unit_id;
-        $("#tenancy_unit_id").val(selectedItemValue).trigger("change");
-      },
-      onKeyEnterEvent: function() {
-        var selectedItemValue = $('#unit_autocomplete').getSelectedItemData().unit_id;
-        $("#tenancy_unit_id").val(selectedItemValue).trigger("change");
-      },
       match: {
         enabled: true
       }

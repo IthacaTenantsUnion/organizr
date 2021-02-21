@@ -33,4 +33,12 @@ class Tenancy < ApplicationRecord
   scope :by_unit, ->(unit) { where(unit: unit) }
   scope :by_tenant, ->(user) { where(users: { id: user.id }) }
   scope :by_landlord, ->(landlord) { where(landlord: landlord )}
+
+  def landlord_name
+    landlord.name
+  end
+
+  def unit_address
+    unit.address
+  end
 end
