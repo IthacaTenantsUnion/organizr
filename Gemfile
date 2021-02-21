@@ -28,9 +28,16 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
+# Basic authorization
 gem 'cancancan'
+
+# Provides more detailed date validations; successions
 gem 'date_validator'
+
+# Authentication
 gem 'devise'
+
+# Enables font-awesome icons
 gem 'font-awesome-sass'
 
 group :development, :test do

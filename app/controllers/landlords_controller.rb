@@ -11,4 +11,14 @@ class LandlordsController < ApplicationController
     @title = @landlord.name
     @units = @landlord.units
   end
+
+  # GET /landlords/search.json
+  def search
+    q = params[:q].downcase
+    @landlords = Landlord.where("name ILIKE ?", "%#{q}%").limit(6)
+
+    response do
+      format.json { @landlords.json }
+    end
+  end
 end

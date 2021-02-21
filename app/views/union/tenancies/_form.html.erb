@@ -11,70 +11,65 @@
     </div>
   <% end %>
 
-  <div>
+  <div class="field">
     <%= form.label :unit_id do %>
       <span>Unit</span>
       <%= form.collection_select :unit_id, @units, :id, :address, {}, { } %>
     <% end %>
   </div>
 
-  <div>
-    <div>
-        <%= form.label :rent_portion do %>
-          <span>The portion of rent you pay</span>
-          <%= form.text_field :rent_portion %>
+  <div class="field">
+    <div class="two fields">
+      <div class="field">
+          <%= form.label :rent_portion do %>
+            <span>The portion of rent you pay</span>
+            <%= form.text_field :rent_portion %>
+          <% end %>
+      </div>
+
+      <div class="field">
+        <%= form.label :rent_total do %>
+          <span>The total monthly rent</span>
+          <%= form.text_field :rent_total %>
         <% end %>
-    </div>
-
-    <div>
-      <%= form.label :rent_total do %>
-        <span>The total monthly rent</span>
-        <%= form.text_field :rent_total %>
-      <% end %>
+      </div>
     </div>
   </div>
-  
 
-  <div>
-    <%= form.label :landlord_id do %>
-    <span>Landlord</span>
-      <%= form.collection_select :landlord_id, @landlords, :id, :name, {}, { } %>
-    <% end %>
+  <div class="field">
+    <%= form.label :landlord_id, "Landlord" %>
+    <%= form.search_field :landlord_name, placeholder: "Enter name...", id: "landlord_autocomplete", data: { behavior: "autocomplete" } %>    
+    <%= form.hidden_field :landlord_id %>
   </div>
 
-  <div>
-    <div>
-      <%= form.label :start_date do %>
-        <span>Start Date</span>
-        <%= form.date_field :start_date %>
-      <% end %>
-    </div>
+  <div class="field">
+    <div class="two fields">
+      <div class="field">
+        <%= form.label :start_date do %>
+          <span>Start Date</span>
+          <%= form.date_field :start_date %>
+        <% end %>
+      </div>
 
-      <div>
+      <div class="field">
         <%= form.label :end_date do %>
           <span>End Date</span>
           <%= form.date_field :end_date, include_blank: true %>
         <% end %>
       </div>
     </div>
+  </div>
 
-    <div>
-      <div>
-      <%= form.label :overall do %>
-        <span>Overall Rating</span>
-        <div>
-          <%= form.collection_radio_buttons :overall, [['0', icon('fas', "angry", 'Awful')] ,['1', icon('fas', "frown", 'Poor')], ['2', icon('fas', 'meh', 'OK')], ['3', icon('fas', "smile", "Good")]], :first, :last %>
-        </div>
-      <% end %>
-    </div>
+    <div class="field">
+      <div class="two fields">
+      <div class="field rating">
+        <%= form.label :overall, "Overall Rating" %>
+        <%= form.collection_radio_buttons :overall, [['0', icon('fas', "angry", 'Awful')] ,['1', icon('fas', "frown", 'Poor')], ['2', icon('fas', 'meh', 'OK')], ['3', icon('fas', "smile", "Good")]], :first, :last %>
+      </div>
 
-      <div>
-        <%= form.label :repairs do %>
-          <span>Repairs Rating</span>
-          <div>
-            <%= form.collection_radio_buttons :repairs, [['0', icon('fas', "angry", 'Awful')] ,['1', icon('fas', "frown", 'Poor')], ['2', icon('fas', 'meh', 'OK')], ['3', icon('fas', "smile", "Good")], ['', icon('fas', 'comment-slash', 'N/A')]], :first, :last %>
-          </div>
-        <% end %>
+      <div class="field rating">
+        <%= form.label :repairs, "Repairs Rating" %>
+        <%= form.collection_radio_buttons :repairs, [['0', icon('fas', "angry", 'Awful')] ,['1', icon('fas', "frown", 'Poor')], ['2', icon('fas', 'meh', 'OK')], ['3', icon('fas', "smile", "Good")], ['', icon('fas', 'comment-slash', 'N/A')]], :first, :last %>
       </div>
     </div>
 
