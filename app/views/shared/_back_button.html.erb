@@ -1,4 +1,13 @@
-<%= link_to :back, class: "back ui button blue inverted" do %>  
+<%
+url = case params[:action].to_s
+  when "edit"
+    url_for(controller: params[:controller], action: :show, id: params[:id])
+  else # new, show, etc
+    url_for(controller: params[:controller], action: :index)
+  end
+%>
+
+<%= link_to url, class: "back ui button blue inverted" do %>
   <%= icon('fas', 'arrow-left') %>
   Back
 <% end %>
