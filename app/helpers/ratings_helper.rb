@@ -8,17 +8,20 @@ module RatingsHelper
   def rating_icon(value, show_text = false)
     icon_name, text = case value.to_s
     when '0'
-      ['angry', show_text ? 'Awful' : '']
+      ['1F621', show_text ? 'Awful' : '']
     when '1'
-      ['frown', show_text ? 'Poor' : '']
+      ['1F641', show_text ? 'Poor' : '']
     when '2'
-      ['meh', show_text ? 'OK' : '']
+      ['1F610', show_text ? 'OK' : '']
     when '3'
-      ['smile', show_text ? 'Good' : '']
+      ['1F600', show_text ? 'Good' : '']
     else
-      [show_text ? 'comment-slash' : '', show_text ? 'N/A' : '']
+      ['1F636', show_text ? 'N/A' : '']
     end
-    icon('fas', icon_name, text)
+
+    content_tag :i, class: "emoji" do
+      "&#x#{icon_name}; #{text}".html_safe
+    end
   end
 
   def clamp_rating(value)
