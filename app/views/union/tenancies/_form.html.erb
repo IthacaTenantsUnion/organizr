@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label :unit_id, "Address" %>
-    <%= form.search_field :unit_address, placeholder: "Street Address...", id: "unit_autocomplete", data: { behavior: "autocomplete" } %>    
+    <%= form.search_field :unit_address, placeholder: "Street Address...", value: form.object.unit_address, id: "unit_autocomplete", data: { behavior: "autocomplete" } %>    
   </div>
 
   <div class="field">
@@ -36,7 +36,7 @@
 
   <div class="field">
     <%= form.label :landlord_id, "Landlord" %>
-    <%= form.search_field :landlord_name, placeholder: "Enter name...", id: "landlord_autocomplete", data: { behavior: "autocomplete" } %>    
+    <%= form.search_field :landlord_name, placeholder: "Enter name...", value: form.object.landlord_name, id: "landlord_autocomplete", data: { behavior: "autocomplete" } %>    
   </div>
 
   <div class="field">
