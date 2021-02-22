@@ -25,6 +25,7 @@ module RatingsHelper
   end
 
   def clamp_rating(value)
+    return nil unless value
     case value.to_f
     when 0...1
       "F"
