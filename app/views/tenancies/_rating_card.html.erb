@@ -1,5 +1,7 @@
-<% grade = rating_grade(rating_card.send(score), nil) 
-   colors = { "A" => "blue", "B" => "green", "C" => "yellow", "D" => "orange", "F" => "red" }
+<% 
+  rating_score = rating_card.send(score)
+  grade = rating_grade(rating_score, nil) 
+  colors = { "A" => "blue", "B" => "green", "C" => "yellow", "D" => "orange", "F" => "red" }
 %>
 
 
@@ -9,10 +11,14 @@
   </div>
   <div class="content">
     <a class="ui massive circular label <%= colors[grade] %>">
-      <%= rating_grade(rating_card.send(score), nil) %>
+      <%= rating_grade(rating_score, nil) %>
     </a>
     <p class="ui floated right">
-    <%= rating_card.send(score).round(2) %> / 3.0  (<%= rating_card.size %> reviews)
+      <% if rating_score %>
+        <%= rating_score.round(2) %> / 3.0  (<%= rating_card.size %> reviews)
+      <% else %>
+        No reviews yet!
+      <% end %>
   </p>
   </div>
 

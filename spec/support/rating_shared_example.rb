@@ -26,6 +26,14 @@ RSpec.shared_examples "average_ratings" do |which|
 
         expect(subject.ratings.repairs_average.round(3)).to eq((5/3.0).round(3))
       end
+
+      it "returns nil when all the ratings are nil" do
+        [nil,nil,nil,nil,nil].each do |score|
+          create(:tenancy, :with_rating, which => subject, repairs: score)
+        end
+
+        expect(subject.ratings.repairs_average).to be_nil
+      end
     end
   end
 end
