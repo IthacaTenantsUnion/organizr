@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :tenancies, only: %i(index)
+  end
+
   namespace :union do
     resources :landlords
     resources :units
