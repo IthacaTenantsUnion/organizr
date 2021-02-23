@@ -56,7 +56,7 @@ RSpec.describe "/union/landlords", type: :request do
 
         it "does nothing, no access" do
           patch union_landlord_url(landlord), params: { landlord: new_attributes }
-          expect(response).to redirect_to(root_path)
+          expect(response).to redirect_to new_user_session_url
         end
       end
     end

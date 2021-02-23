@@ -1,7 +1,7 @@
 class Union::TenanciesController < Union::BaseController
   load_and_authorize_resource only: [:show, :index, :destroy]
 
-  before_action :authenticate_user!, only: %i[new edit update destroy]
+  before_action :authenticate_user!#, only: %i[new edit update destroy]
 
   # GET /tenancies or /tenancies.json
   def index
