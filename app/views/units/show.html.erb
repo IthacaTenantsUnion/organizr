@@ -1,3 +1,11 @@
+<p>
+  Number of Occupants: <%= @unit.number_of_occupants %>
+</p>
+<p>
+  Building Type: <%= Unit.building_types[@unit.building_type] || "Unknown" %>
+</p>
+
+
 <div class="ui cards">
   <%= render partial: "tenancies/rating_card", object: @unit.ratings, locals: { score: :overall_average } %>
   <%= render partial: "tenancies/rating_card", object: @unit.ratings, locals: { score: :repairs_average } %>
@@ -11,4 +19,4 @@
 <%= render partial: "tenancies/review_table", object: @unit.tenancies %>
 
 
-<%= render partial: "shared/back_button" %>
+<%= render "shared/back_button" %>

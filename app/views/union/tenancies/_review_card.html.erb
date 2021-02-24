@@ -1,14 +1,25 @@
 <h3>
   <%= review_card.start_date %> - <%= review_card.end_date %>
 </h3>
-<article>
-  <h4>Public Review</h4>
-  <p>
-    <%= review_card.public_review %>
-  </p>
-
-  <h4>Private Review</h4>
-  <p>
-    <%= review_card.private_review %>
-  </p>
-</article>
+<div class="ui cards">
+  <div class="card">
+    <div class="content">
+      <div class="header">
+        Public Review
+      </div>
+      <div class="description">
+        <%= review_card.public_review %>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="content">
+      <div class="header">
+        Private Review
+      </div>
+      <div class="description">
+        <%= review_card.private_review %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -41,4 +41,10 @@ class Tenancy < ApplicationRecord
   def unit_address
     unit&.address
   end
+
+  def reviewed?
+    !public_review.blank? || 
+    overall.present? || 
+    repairs.present?
+  end
 end

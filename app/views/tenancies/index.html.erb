@@ -1,6 +1,6 @@
 <h1>Ratings</h1>
 
-<table>
+<table class="ui table celled">
   <thead>
     <tr>
       <th>Landlord</th>
@@ -12,6 +12,7 @@
 
   <tbody>
     <% @ratings.each do |rating| %>
+      <% next unless rating.reviewed? %>
       <tr>
         <td><%= link_to rating.landlord.name, rating.landlord %></td>
         <td><%= rating_icon(rating.overall) %></td>

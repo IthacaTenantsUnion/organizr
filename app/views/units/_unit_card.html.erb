@@ -1,14 +1,25 @@
 <div class="ui card">
   <div class="content">
-    <div class="header"><%= unit_card.address %></div>
+    <div class="header"><%= link_to unit_card.address, unit_card %></div>
   </div>
   <div class="content">
+    <p>
+      Number of Occupants: <%= unit_card.number_of_occupants %>
+    </p>
+    <p>
+      Building Type: <%= Unit.building_types[unit_card.building_type] || "Unknown" %>
+    </p>
     <p>
       Average Rating <%= rating_grade(unit_card.ratings.overall_average) %>
     </p>
     <p>
       Reviewed <%= unit_card.ratings.size %> times
     </p>
+    <% if unit_card.landlords.present? %>
+      <p>
+        Landlord(s): <%= render partial: "landlords/landlord_button", collection: unit_card.landlords %>
+      </p>
+    <% end %>
   </div>
   <div class="extra content">
     <%= link_to "View Unit", unit_card, class: "ui button" %>
