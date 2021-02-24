@@ -23,8 +23,8 @@
 <table>
 <% @tenancies.each do |tenancy| %>
   <tr>
-    <td><%= link_to tenancy.landlord.name, [:union, tenancy.landlord] %></td>
-    <td><%= link_to tenancy.unit.address, [:union, tenancy.unit] %></td>
+    <td><%= link_to tenancy.landlord.name, tenancy.landlord %></td>
+    <td><%= link_to tenancy.unit.address, tenancy.unit %></td>
     <td><%= composite_rent(tenancy) %></td>
     <td><%= tenancy.start_date.strftime('%Y') %><%= tenancy.end_date&.strftime(' - %Y') %></td>
     <td><%= render partial: "union/tenancies/tenancy_rating", object: tenancy %></td>

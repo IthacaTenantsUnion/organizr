@@ -8,10 +8,13 @@
   </thead>
   <tbody>
   <% review_table.each do |tenancy| %>
+    <% next unless tenancy.reviewed? %>
     <tr>
       <td data-label="Overall Rating"><%= rating_icon(tenancy.overall) %></td>
       <td data-label="Repairs Rating"><%= rating_icon(tenancy.repairs) %></td>
-      <td data-label="Brief Review"><%= tenancy.public_review[0..300] %> (<%= link_to 'Read Full', rating_path(tenancy) %>)</td>
+      <td data-label="Brief Review"><%= tenancy.public_review[0..300] %>
+        <%= link_to('Read Full', rating_path(tenancy)) unless tenancy.public_review.blank? %>
+      </td>
     </tr>
   <% end %>
   </tbody>

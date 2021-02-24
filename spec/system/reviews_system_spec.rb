@@ -39,14 +39,6 @@ RSpec.describe "Reviews", :type => :system do
       visit union_tenancy_path(tenancy)
       expect(page).to have_text public_review
       expect(page).to have_text private_review
-
-      visit union_landlord_path(tenancy.landlord)
-      expect(page).to have_text public_review
-      expect(page).to have_text private_review
-
-      visit union_unit_path(tenancy.unit)
-      expect(page).to have_text public_review
-      expect(page).to have_text private_review      
     end
   end
 end

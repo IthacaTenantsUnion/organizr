@@ -4,8 +4,6 @@ Rails.application.routes.draw do
   end
 
   namespace :union do
-    resources :landlords
-    resources :units
     resources :tenancies
   end
   

@@ -4,9 +4,9 @@
   <article>
     <div>
       <p>
-        Unit: <%= link_to @tenancy.unit.address, [:union, @tenancy.unit] %></p>
+        Unit: <%= link_to @tenancy.unit.address, @tenancy.unit %></p>
       <p>
-        Landlord: <%= link_to @tenancy.landlord, [:union, @tenancy.landlord]  %></p>
+        Landlord: <%= link_to @tenancy.landlord.name, @tenancy.landlord  %></p>
       <p>
         Period: <%= @tenancy.start_date %> - <%= @tenancy.end_date || "Present" %></p>
       <p>

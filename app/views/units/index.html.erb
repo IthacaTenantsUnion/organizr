@@ -3,6 +3,7 @@
     <tr>
       <th>Address</th>
       <th>Landlord(s) Known</th>
+      <th>Building Type</th>
     </tr>
   </thead>
 
@@ -10,11 +11,10 @@
     <% @units.each do |unit| %>
       <tr>
         <td data-label="Address"><%= link_to unit.address, unit %></td>
-        <td data-label="Landlords Known">
-          <% unit.landlords.to_a.map do |l| %>
-            <%= link_to l.name, l %>
-          <% end %>
+        <td data-label="Landlord(s) Known">
+          <%= render partial: "landlords/landlord_button", collection: unit.landlords %>
         </td>
+        <td data-label="Building Type"><%= unit.building_type || "-" %>
       </tr>
     <% end %>
   </tbody>
