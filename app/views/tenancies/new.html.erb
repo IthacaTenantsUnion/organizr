@@ -1,0 +1,121 @@
+<h2>ITU Sign-up</h2>
+
+<p>Joining the Tenants Union means you can access and add to our growing collection of landlord reviews and rental price history, as well as get connected to other tenants who rent from your landlord.</p>
+
+<p>We periodically reach out to members with updates on legislation, resources for renters, and calls to action around abusive landlords and tenants in need. If your landlord is giving you problems, we’ll take on your case and help however we can!</p>
+
+<p>If you have more questions, feel free to reach out on Facebook, our contact page, or join our Slack from the email you’ll get once this form is completed!</p>
+
+<%= form_with(model: @tenancy, local: true, class: 'ui form') do |form| %>
+
+  <% if @tenancy.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tenancy.errors.count, "error") %> prohibited this tenancy from being saved:</h2>
+
+      <ul>
+        <% @tenancy.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <h3>About You</h3>
+
+  <p>We take privacy extremely seriously. Personal information will be kept private to the Ithaca Tenants Union, and we will never sell or release it. Ever.</p>
+
+  <div class="field">
+    <%= form.label :name, "Name" %>
+    <%= form.text_field :name %>    
+  </div>  
+
+  <div class="field">
+    <%= form.label :email, "Email" %>
+    <%= form.email_field :email %>    
+  </div>  
+
+  <div class="field">
+    <%= form.label :phone, "Phone" %>
+    <%= form.text_field :phone %>    
+  </div>
+
+
+  <h3>About your rental</h3>
+
+  <p>If there is more than one person or entity, such as if you rent from a company but contact a specific person, please put them in the next field.</p>
+
+  <div class="field">
+    <%= form.label :landlord_id, "Landlord / Property Manager" %>
+    <%= form.search_field :landlord_name, placeholder: "Enter name...", value: form.object.landlord_name, id: "landlord_autocomplete", data: { behavior: "autocomplete" } %>    
+  </div>
+
+  <p>Make sure to put the specific apartment that you rent from your landlord — including apartment number!</p>
+
+  <div class="field">
+    <%= form.label :unit_id, "Street Address (include city if not Ithaca)" %>
+    <%= form.search_field :unit_address, placeholder: "Street Address...", value: form.object.unit_address, id: "unit_autocomplete", data: { behavior: "autocomplete" } %>    
+  </div>
+
+
+  <div class="field">
+    <div class="two fields">
+    <div class="field rating">
+      <%= form.label :overall, "How would you rate your landlord in general?" %>
+      <%= form.collection_radio_buttons :overall, [['0', icon('fas', "angry", 'Awful')] ,['1', icon('fas', "frown", 'Poor')], ['2', icon('fas', 'meh', 'OK')], ['3', icon('fas', "smile", "Good")]], :first, :last %>
+    </div>
+
+    <div class="field rating">
+      <%= form.label :repairs, "How would you rate your landlord's responsiveness to repairs and other building issues?" %>
+      <%= form.collection_radio_buttons :repairs, [['0', icon('fas', "angry", 'Awful')] ,['1', icon('fas', "frown", 'Poor')], ['2', icon('fas', 'meh', 'OK')], ['3', icon('fas', "smile", "Good")], ['', icon('fas', 'comment-slash', 'N/A')]], :first, :last %>
+    </div>
+  </div>
+
+  <p>Would you mind leaving a short summary of your experience with your landlord? Make sure to note any experiences that stand out!</p>
+  <div>
+    <%= form.label :public_review do %>
+      <span><strong>Public:</strong> This text will be visible to everyone, including users who are not signed-in</span>
+      <%= form.text_area :public_review %>
+    <% end %>
+  </div>
+
+    <div>
+    <%= form.label :private_review do %>
+      <span><strong>Private</strong>: This Text Will Only Be Visible by Union Members, who are signed-in</span>
+      <%= form.text_area :private_review %>
+    <% end %>
+  </div>
+
+  
+
+
+  <h3>Demographic Info</h3>
+
+  <div class="field">
+    <%= form.label :income, "What is your average monthly income?" %>
+    <%= form.text_field :income %>    
+  </div>
+  
+
+  <p>This is completely optional — we use it to calculate rent burden patterns in Ithaca. Feel free to estimate!
+
+  <div class="field">
+    <p>Please put the total rent amount listed on your lease, even if it’s split between multiple tenants.</p>
+    <%= form.label :rent_total, "How much does your unit’s rent cost?" %>
+    <%= form.text_field :rent_total %>
+  </div>
+
+  <div class="field">
+    <p>Include yourself in this number!</p>
+    <%= form.label :number_of_occupants, "How many rent-paying people live in your unit?" %>
+    <%= form.text_field :number_of_occupants %>
+  </div>
+
+
+Are you interested in volunteering for the ITU? 
+This could be as simple as checking in on some friends, or as involved as joining one of our organizing teams! If you're interested, we'll be in touch to figure something out based on what you're interested in doing.
+Yes
+Maybe
+No
+
+<%= render "shared/back_button" %>
