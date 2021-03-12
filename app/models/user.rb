@@ -20,7 +20,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :tenancies, -> { extending AverageRatings }, dependent: :destroy
+  #has_many :tenancies, -> { extending AverageRatings }, dependent: :destroy
+  has_many :ratings
+  has_many :leases
   has_many :units, through: :tenancies, inverse_of: :tenant
   has_many :landlords, through: :tenancies, inverse_of: :tenants
 

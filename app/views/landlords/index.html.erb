@@ -14,7 +14,7 @@
         <td data-label="Name"><%= link_to landlord.name, landlord %></td>
         <%= rating_grade(landlord.ratings.overall_average, :td) %>
         <%= rating_grade(landlord.ratings.repairs_average, :td) %>
-        <td data-label="Reviews"><%= landlord.tenancies.with_ratings.size %></td>
+        <td data-label="Reviews"><%= landlord.ratings.size %></td>
       </tr>
     <% end %>
   </tbody>

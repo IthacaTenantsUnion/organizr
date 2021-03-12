@@ -17,9 +17,15 @@
   </div>
 </div>
 
-<p class="ui segment">
-  <strong>Review:</strong>
-  <%= @rating.public_review %>
-</p>
-
+<div class="ui segments">
+  <p class="ui segment">
+    <strong>Review:</strong>
+    <%= @rating.public_review %>
+  </p>
+  <% if current_user %>
+    <p class="ui segments private">
+      <%= @rating.private_review %>
+    </p>
+  <% end %>
+</div>
 <%= render "shared/back_button" %>

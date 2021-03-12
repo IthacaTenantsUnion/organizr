@@ -1,6 +1,6 @@
 <div class="ui cards">
-<%= render partial: "tenancies/rating_card", object: @landlord.ratings, locals: { score: :overall_average } %>
-<%= render partial: "tenancies/rating_card", object: @landlord.ratings, locals: { score: :repairs_average } %>
+<%= render partial: "ratings/rating_card", object: @landlord.ratings, locals: { score: :overall_average } %>
+<%= render partial: "ratings/rating_card", object: @landlord.ratings, locals: { score: :repairs_average } %>
 </div>
 
 
@@ -9,6 +9,6 @@
   <%= render partial: "units/unit_card", collection: @units %>
 </div>
 
-<%= render partial: "tenancies/review_table", object: @landlord.tenancies %>
+<%= render partial: "ratings/review_table", object: @landlord.ratings %>
 
 <%= render partial: "shared/back_button" %>

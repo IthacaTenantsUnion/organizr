@@ -18,19 +18,19 @@
 </div>
 
 
-<% if @tenancies.present? %>
-<h2>My Tenancies</h2>
+<% if @leases.present? %>
+<h2>My Leases</h2>
 <table>
-<% @tenancies.each do |tenancy| %>
+<% @.each do |lease| %>
   <tr>
-    <td><%= link_to tenancy.landlord.name, tenancy.landlord %></td>
-    <td><%= link_to tenancy.unit.address, tenancy.unit %></td>
-    <td><%= composite_rent(tenancy) %></td>
-    <td><%= tenancy.start_date.strftime('%Y') %><%= tenancy.end_date&.strftime(' - %Y') %></td>
-    <td><%= render partial: "union/tenancies/tenancy_rating", object: tenancy %></td>
-    <td><%= link_to 'Show', [:union, tenancy] %></td>
-    <td><%= edit_link(edit_union_tenancy_path(tenancy)) if can?(:edit, tenancy) %></td>
-    <td><%= destroy_link(tenancy) if can?(:destroy, tenancy) %></td>
+    <td><%= link_to lease.landlord.name, lease.landlord %></td>
+    <td><%= link_to lease.unit.address, lease.unit %></td>
+    <td><%= composite_rent(lease) %></td>
+    <td><%= lease.start_date.strftime('%Y') %><%= lease.end_date&.strftime(' - %Y') %></td>
+    <td><%= render partial: "union/leases/lease_rating", object: lease %></td>
+    <td><%= link_to 'Show', [:union, lease] %></td>
+    <td><%= edit_link(edit_union_lease_path(lease)) if can?(:edit, lease) %></td>
+    <td><%= destroy_link(lease) if can?(:destroy, lease) %></td>
   </tr>
 <% end %>
 </table>

@@ -10,8 +10,8 @@
 #  building_type       :string
 #
 class Unit < ApplicationRecord
-  has_many :leases, -> { extending AverageRatings }
-  
+  has_many :leases
+  has_many :ratings, -> { extending AverageRatings }
   has_many :landlords, through: :leases, inverse_of: :units
   has_many :tenants, through: :leases, source: :user
 

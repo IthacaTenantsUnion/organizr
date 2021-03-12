@@ -3,40 +3,32 @@ require "rails_helper"
 RSpec.describe "Reviews", :type => :system do
   let(:public_review) { "Public Text" }
   let(:private_review) { "Private Text" }
-  let(:tenancy){ FactoryBot.create(:tenancy, :with_rating, public_review: public_review, private_review: private_review) }
+  let(:rating){ FactoryBot.create(:rating, public_review: public_review, private_review: private_review) }
 
 
   context "When not signed in" do
     it "displays public, but not private, review data" do
-      visit rating_path(tenancy)
+      visit rating_path(rating)
       expect(page).to have_text public_review
       expect(page).to have_no_text private_review
 
-      visit landlord_path(tenancy.landlord)
+      visit landlord_path(rating.landlord)
       expect(page).to have_text public_review
       expect(page).to have_no_text private_review
 
-      visit unit_path(tenancy.unit)
+      visit unit_path(rating.unit)
       expect(page).to have_text public_review
       expect(page).to have_no_text private_review
-    end
-
-    it "does not display the date in the reviews" do
-      visit rating_path(tenancy)
-      expect(page).to have_no_text tenancy.start_date.strftime('%Y')
-
-      visit ratings_path
-      expect(page).to have_no_text tenancy.start_date.strftime('%Y')
     end
   end
 
   context "When signed in" do
     before do
-      sign_in(create(:user))
+      sign_in(create(:user, :tenant))
     end
 
     it "displays both public and private review data in the Union ratings view" do
-      visit union_tenancy_path(tenancy)
+      visit rating_path(rating)
       expect(page).to have_text public_review
       expect(page).to have_text private_review
     end
