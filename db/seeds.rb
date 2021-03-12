@@ -14,14 +14,22 @@ User.destroy_all
 Tenancy.destroy_all
 Landlord.destroy_all
 Unit.destroy_all
+Rating.destroy_all
 
 print "Landlords: "
 25.times { print '.'; create(:landlord) }
 @landlords = Landlord.all
 puts ''
 
+print "Units: "
+15.times { print '.'; create(:unit) }
+@units = Unit.all
+puts ''
+
 print "Ratings: "
-100.times { print "."; create(:tenancy, :with_rating, landlord: @landlords.sample) }
+100.times do
+  print "."; create(:rating, landlord: @landlords.sample, unit: @units.sample)
+end
 puts ''
 
 admin = create(:user, role: "admin", email: "admin@example.com", password: "abc123", password_confirmation: "abc123")

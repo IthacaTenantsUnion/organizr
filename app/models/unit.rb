@@ -10,10 +10,10 @@
 #  building_type       :string
 #
 class Unit < ApplicationRecord
-  has_many :tenancies, -> { extending AverageRatings }
-  alias :ratings :tenancies
-  has_many :landlords, through: :tenancies, inverse_of: :units
-  has_many :tenants, through: :tenancies, source: :user
+  has_many :leases, -> { extending AverageRatings }
+  
+  has_many :landlords, through: :leases, inverse_of: :units
+  has_many :tenants, through: :leases, source: :user
 
   validates :address, presence: true, uniqueness: true
   validates :number_of_occupants, numericality: { greater_than: 0 }

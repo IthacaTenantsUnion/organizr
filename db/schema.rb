@@ -10,13 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_11_152828) do
+ActiveRecord::Schema.define(version: 2021_03_09_040250) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "landlords", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "leases", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "unit_id"
+    t.integer "landlord_id"
+    t.integer "rent_portion"
+    t.integer "rent_total"
+    t.date "start_date"
+    t.date "end_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "ratings", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "unit_id"
+    t.integer "landlord_id"
+    t.integer "overall"
+    t.integer "repairs"
+    t.string "public_review"
+    t.string "private_review"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

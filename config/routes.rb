@@ -6,9 +6,11 @@ Rails.application.routes.draw do
   namespace :union do
     resources :tenancies
   end
+
+  resources :ratings, only: %i(index show)
   
-  get 'ratings', to: 'tenancies#index', as: :ratings
-  get 'ratings/:id', to: 'tenancies#show', as: :rating
+  #get 'ratings', to: 'tenancies#index', as: :ratings
+  #get 'ratings/:id', to: 'tenancies#show', as: :rating
   
   resources :units, only: %i(index show) do
     get :search, on: :collection

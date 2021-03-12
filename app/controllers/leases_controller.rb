@@ -1,0 +1,2 @@
+class LeasesController < ApplicationController
+end

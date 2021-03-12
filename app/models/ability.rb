@@ -7,11 +7,12 @@ class Ability
     can :read, Landlord
     can :read, Tenancy # RESTRICT THE FIELDS IN THIS!
     can :read, Unit
+    can :read, Rating
 
     if user.present?  # additional permissions for logged in users (they can read their own posts)
       can :create, Unit
       can :create, Landlord
-      
+      can :manage, Rating, user_id: user.id
       can :manage, Tenancy, user_id: user.id
       
       if user.admin?  # additional permissions for administrators

@@ -13,16 +13,8 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
-class Rating < ApplicationRecord
-  belongs_to :user
-  belongs_to :unit
-  belongs_to :landlord
+require 'rails_helper'
 
-  validates :overall, inclusion: { in: 0..3 }, if: lambda{ |t| t.overall.present? }
-
-  def reviewed?
-    !public_review.blank? || 
-    overall.present? || 
-    repairs.present?
-  end
+RSpec.describe Rating, type: :model do
+  pending "add some examples to (or delete) #{__FILE__}"
 end
