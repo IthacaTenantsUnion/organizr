@@ -1,0 +1,63 @@
+Hide Unit addresses on public side?
+
+
+http://whopayswriters.com/#/results
+
+Font Din
+
+
+
+Start Date for Tenancy: some tenants may not know the exact date
+
+Should "Tenancy" be "Lease"?
+Multiple ratings for multi-year leases
+
+
+Unit:
+Number of Occupants living there (?)
+
+
+Landlord:
+"the lessor"
+also has staff
+field should autocomplete-suggest
+Admin: dashboard for making corrections
+
+
+Rating: --> change to "Review"
+identify the staff interacted (multiple possible)
+
+
+---- 2 march 2020
+
+https://www.notion.so/Rate-my-Landlord-suggestion-list-8201cf8a98f84c81b913cfa5b7df3dbc?v=91d3ae846ca14b478067a763b8cd9087
+
+- “The portion of rent you pay” and “The total monthly rent” should be “Portion of rent you pay” and “Total monthly rent for the unit” and should have dollar signs in the answer boxes
+- Asterisks next to things that are mandatory
+- When the landlord field is autocomplete, it should have a “+ New Landlord” option at the bottom
+- We should recommend searching landlords by last name and have the + New Landlord option displays at the bottom or if no landlords appear
+- “Start Date” and “End Date” fields should be limited to month & year, no need for day and start date should prevent future dates
+- Set a maximum number of occupants for a tenancy?
+- Make cancel my account harder to do (prevent accidental deletions)
+
+- Make Ithaca TU tab open in a new tab, not in the same one and spell out Ithaca Tenants Union
+
+- Hide empty landlords with no data
+- Make the emojis colorful, like in the ratings forms
+
+- If someone edits tenancy information after they originally created it, can we review that edit before it goes live on the site?
+- Moderation Que
+
+- add login and logout options on all pages
+- put *sign in* and *log in* on the same line, side by side on the signup page
+
+
+
+NEW USER -- MAKE IT EASIER TO LEAVE RATINGS
+- search for existing landlord data?
+   -- create a review via the landlords#show
+- Leave a review 
+  -- allow for users to sign up with minimal
+
+
+email address, landlord, address, ratings, review text (public & private)

@@ -28,7 +28,11 @@ class User < ApplicationRecord
 
   enum role: { guest: "guest", tenant: "tenant", admin: "admin" }
 
+  def real_name
+    read_attribute(:name)
+  end
+
   def to_s
-    @name ||= Faker::Name.name
+    Faker::Name.name
   end
 end

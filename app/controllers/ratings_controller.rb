@@ -6,4 +6,12 @@ class RatingsController < ApplicationController
 
   def show
   end
+
+  def new
+    @rating = current_user.ratings.new rescue Rating.new
+  end
+
+  def create
+
+  end
 end

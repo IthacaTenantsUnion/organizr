@@ -20,6 +20,14 @@ class Rating < ApplicationRecord
 
   validates :overall, inclusion: { in: 0..3 }, if: lambda{ |t| t.overall.present? }
 
+  def landlord_name
+    landlord&.name
+  end
+
+  def unit_address
+    unit&.address
+  end
+  
   def reviewed?
     !public_review.blank? || 
     overall.present? || 
