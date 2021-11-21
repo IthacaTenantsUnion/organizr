@@ -1,0 +1,2 @@
+module RawReviewsHelper
+end

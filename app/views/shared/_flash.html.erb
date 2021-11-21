@@ -1,0 +1,6 @@
+<% flash.each do |type, message| %>
+  <div class="flash <%= type %>">
+      <p><%= message %></p>
+      <a href="javascript:void(0);" data-action="close">&times;</a>
+  </div>
+<% end %>

@@ -11,3 +11,9 @@ import "channels"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+$(document).on('turbolinks:load', function() {
+  $('a[data-action=close]').on('click', function(e) {
+    $(e.target).parent().fadeOut(1000);
+  });
+});

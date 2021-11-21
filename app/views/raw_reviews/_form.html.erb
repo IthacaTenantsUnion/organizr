@@ -1,0 +1,85 @@
+<%= form_with(model: raw_review) do |form| %>
+  <% if raw_review.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(raw_review.errors.count, "error") %> prohibited this raw_review from being saved:</h2>
+
+      <ul>
+        <% raw_review.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <p>Thank you for providing your review! All submitted information will be kept private, except where noted.</p>
+
+    <fieldset>
+      <legend>About Your Rental</legend>
+
+      <p>Please include as much information as possible</p>
+      <dl>
+        <dt>"Landlord"</dt>
+        <dd>The person / company that <strong>owns</strong> your property</dd>
+        <dt>"Property Manager"</dt>
+        <dd>The person / company that you interact with, does maintenance, collects rent, etc.</dd>
+      </dl>
+
+      <%= form.label :landlord_name %>
+      <%= form.text_field :landlord_name %>
+
+      <%= form.label :property_manager %>
+      <%= form.text_field :property_manager %>
+
+      <%= form.label :rent do %>
+        Monthly Rent (total)
+      <% end %>
+      <%= form.text_field :rent %>
+
+      <%= form.label :lease_end_date do %>
+        When did/does your lease end?
+      <% end %>
+      <%= form.date_select :lease_end_date %>
+
+      <%= form.label :security_deposit %>
+      <%= form.text_field :security_deposit %>
+    </fieldset>
+
+    <fieldset>
+      <legend>Reviews</legend>
+      <p>Overall, how was your landlord?</p>
+      <%= form.label :landlord_general_rating, 'Bad', value: 1, class: 'radio' %>
+      <%= form.radio_button 'landlord_general_rating', 1 %>
+      <%= form.label :landlord_general_rating, 'Meh', value: 2, class: 'radio' %>
+      <%= form.radio_button 'landlord_general_rating', 2 %>
+      <%= form.label :landlord_general_rating, 'Good', value: 3, class: 'radio' %>
+      <%= form.radio_button 'landlord_general_rating', 3 %>
+      
+      <p>How did your landlord do with repairs / maintenance</p>
+      <%= form.label :landlord_repairs_rating, 'Bad', value: 1, class: 'radio' %>
+      <%= form.radio_button 'landlord_repairs_rating', 1 %>
+      <%= form.label :landlord_repairs_rating, 'Meh', value: 2, class: 'radio' %>
+      <%= form.radio_button 'landlord_repairs_rating', 2 %>
+      <%= form.label :landlord_repairs_rating, 'Good', value: 3, class: 'radio' %>
+      <%= form.radio_button 'landlord_repairs_rating', 3 %>
+
+      <%= form.label :landlord_public_review do %>
+        Write a review of your experience with this landlord. This review may be displayed publicly, so be careful not to include information that might identify you.
+      <% end %>
+      <%= form.text_area :landlord_public_review %>
+    
+
+      <%= form.label :landlord_private_review do %>
+        This review is for ITU internal use, to better understand the experiences Ithaca tenants have. We will not disclose this information publicly. 
+      <% end %>
+      <%= form.text_area :landlord_private_review %>
+
+    </fieldset>
+    
+    <%= form.label :preferred_contact do %>
+      It would be helpful if we can contact you to follow-up, if you can, please provide an e-mail, phone number, social media profile, or some way we can get a hold of you if we have questions.
+    <% end %>
+    <%= form.text_field :preferred_contact %>
+
+
+    <%= form.submit "Submit Review" %>
+<% end %>

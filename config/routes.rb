@@ -11,5 +11,8 @@ Rails.application.routes.draw do
     resources :admin_users, only: %i[index]
   end
 
+  get :rate_my_landlord, action: :new, controller: 'raw_reviews', as: 'raw_review'
+  post :rate_my_landlord, action: :create, controller: 'raw_reviews', as: 'raw_reviews'
+
   root to: "application#home"
 end
