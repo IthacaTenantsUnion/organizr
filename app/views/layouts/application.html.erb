@@ -9,9 +9,25 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag "application" %>
+    <script type="text/javascript" src="//use.typekit.net/ik/6Eys0zER7BgOaNInx_y6nWL_5TMfckB7W4A_ENf2iHJfeG3IfFHN4UJLFRbh52jhWDmqZRjhjDjawhJaFQy8FD9DFRZKZQgKFs7eMkG0jAFu-WsoShFGZAsude80ZkoRdhXCHKoyjamTiY8Djhy8ZYmC-Ao1Oco8if37OcBDOcu8OfG0-hBCZPuR-W4Rde9lwD4EwKoDSWmyScmDSeBRZPoRdhXCHKoDSWmyScmDSeBRZWFR-emqiAUTdcS0jhNlOeBRiA8XpWFR-emqiAUTdcS0jhNlOeBRiA8XpWFR-emqiAUTdcS0dcmXOeBDOcu8Oe8X-eBRjWsuOcNkZkUnjAU8OAFTScFCZPXDw1GkO1FUiABkZWF3jAF8OcFzdPUCdhFydeyzSabCSaBujW48SagyjhmDjhy8ZYmC-Ao1OcFzdPUaiaS0jAFu-WsoShFGZAsude80ZkoRdhXCiaiaOcBRiA8XpWFR-emqiAUTdcS0dcmXOYiaikoySkolZPUaiaS0-WsGjAFyiY90da41OYiaikonjAU8OAFTScFCZPXDw1GkO1FUiABkZWF3jAF8OcFzdPUaiaS0SaBujW48SagyjhmDjhy8ZYmC-Ao1OcFzdPJJZe80OQJ3wQbK2hsTdKXkw2IXOAoyS14zikGHf5L_MsMMeMS6MKGHf5R_MsMMeM66MKGHf5d_MsMMegI6MKGHf51_MsMMegJ6MKGHf5__MsMgeMS6MTMgK0cNN69.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Fjalla+One:wght@400&amp;family=Libre+Franklin:ital,wght@0,400;0,500;0,700;1,400;1,700&amp;family=Source+Code+Pro:wght@700">
+    <link rel="icon" type="image/png" href="/assets/favicon.png" />
   </head>
 
   <body>
-    <%= yield %>
+    <header class="small-container">
+      <h1>
+        <%= link_to 'Organizr', root_path %><br />
+        <small>&laquo; back to <%= link_to 'Ithaca Tenants Union', 'https://ithacatu.org' %></small>
+      </h1>
+      <nav></nav>
+    </header>
+    <main class="small-container">
+      <%= render partial: 'shared/flash' %>
+        <%= yield %>
+    </main>
+    <footer>
+
+    </footer>
   </body>
 </html>

@@ -1,0 +1,2 @@
+class RawReview < ApplicationRecord
+end

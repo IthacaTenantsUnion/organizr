@@ -1,0 +1,26 @@
+.flash {
+  display: flex;
+
+  &.notice {
+    background-color: lighten($success, 30%);
+    color: darken($success, 30%);
+  }
+  &.error {
+   background-color: lighten($error, 30%);
+   color: darken($error, 30%);
+  }
+  p {
+    margin: 1rem;
+    flex-grow: 1;
+  }
+  a[data-action=close] {
+    flex-shrink: 0;
+    margin: 0 1rem;
+    font-size: 2rem;
+    
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+}
