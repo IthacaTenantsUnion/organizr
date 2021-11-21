@@ -31,7 +31,10 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 
 # Devise for users
-# gem 'devise'
+gem 'devise'
+# OmniAuth with Google
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -40,6 +43,8 @@ group :development, :test do
   gem 'rspec-rails'
   # Factorybot for factories
   gem 'factory_bot_rails'
+  # Env management
+  gem 'dotenv-rails'
 end
 
 group :development do
